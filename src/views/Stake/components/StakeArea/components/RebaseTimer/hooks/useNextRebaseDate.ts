@@ -7,7 +7,7 @@ import { useStaticStakingContract } from "src/hooks/useContract";
 export const nextRebaseDateQueryKey = () => ["useNextRebaseDate"];
 
 export const useNextRebaseDate = () => {
-  const contract = useStaticStakingContract(STAKING_ADDRESSES[NetworkId.MAINNET], NetworkId.MAINNET);
+  const contract = useStaticStakingContract(STAKING_ADDRESSES[NetworkId.ARBITRUM_TESTNET], NetworkId.ARBITRUM_TESTNET);
 
   return useQuery<Date, Error>(nextRebaseDateQueryKey(), async () => {
     const secondsToRebase = await contract.secondsToNextEpoch();

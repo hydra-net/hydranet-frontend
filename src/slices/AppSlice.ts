@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import { ethers } from "ethers";
-import { NodeHelper } from "src/helpers/NodeHelper";
 import { RootState } from "src/store";
 
 import { abi as sOHMv2 } from "../abi/sOhmv2.json";
-import { addresses, NetworkId } from "../constants";
+import { addresses } from "../constants";
 import { getMarketPrice, getTokenPrice, setAll } from "../helpers";
 import apollo from "../lib/apolloClient";
 import { OlympusStaking__factory, OlympusStakingv2__factory, SOhmv2 } from "../typechain";
@@ -48,10 +47,6 @@ export const loadAppDetails = createAsyncThunk(
       }
     `;
 
-    if (networkID !== NetworkId.MAINNET) {
-      provider = NodeHelper.getMainnetStaticProvider();
-      networkID = NetworkId.MAINNET;
-    }
     const graphData = await apollo<{ protocolMetrics: IProtocolMetrics[] }>(protocolMetricsQuery);
 
     if (!graphData || graphData == null) {

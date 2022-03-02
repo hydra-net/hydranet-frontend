@@ -7,8 +7,11 @@ import { useStaticSohmContract, useStaticStakingContract } from "./useContract";
 
 export const stakingRebaseRateQueryKey = () => ["useStakingRebaseRate"];
 export const useStakingRebaseRate = () => {
-  const sohmContract = useStaticSohmContract(SOHM_ADDRESSES[NetworkId.MAINNET], NetworkId.MAINNET);
-  const stakingContract = useStaticStakingContract(STAKING_ADDRESSES[NetworkId.MAINNET], NetworkId.MAINNET);
+  const sohmContract = useStaticSohmContract(SOHM_ADDRESSES[NetworkId.ARBITRUM_TESTNET], NetworkId.ARBITRUM_TESTNET);
+  const stakingContract = useStaticStakingContract(
+    STAKING_ADDRESSES[NetworkId.ARBITRUM_TESTNET],
+    NetworkId.ARBITRUM_TESTNET,
+  );
 
   // Get dependent data in parallel
   const useDependentQuery = createDependentQuery(stakingRebaseRateQueryKey());

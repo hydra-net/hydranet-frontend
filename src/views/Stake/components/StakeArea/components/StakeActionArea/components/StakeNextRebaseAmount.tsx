@@ -7,7 +7,6 @@ import {
   useGohmBalance,
   useGohmTokemakBalance,
   useSohmBalance,
-  useV1SohmBalance,
   useWsohmBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
@@ -21,14 +20,13 @@ export const StakeNextRebaseAmount = () => {
   const sohmBalances = useSohmBalance();
   const gohmBalances = useGohmBalance();
   const wsohmBalances = useWsohmBalance();
-  const v1sohmBalances = useV1SohmBalance();
   const gohmFuseBalances = useFuseBalance();
   const gohmTokemakBalances = useGohmTokemakBalance();
 
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
 
-  const sohmTokens = [sohmBalances[networks.MAINNET].data, v1sohmBalances[networks.MAINNET].data];
+  const sohmTokens = [sohmBalances[NetworkId.ARBITRUM_TESTNET].data];
   const totalSohmBalance = sohmTokens.filter(nonNullable).reduce((res, bal) => res.add(bal), BigNumber.from(0));
 
   const gohmTokens = [

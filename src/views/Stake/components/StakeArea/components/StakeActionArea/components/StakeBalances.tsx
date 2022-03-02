@@ -37,7 +37,7 @@ export const StakeBalances = () => {
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
 
-  const sohmTokens = [sohmBalances[networks.MAINNET].data, v1sohmBalances[networks.MAINNET].data];
+  const sohmTokens = [sohmBalances[NetworkId.ARBITRUM_TESTNET].data];
   const totalSohmBalance = sohmTokens.filter(nonNullable).reduce((res, bal) => res.add(bal), BigNumber.from(0));
 
   const gohmTokens = [
@@ -58,15 +58,15 @@ export const StakeBalances = () => {
     ? formatBalance(totalSohmBalance.mul(10 ** 9).add(convertGohmToOhm(totalGohmBalance, currentIndex)), 18)
     : BigNumber.from(0);
 
-  const allBalancesLoaded = sohmTokens.every(Boolean) && gohmTokens.every(Boolean);
+  const allBalancesLoaded = sohmTokens.every(Boolean); // && gohmTokens.every(Boolean);
 
   return (
     <>
       <DataRow
         id="user-balance"
         title={t`Unstaked Balance`}
-        isLoading={!ohmBalances[networks.MAINNET].data}
-        balance={`${formatBalance(ohmBalances[networks.MAINNET].data)} OHM`}
+        isLoading={!ohmBalances[NetworkId.ARBITRUM_TESTNET].data}
+        balance={`${formatBalance(ohmBalances[NetworkId.ARBITRUM_TESTNET].data)} OHM`}
       />
 
       <Accordion className="stake-accordion" square defaultExpanded>
@@ -84,14 +84,14 @@ export const StakeBalances = () => {
             indented
             title={t`sOHM`}
             id="user-staked-balance"
-            isLoading={!sohmBalances[networks.MAINNET].data}
-            balance={`${formatBalance(sohmBalances[networks.MAINNET].data)} sOHM`}
+            isLoading={!sohmBalances[NetworkId.ARBITRUM_TESTNET].data}
+            balance={`${formatBalance(sohmBalances[NetworkId.ARBITRUM_TESTNET].data)} sOHM`}
           />
 
           <DataRow
             indented
             title={t`gOHM`}
-            isLoading={!gohmBalances[networks.MAINNET].data}
+            isLoading={!gohmBalances[NetworkId.ARBITRUM_TESTNET].data}
             balance={`${formatBalance(gohmBalances[networks.MAINNET].data, 18)} gOHM`}
           />
 

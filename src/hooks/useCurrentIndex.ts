@@ -8,7 +8,10 @@ import { useStaticStakingContract } from "./useContract";
 export const currentIndexQueryKey = () => ["useCurrentIndex"];
 
 export const useCurrentIndex = () => {
-  const stakingContract = useStaticStakingContract(STAKING_ADDRESSES[NetworkId.MAINNET], NetworkId.MAINNET);
+  const stakingContract = useStaticStakingContract(
+    STAKING_ADDRESSES[NetworkId.ARBITRUM_TESTNET],
+    NetworkId.ARBITRUM_TESTNET,
+  );
 
   return useQuery<BigNumber, Error>(currentIndexQueryKey(), () => stakingContract.index());
 };
