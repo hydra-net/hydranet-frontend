@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro";
-import { Box, Grid, makeStyles, Paper, Switch, Tab, Tabs, Theme } from "@material-ui/core";
-import { InfoTooltip, Input, PrimaryButton } from "@olympusdao/component-library";
+import { Box, Grid, makeStyles, Tab, Tabs, Theme } from "@material-ui/core";
+import { Input, PrimaryButton } from "@olympusdao/component-library";
 import { formatUnits } from "ethers/lib/utils";
 import React, { useState } from "react";
 import { TokenAllowanceGuard } from "src/components/TokenAllowanceGuard/TokenAllowanceGuard";
@@ -8,7 +8,6 @@ import { GOHM_ADDRESSES, OHM_ADDRESSES, SOHM_ADDRESSES } from "src/constants/add
 import { useBalance } from "src/hooks/useBalance";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
 
-import { GOHMConversion } from "./components/GOHMConversion";
 import { useStakeToken } from "./hooks/useStakeToken";
 import { useUnstakeToken } from "./hooks/useUnstakeToken";
 
@@ -45,17 +44,17 @@ const useStyles = makeStyles<Theme>(theme => ({
 export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
   const classes = useStyles();
   const networks = useTestableNetworks();
-  const [stakedAssetType, setStakedAssetType] = useState<"sOHM" | "gOHM">("sOHM");
+  const [stakedAssetType, setStakedAssetType] = useState<"sHDX" | "gHDX">("sHDX");
   const [currentAction, setCurrentAction] = useState<"STAKE" | "UNSTAKE">("STAKE");
 
-  const fromToken = currentAction === "STAKE" ? "OHM" : stakedAssetType;
+  const fromToken = currentAction === "STAKE" ? "HDX" : stakedAssetType;
 
   // Max balance stuff
   const [amount, setAmount] = useState("");
-  const addresses = fromToken === "OHM" ? OHM_ADDRESSES : fromToken === "sOHM" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
+  const addresses = fromToken === "HDX" ? OHM_ADDRESSES : fromToken === "sHDX" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
   const balances = useBalance(addresses);
   const balance = balances[networks.MAINNET].data;
-  const setMax = () => balance && setAmount(formatUnits(balance, fromToken === "gOHM" ? 18 : 9));
+  const setMax = () => balance && setAmount(formatUnits(balance, fromToken === "gHDX" ? 18 : 9));
 
   // Staking/unstaking mutation stuff
   const stakeMutation = useStakeToken(stakedAssetType);
@@ -127,7 +126,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
         </TokenAllowanceGuard>
       </Box>
 
-      <Paper className="ohm-card confirm-dialog">
+      {/* <Paper className="ohm-card confirm-dialog">
         <Box display={[null, "flex"]} alignItems="center" justifyContent="space-between">
           <Grid component="label" container alignItems="center" spacing={1} wrap="nowrap">
             <Grid item>sOHM</Grid>
@@ -137,9 +136,9 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
                 color="primary"
                 disabled={isMutating}
                 className="stake-to-ohm-checkbox"
-                checked={stakedAssetType === "gOHM"}
+                checked={stakedAssetType === "gHDX"}
                 inputProps={{ "aria-label": "stake to gohm" }}
-                onChange={(_, checked) => setStakedAssetType(checked ? "gOHM" : "sOHM")}
+                onChange={(_, checked) => setStakedAssetType(checked ? "gHDX" : "sHDX")}
               />
             </Grid>
 
@@ -154,10 +153,10 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
           </Grid>
 
           <Box marginTop={[2, 0]} flexShrink={0}>
-            {stakedAssetType === "gOHM" && <GOHMConversion amount={amount} action={currentAction} />}
+            {stakedAssetType === "gHDX" && <GOHMConversion amount={amount} action={currentAction} />}
           </Box>
         </Box>
-      </Paper>
+      </Paper> */}
     </Box>
   );
 };

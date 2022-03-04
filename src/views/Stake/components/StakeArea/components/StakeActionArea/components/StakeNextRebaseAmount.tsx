@@ -51,7 +51,7 @@ export const StakeNextRebaseAmount = () => {
     const totalCombinedBalance = parseBigNumber(gohmBalanceAsSohm, 18) + parseBigNumber(totalSohmBalance);
 
     const nextRewardAmount = rebaseRate * totalCombinedBalance;
-    props.balance = `${formatNumber(nextRewardAmount, 4)} sOHM`;
+    props.balance = `${formatNumber(nextRewardAmount, 4)} sHDX`;
   } else props.isLoading = true;
 
   return <DataRow {...props} />;

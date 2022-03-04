@@ -37,10 +37,10 @@ const useStyles = makeStyles<Theme>(theme => ({
   },
 }));
 
-export const TokenAllowanceGuard: React.FC<{ token: "OHM" | "sOHM" | "gOHM" }> = props => {
+export const TokenAllowanceGuard: React.FC<{ token: "HDX" | "sHDX" | "gHDX" }> = props => {
   const classes = useStyles();
 
-  const addresses = props.token === "OHM" ? OHM_ADDRESSES : props.token === "sOHM" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
+  const addresses = props.token === "HDX" ? OHM_ADDRESSES : props.token === "sHDX" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
 
   const approveMutation = useApproveToken(addresses, STAKING_ADDRESSES);
   const { data: allowance } = useContractAllowance(addresses, STAKING_ADDRESSES);
@@ -58,7 +58,7 @@ export const TokenAllowanceGuard: React.FC<{ token: "OHM" | "sOHM" | "gOHM" }> =
         <Grid item xs={12} sm={8} className={classes.gridItem}>
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Typography variant="body1" className="stake-note" color="textSecondary">
-              {props.token === "OHM" ? (
+              {props.token === "HDX" ? (
                 <>
                   <Trans>First time staking</Trans> <b>OHM</b>?
                   <br />

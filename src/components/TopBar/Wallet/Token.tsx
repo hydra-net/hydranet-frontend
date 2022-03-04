@@ -1,21 +1,18 @@
-import { t } from "@lingui/macro";
 import {
   Accordion as MuiAccordion,
-  AccordionDetails,
   AccordionSummary as MuiAccordionSummary,
   Box,
-  Button,
   Typography,
   useTheme,
   withStyles,
 } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
-import { Icon, OHMTokenProps, Token as TokenSVG } from "@olympusdao/component-library";
+import { OHMTokenProps, Token as TokenSVG } from "@olympusdao/component-library";
 import { ChangeEvent, useState } from "react";
 import { useQuery } from "react-query";
-import { addresses, NETWORKS } from "src/constants";
+import { addresses } from "src/constants";
 import { NetworkId } from "src/constants";
-import { formatCurrency } from "src/helpers";
+import { formatCurrency, formatNumber } from "src/helpers";
 import { useAppSelector } from "src/hooks";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { fetchCrossChainBalances } from "src/lib/fetchBalances";
@@ -118,17 +115,25 @@ const BalanceValue = ({
   isLoading?: boolean;
   sigFigs: number;
 }) => (
-  <Box sx={{ textAlign: "right", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+  <Box
+    sx={{
+      textAlign: "right",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      marginRight: "32px",
+    }}
+  >
     <Typography variant="body2" style={{ fontWeight: 600 }} data-testid="balance-token">
-      {!isLoading ? balance.substring(0, sigFigs) : <Skeleton variant="text" width={50} />}
+      {!isLoading ? formatNumber(Number(balance), 9) : <Skeleton variant="text" width={50} />}
     </Typography>
-    <Typography variant="body2" color="textSecondary" data-testid="balance-usd">
+    {/* <Typography variant="body2" color="textSecondary" data-testid="balance-usd">
       {!isLoading ? (
         formatCurrency(balanceValueUSD === NaN ? 0 : balanceValueUSD, 2)
       ) : (
         <Skeleton variant="text" width={50} />
       )}
-    </Typography>
+    </Typography> */}
   </Box>
 );
 
@@ -172,7 +177,7 @@ export const Token = ({
 
   return (
     <Accordion expanded={expanded} onChange={onChangeExpanded}>
-      <AccordionSummary expandIcon={<Icon name="more" color="disabled" />}>
+      <AccordionSummary>
         <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
           <TokenSVG name={icon} style={{ fontSize: 28, marginRight: theme.spacing(1) }} />
           <Typography>{symbol}</Typography>
@@ -184,7 +189,7 @@ export const Token = ({
           isLoading={isLoading || crossChainBalances?.isLoading}
         />
       </AccordionSummary>
-      <AccordionDetails style={{ margin: "auto", padding: theme.spacing(1, 0) }}>
+      {/* <AccordionDetails style={{ margin: "auto", padding: theme.spacing(1, 0) }}>
         <Box
           sx={{ display: "flex", flexDirection: "column", flex: 1, mx: "32px", justifyContent: "center" }}
           style={{ gap: theme.spacing(1) }}
@@ -219,7 +224,7 @@ export const Token = ({
             </Button>
           </Box>
         </Box>
-      </AccordionDetails>
+      </AccordionDetails> */}
     </Accordion>
   );
 };
@@ -291,7 +296,7 @@ export const useWallet = (
       decimals: 9,
     },
     ohm: {
-      symbol: "OHM",
+      symbol: "HDX",
       address: addresses[networkId].OHM_V2,
       balance: connectedChainBalances.ohm,
       price: ohmPrice || 0,
@@ -299,7 +304,7 @@ export const useWallet = (
       decimals: 9,
     },
     sohm: {
-      symbol: "sOHM",
+      symbol: "sHDX",
       address: addresses[networkId].SOHM_V2,
       balance: connectedChainBalances.sohm,
       price: ohmPrice || 0,
@@ -370,7 +375,7 @@ export const Tokens = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const v1Tokens = [tokens.ohmV1, tokens.sohmV1];
-  const alwaysShowTokens = [tokens.ohm, tokens.sohm, tokens.gohm];
+  const alwaysShowTokens = [tokens.ohm, tokens.sohm];
   const onlyShowWhenBalanceTokens = [tokens.wsohm, tokens.pool];
 
   const tokenProps = (token: IToken) => ({
@@ -389,8 +394,8 @@ export const Tokens = () => {
         onlyShowWhenBalanceTokens.map(
           token => parseFloat(token.totalBalance) > 0.01 && <Token key={token.symbol} {...tokenProps(token)} />,
         )}
-      {!isLoading &&
-        v1Tokens.map(token => parseFloat(token.totalBalance) > 0.01 && <MigrateToken {...token} key={token.symbol} />)}
+      {/* {!isLoading &&
+        v1Tokens.map(token => parseFloat(token.totalBalance) > 0.01 && <MigrateToken {...token} key={token.symbol} />)} */}
     </>
   );
 };

@@ -8,27 +8,28 @@ import { useWeb3Context } from "src/hooks";
 import { balanceQueryKey, useBalance } from "src/hooks/useBalance";
 import { useDynamicStakingContract } from "src/hooks/useContract";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
+import { NetworkId } from "src/networkDetails";
 import { error as createErrorToast, info as createInfoToast } from "src/slices/MessagesSlice";
 
-export const useUnstakeToken = (fromToken: "sOHM" | "gOHM") => {
+export const useUnstakeToken = (fromToken: "sHDX" | "gHDX") => {
   const dispatch = useDispatch();
   const client = useQueryClient();
   const { address, networkId } = useWeb3Context();
   const networks = useTestableNetworks();
   const contract = useDynamicStakingContract(STAKING_ADDRESSES, true);
 
-  const addresses = fromToken === "sOHM" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
+  const addresses = fromToken === "sHDX" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
   const balances = useBalance(addresses);
 
   return useMutation<ContractReceipt, Error, string>(
     async amount => {
       if (!amount || isNaN(Number(amount))) throw new Error(t`Please enter a number`);
 
-      const parsedAmount = parseUnits(amount, fromToken === "gOHM" ? 18 : 9);
+      const parsedAmount = parseUnits(amount, fromToken === "gHDX" ? 18 : 9);
 
       if (!parsedAmount.gt(0)) throw new Error(t`Please enter a number greater than 0`);
 
-      const balance = balances[networks.MAINNET].data;
+      const balance = balances[NetworkId.ARBITRUM_TESTNET].data;
 
       if (!balance) throw new Error(t`Please refresh your page and try again`);
 
@@ -39,7 +40,7 @@ export const useUnstakeToken = (fromToken: "sOHM" | "gOHM") => {
 
       if (!address) throw new Error(t`Please refresh your page and try again`);
 
-      const shouldRebase = fromToken === "sOHM";
+      const shouldRebase = fromToken === "sHDX";
 
       const transaction = await contract.unstake(address, parsedAmount, true, shouldRebase);
       return transaction.wait();

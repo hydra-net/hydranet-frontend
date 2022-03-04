@@ -1,0 +1,42 @@
+---
+- hosts: frontend
+  gather_facts: no
+  roles:
+    - ubuntu-16-04
+
+  tasks:
+    - name: Build the application
+      shell: ./scripts/build-web.sh
+      delegate_to: 127.0.0.1
+
+    - name: Upload the application
+      synchronize:
+        src: web.zip
+        dest: web.zip
+
+    - name: Create the web data directory
+      become: yes
+      file:
+        path: /var/www/dashboard/html
+        state: directory
+        owner: www-data
+        group: www-data
+
+    - name: Unpack the application
+      become: yes
+      unarchive:
+        remote_src: yes
+        src: web.zip
+        dest: /var/www/dashboard/html
+
+    - name: Move the web content
+      become: yes
+      raw: rsync -a /var/www/dashboard/html/build/ /var/www/dashboard/html/ --remove-source-files
+
+    - name: Set the permissions
+      become: yes
+      file:
+        dest: /var/www/dashboard/html
+        owner: www-data
+        group: www-data
+        recurse: yes

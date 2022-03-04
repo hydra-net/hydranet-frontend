@@ -11,7 +11,7 @@ import { useTestableNetworks } from "src/hooks/useTestableNetworks";
 import { NetworkId } from "src/networkDetails";
 import { error as createErrorToast, info as createInfoToast } from "src/slices/MessagesSlice";
 
-export const useStakeToken = (toToken: "sOHM" | "gOHM") => {
+export const useStakeToken = (toToken: "sHDX" | "gHDX") => {
   const dispatch = useDispatch();
   const client = useQueryClient();
   const networks = useTestableNetworks();
@@ -37,7 +37,7 @@ export const useStakeToken = (toToken: "sOHM" | "gOHM") => {
 
       if (!address) throw new Error(t`Please refresh your page and try again`);
 
-      const shouldRebase = toToken === "sOHM";
+      const shouldRebase = toToken === "sHDX";
 
       const transaction = await contract.stake(address, parsedAmount, shouldRebase, true);
       return transaction.wait();
@@ -49,7 +49,7 @@ export const useStakeToken = (toToken: "sOHM" | "gOHM") => {
       onSuccess: async () => {
         const keysToRefetch = [
           balanceQueryKey(address, OHM_ADDRESSES, networkId),
-          balanceQueryKey(address, toToken === "sOHM" ? SOHM_ADDRESSES : GOHM_ADDRESSES, networkId),
+          balanceQueryKey(address, toToken === "sHDX" ? SOHM_ADDRESSES : GOHM_ADDRESSES, networkId),
         ];
 
         const promises = keysToRefetch.map(key => client.refetchQueries(key, { active: true }));

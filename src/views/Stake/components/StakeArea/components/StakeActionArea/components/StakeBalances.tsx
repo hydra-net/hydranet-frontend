@@ -66,7 +66,7 @@ export const StakeBalances = () => {
         id="user-balance"
         title={t`Unstaked Balance`}
         isLoading={!ohmBalances[NetworkId.ARBITRUM_TESTNET].data}
-        balance={`${formatBalance(ohmBalances[NetworkId.ARBITRUM_TESTNET].data)} OHM`}
+        balance={`${formatBalance(ohmBalances[NetworkId.ARBITRUM_TESTNET].data)} HDX`}
       />
 
       <Accordion className="stake-accordion" square defaultExpanded>
@@ -75,25 +75,25 @@ export const StakeBalances = () => {
             id="user-staked-balance"
             isLoading={!allBalancesLoaded}
             title={t`Total Staked Balance`}
-            balance={`${totalStakedBalance} sOHM`}
+            balance={`${totalStakedBalance} sHDX`}
           />
         </AccordionSummary>
 
         <AccordionDetails>
           <DataRow
             indented
-            title={t`sOHM`}
+            title={t`sHDX`}
             id="user-staked-balance"
             isLoading={!sohmBalances[NetworkId.ARBITRUM_TESTNET].data}
-            balance={`${formatBalance(sohmBalances[NetworkId.ARBITRUM_TESTNET].data)} sOHM`}
+            balance={`${formatBalance(sohmBalances[NetworkId.ARBITRUM_TESTNET].data)} sHDX`}
           />
 
-          <DataRow
+          {/* <DataRow
             indented
             title={t`gOHM`}
             isLoading={!gohmBalances[NetworkId.ARBITRUM_TESTNET].data}
             balance={`${formatBalance(gohmBalances[networks.MAINNET].data, 18)} gOHM`}
-          />
+          /> */}
 
           {hasVisibleBalance(gohmBalances[NetworkId.ARBITRUM].data, 18) && (
             <DataRow

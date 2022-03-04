@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useWeb3Context } from "src/hooks";
 import { usePathForNetwork } from "src/hooks/usePathForNetwork";
 
-import ExternalStakePools from "./components/ExternalStakePools/ExternalStakePools";
+// import ExternalStakePools from "./components/ExternalStakePools/ExternalStakePools";
 import { StakeArea } from "./components/StakeArea/StakeArea";
 
 const Stake: React.FC = () => {
@@ -20,7 +20,7 @@ const Stake: React.FC = () => {
       {/* NOTE (appleseed-olyzaps) olyzaps disabled until v2 contracts */}
       {/* <ZapCta /> */}
 
-      <ExternalStakePools />
+      {/* <ExternalStakePools /> */}
     </div>
   );
 };

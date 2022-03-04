@@ -131,7 +131,7 @@ export const StakingAPY: React.FC<AbstractedMetricProps> = props => {
   };
 
   if (rebaseRate) {
-    const apy = (Math.pow(1 + rebaseRate, 365 * 3) - 1) * 100;
+    const apy = (Math.pow(1 + rebaseRate, 365 * 1440) - 1) * 100;
     const formatted = formatNumber(apy, 1);
 
     _props.metric = `${formatted}%`;

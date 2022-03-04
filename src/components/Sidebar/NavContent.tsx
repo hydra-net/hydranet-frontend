@@ -59,7 +59,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
     <Paper className="dapp-sidebar">
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
-          <Box className="branding-header">
+          {/* <Box className="branding-header">
             <Link href="https://olympusdao.finance" target="_blank">
               <SvgIcon
                 color="primary"
@@ -69,15 +69,17 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
               />
             </Link>
             <WalletAddressEns />
-          </Box>
+          </Box> */}
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
-              {networkId === NetworkId.MAINNET || networkId === NetworkId.TESTNET_RINKEBY || NetworkId.ARBITRUM_TESTNET ? (
+              {networkId === NetworkId.MAINNET ||
+              networkId === NetworkId.TESTNET_RINKEBY ||
+              NetworkId.ARBITRUM_TESTNET ? (
                 <>
-                  <NavItem to="/dashboard" icon={"dashboard"} label={t`Dashboard`} />
-                  <NavItem to="/bonds" icon="bond" label={t`Bond`} />
-                  <div className="dapp-menu-data discounts">
+                  {/* <NavItem to="/dashboard" icon={"dashboard"} label={t`Dashboard`} /> */}
+                  {/* <NavItem to="/bonds" icon="bond" label={t`Bond`} /> */}
+                  {/* <div className="dapp-menu-data discounts">
                     <div className="bond-discounts">
                       <Accordion className="discounts-accordion" square defaultExpanded={true}>
                         <AccordionSummary
@@ -111,29 +113,29 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                         </AccordionDetails>
                       </Accordion>
                     </div>
-                  </div>
+                  </div> */}
                   <NavItem to="/stake" icon="stake" label={t`Stake`} />
 
                   {/* NOTE (appleseed-olyzaps): OlyZaps disabled until v2 contracts */}
-                  <NavItem to="/zap" icon="zap" label={t`Zap`} />
+                  {/* <NavItem to="/zap" icon="zap" label={t`Zap`} /> */}
 
-                  {EnvHelper.isGiveEnabled(location.search) && (
+                  {/* {EnvHelper.isGiveEnabled(location.search) && (
                     <NavItem to="/give" icon="give" label={t`Give`} chip={t`New`} />
-                  )}
-                  <NavItem to="/wrap" icon="wrap" label={t`Wrap`} />
-                  <NavItem
+                  )} */}
+                  {/* <NavItem to="/wrap" icon="wrap" label={t`Wrap`} /> */}
+                  {/* <NavItem
                     href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
                     icon="bridge"
                     label={t`Bridge`}
-                  />
-                  <Box className="menu-divider">
+                  /> */}
+                  {/* <Box className="menu-divider">
                     <Divider />
                   </Box>
                   <NavItem href="https://pro.olympusdao.finance/" icon="olympus" label={t`Olympus Pro`} />
-                  {/* <NavItem to="/33-together" icon="33-together" label={t`3,3 Together`} /> */}
+                  <NavItem to="/33-together" icon="33-together" label={t`3,3 Together`} />
                   <Box className="menu-divider">
                     <Divider />
-                  </Box>
+                  </Box> */}
                 </>
               ) : (
                 <>
@@ -146,20 +148,20 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                 </>
               )}
               {}
-              {Object.keys(externalUrls).map((link: any, i: number) => (
+              {/* {Object.keys(externalUrls).map((link: any, i: number) => (
                 <NavItem
                   key={i}
                   href={`${externalUrls[link].url}`}
                   icon={externalUrls[link].icon as any}
                   label={externalUrls[link].title as any}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
-        <Box className="dapp-menu-social" display="flex" justifyContent="space-between" flexDirection="column">
+        {/* <Box className="dapp-menu-social" display="flex" justifyContent="space-between" flexDirection="column">
           <Social />
-        </Box>
+        </Box> */}
       </Box>
     </Paper>
   );

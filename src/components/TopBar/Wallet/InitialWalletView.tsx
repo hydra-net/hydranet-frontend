@@ -2,7 +2,6 @@ import { Trans } from "@lingui/macro";
 import {
   Box,
   Button,
-  Divider,
   IconButton,
   Paper,
   SvgIcon,
@@ -11,13 +10,9 @@ import {
   useTheme,
   withStyles,
 } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
 import { Icon, OHMTokenProps, OHMTokenStackProps, Token, TokenStack } from "@olympusdao/component-library";
 import { ReactElement, useState } from "react";
 import { ReactComponent as ArrowUpIcon } from "src/assets/icons/arrow-up.svg";
-import { addresses } from "src/constants";
-import { formatCurrency } from "src/helpers";
-import { dai, frax } from "src/helpers/AllBonds";
 import { useAppSelector, useWeb3Context } from "src/hooks";
 import useCurrentTheme from "src/hooks/useTheme";
 
@@ -136,9 +131,9 @@ const WalletTotalValue = () => {
       <Typography style={{ lineHeight: 1.1, fontWeight: 600, fontSize: "0.975rem" }} color="textSecondary">
         MY WALLET
       </Typography>
-      <Typography style={{ fontWeight: 700, cursor: "pointer" }} variant="h3">
+      {/* <Typography style={{ fontWeight: 700, cursor: "pointer" }} variant="h3">
         {!isLoading ? formatCurrency(walletValue[currency], 2, currency) : <Skeleton variant="text" width={100} />}
-      </Typography>
+      </Typography> */}
       <WalletAddressEns />
     </Box>
   );
@@ -164,11 +159,11 @@ function InitialWalletView({ onClose }: { onClose: () => void }) {
           <Tokens />
         </Box>
 
-        <Box sx={{ margin: theme.spacing(2, -3) }}>
+        {/* <Box sx={{ margin: theme.spacing(2, -3) }}>
           <Divider color="secondary" />
-        </Box>
+        </Box> */}
 
-        <Box
+        {/* <Box
           sx={{
             ...(isSmallScreen
               ? { display: "flex", flexDirection: "column" }
@@ -209,7 +204,7 @@ function InitialWalletView({ onClose }: { onClose: () => void }) {
               <Typography>Shadow's dashboard</Typography>
             </ExternalLink>
           </Box>
-        </Box>
+        </Box> */}
 
         <Box sx={{ marginTop: "auto", marginX: "auto", padding: theme.spacing(2) }}>
           <DisconnectButton />

@@ -201,6 +201,10 @@ export function prettifySeconds(seconds: number, resolution?: string) {
     result = result.slice(0, result.length - 2);
   }
 
+  if (result === "") {
+    result = "less than a minute";
+  }
+
   return result;
 }
 
