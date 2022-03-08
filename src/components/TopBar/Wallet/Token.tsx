@@ -332,7 +332,7 @@ export const useWallet = (
       decimals: 9,
     },
     gohm: {
-      symbol: "gOHM",
+      symbol: "gHDX",
       address: addresses[networkId].GOHM_ADDRESS,
       balance: connectedChainBalances.gohm,
       price: (ohmPrice || 0) * Number(currentIndex || 0),
@@ -374,8 +374,7 @@ export const Tokens = () => {
   const isLoading = useAppSelector(s => s.account.loading || s.app.loadingMarketPrice || s.app.loading);
   const [expanded, setExpanded] = useState<string | null>(null);
 
-  const v1Tokens = [tokens.ohmV1, tokens.sohmV1];
-  const alwaysShowTokens = [tokens.ohm, tokens.sohm];
+  const alwaysShowTokens = [tokens.ohm, tokens.sohm, tokens.gohm];
   const onlyShowWhenBalanceTokens = [tokens.wsohm, tokens.pool];
 
   const tokenProps = (token: IToken) => ({
@@ -394,8 +393,6 @@ export const Tokens = () => {
         onlyShowWhenBalanceTokens.map(
           token => parseFloat(token.totalBalance) > 0.01 && <Token key={token.symbol} {...tokenProps(token)} />,
         )}
-      {/* {!isLoading &&
-        v1Tokens.map(token => parseFloat(token.totalBalance) > 0.01 && <MigrateToken {...token} key={token.symbol} />)} */}
     </>
   );
 };

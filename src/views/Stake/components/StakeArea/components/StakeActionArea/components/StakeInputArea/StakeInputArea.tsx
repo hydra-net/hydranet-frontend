@@ -1,13 +1,15 @@
 import { t } from "@lingui/macro";
-import { Box, Grid, makeStyles, Tab, Tabs, Theme } from "@material-ui/core";
-import { Input, PrimaryButton } from "@olympusdao/component-library";
+import { Box, Grid, makeStyles, Paper, Switch, Tab, Tabs, Theme } from "@material-ui/core";
+import { InfoTooltip, Input, PrimaryButton } from "@olympusdao/component-library";
 import { formatUnits } from "ethers/lib/utils";
 import React, { useState } from "react";
 import { TokenAllowanceGuard } from "src/components/TokenAllowanceGuard/TokenAllowanceGuard";
 import { GOHM_ADDRESSES, OHM_ADDRESSES, SOHM_ADDRESSES } from "src/constants/addresses";
 import { useBalance } from "src/hooks/useBalance";
 import { useTestableNetworks } from "src/hooks/useTestableNetworks";
+import { NetworkId } from "src/networkDetails";
 
+import { GOHMConversion } from "./components/GOHMConversion";
 import { useStakeToken } from "./hooks/useStakeToken";
 import { useUnstakeToken } from "./hooks/useUnstakeToken";
 
@@ -53,7 +55,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
   const [amount, setAmount] = useState("");
   const addresses = fromToken === "HDX" ? OHM_ADDRESSES : fromToken === "sHDX" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
   const balances = useBalance(addresses);
-  const balance = balances[networks.MAINNET].data;
+  const balance = balances[NetworkId.ARBITRUM_TESTNET].data;
   const setMax = () => balance && setAmount(formatUnits(balance, fromToken === "gHDX" ? 18 : 9));
 
   // Staking/unstaking mutation stuff
@@ -126,7 +128,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
         </TokenAllowanceGuard>
       </Box>
 
-      {/* <Paper className="ohm-card confirm-dialog">
+      <Paper className="ohm-card confirm-dialog">
         <Box display={[null, "flex"]} alignItems="center" justifyContent="space-between">
           <Grid component="label" container alignItems="center" spacing={1} wrap="nowrap">
             <Grid item>sOHM</Grid>
@@ -156,7 +158,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
             {stakedAssetType === "gHDX" && <GOHMConversion amount={amount} action={currentAction} />}
           </Box>
         </Box>
-      </Paper> */}
+      </Paper>
     </Box>
   );
 };
