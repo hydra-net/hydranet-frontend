@@ -27,7 +27,7 @@ import { IBondDetails } from "src/slices/BondSlice";
 import { getAllBonds, getUserNotes } from "src/slices/BondSliceV2";
 import { DisplayBondDiscount } from "src/views/BondV2/BondV2";
 
-import { ReactComponent as OlympusIcon } from "../../assets/icons/olympus-nav-header.svg";
+import HydranetLogo from "../../assets/HYDRANET_LOGO.png";
 import useBonds from "../../hooks/useBonds";
 import WalletAddressEns from "../TopBar/Wallet/WalletAddressEns";
 import externalUrls from "./externalUrls";
@@ -61,11 +61,16 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
         <div className="dapp-menu-top">
           <Box className="branding-header">
             <Link href="https://olympusdao.finance" target="_blank">
-              <SvgIcon
+              {/* <SvgIcon
                 color="primary"
-                component={OlympusIcon}
+                component={HydranetLogo}
                 viewBox="0 0 151 100"
                 style={{ minWidth: "151px", minHeight: "98px", width: "151px" }}
+              /> */}
+              <img
+                src={HydranetLogo}
+                alt="HydranetLogo"
+                style={{ minWidth: "151px", minHeight: "auto", width: "200px" }}
               />
             </Link>
             <WalletAddressEns />

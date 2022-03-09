@@ -8,7 +8,6 @@ import { LocaleSwitcher } from "@olympusdao/component-library";
 
 import { ReactComponent as MenuIcon } from "../../assets/icons/hamburger.svg";
 import { locales, selectLocale } from "../../locales";
-import ThemeSwitcher from "./ThemeSwitch";
 import Wallet from "./Wallet";
 
 const useStyles = makeStyles(theme => ({
@@ -56,7 +55,7 @@ function TopBar({ theme, toggleTheme, handleDrawerToggle }: TopBarProps) {
         </Button>
         <Box display="flex">
           <Wallet />
-          <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+          {/* <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} /> */}
           <LocaleSwitcher
             initialLocale={i18n.locale}
             locales={locales}

@@ -35,7 +35,7 @@ export const OHMPrice: React.FC<AbstractedMetricProps> = props => {
 
   const _props: MetricProps = {
     ...props,
-    label: t`OHM Price`,
+    label: t`HDX Price`,
   };
 
   if (ohmPrice) _props.metric = formatCurrency(ohmPrice, 2);
@@ -65,8 +65,8 @@ export const BackingPerOHM: React.FC<AbstractedMetricProps> = props => {
 
   const _props: MetricProps = {
     ...props,
-    label: t`Treasury Market Value per OHM`,
-    tooltip: t`Treasury MV backing is the total USD budget the treasury has per OHM to spend on all market operations (LP, swaps, revenue generation, bonds and inverse bonds, etc)`,
+    label: t`Treasury Market Value per HDX`,
+    tooltip: t`Treasury MV backing is the total USD budget the treasury has per HDX to spend on all market operations (LP, swaps, revenue generation, bonds and inverse bonds, etc)`,
   };
 
   if (treasuryValue && circSupply) _props.metric = formatCurrency(treasuryValue / circSupply, 2);
@@ -81,10 +81,10 @@ export const CurrentIndex: React.FC<AbstractedMetricProps> = props => {
   const _props: MetricProps = {
     ...props,
     label: t`Current Index`,
-    tooltip: t`The current index tracks the amount of sOHM accumulated since the beginning of staking. Basically, how much sOHM one would have if they staked and held 1 OHM from launch.`,
+    tooltip: t`The current index tracks the amount of sHDX accumulated since the beginning of staking. Basically, how much sHDX one would have if they staked and held 1 HDX from launch.`,
   };
 
-  if (currentIndex) _props.metric = `${parseBigNumber(currentIndex, STAKING_CONTRACT_DECIMALS).toFixed(2)} sOHM`;
+  if (currentIndex) _props.metric = `${parseBigNumber(currentIndex, STAKING_CONTRACT_DECIMALS).toFixed(2)} sHDX`;
   else _props.isLoading = true;
 
   return <Metric {..._props} />;
@@ -95,11 +95,11 @@ export const GOHMPrice: React.FC<AbstractedMetricProps> = props => {
 
   const _props: MetricProps = {
     ...props,
-    label: t`gOHM Price`,
+    label: t`gHDX Price`,
     tooltip:
-      t`gOHM = sOHM * index` +
+      t`gHDX = sHDX * index` +
       "\n\n" +
-      t`The price of gOHM is equal to the price of OHM multiplied by the current index`,
+      t`The price of gHDX is equal to the price of HDX multiplied by the current index`,
   };
 
   if (gOhmPrice) _props.metric = formatCurrency(gOhmPrice, 2);
