@@ -21,7 +21,6 @@ export const useStakingRebaseRate = () => {
   return useQuery<number, Error>(
     stakingRebaseRateQueryKey(),
     async () => {
-      console.log("HERE - 1", stakingEpoch);
       queryAssertion(stakingEpoch && sohmCirculatingSupply, stakingRebaseRateQueryKey());
 
       const circulatingSupply = parseBigNumber(sohmCirculatingSupply);

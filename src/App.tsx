@@ -136,7 +136,11 @@ function App() {
   const loadApp = useCallback(
     loadProvider => {
       dispatch(loadAppDetails({ networkID: networkId, provider: loadProvider }));
-      if (networkId === NetworkId.MAINNET || networkId === NetworkId.TESTNET_RINKEBY) {
+      if (
+        networkId === NetworkId.MAINNET ||
+        networkId === NetworkId.TESTNET_RINKEBY ||
+        networkId == NetworkId.ARBITRUM_TESTNET
+      ) {
         bonds.map(bond => {
           // NOTE (appleseed): getBondability & getLOLability control which bonds are active in the view for Bonds V1
           // ... getClaimability is the analogue for claiming bonds

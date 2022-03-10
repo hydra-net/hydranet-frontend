@@ -12,7 +12,7 @@ import { usePathForNetwork } from "src/hooks/usePathForNetwork";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { IBondV2 } from "src/slices/BondSliceV2";
 
-import { formatCurrency, trim } from "../../helpers";
+import { trim } from "../../helpers";
 import AdvancedSettings from "./AdvancedSettings";
 import BondPurchase from "./BondPurchase";
 
@@ -110,14 +110,6 @@ const BondV2 = ({ index }: { index: number }) => {
                       <DisplayBondPrice key={bond.index} bond={bond} />
                     )}
                   </>
-                </Typography>
-              </div>
-              <div className="bond-price-data">
-                <Typography variant="h5" color="textSecondary">
-                  <Trans>Market Price</Trans>
-                </Typography>
-                <Typography variant="h3" color="primary" className="price">
-                  {isBondLoading ? <Skeleton /> : formatCurrency(bond.marketPrice, 2)}
                 </Typography>
               </div>
             </Box>

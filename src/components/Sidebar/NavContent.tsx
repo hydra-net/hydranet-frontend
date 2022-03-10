@@ -59,7 +59,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
     <Paper className="dapp-sidebar">
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
-          {/* <Box className="branding-header">
+          <Box className="branding-header">
             <Link href="https://olympusdao.finance" target="_blank">
               <SvgIcon
                 color="primary"
@@ -69,7 +69,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
               />
             </Link>
             <WalletAddressEns />
-          </Box> */}
+          </Box>
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
@@ -78,7 +78,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
               NetworkId.ARBITRUM_TESTNET ? (
                 <>
                   {/* <NavItem to="/dashboard" icon={"dashboard"} label={t`Dashboard`} /> */}
-                  {/* <NavItem to="/bonds" icon="bond" label={t`Bond`} /> */}
+                  <NavItem to="/bonds" icon="bond" label={t`Bond`} />
                   {/* <div className="dapp-menu-data discounts">
                     <div className="bond-discounts">
                       <Accordion className="discounts-accordion" square defaultExpanded={true}>

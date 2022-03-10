@@ -114,7 +114,7 @@ function checkNetwork(networkID: NetworkId) {
 export const changeApproval = createAsyncThunk(
   "bondsV2/changeApproval",
   async ({ bond, provider, networkID, address }: IBondV2AysncThunk, { dispatch, getState }) => {
-    checkNetwork(networkID);
+    // checkNetwork(networkID);
     const signer = provider.getSigner();
     const bondState: IBondV2 = (getState() as RootState).bondingV2.bonds[bond.index];
     const tokenContractAddress: string = bondState.quoteToken;
@@ -148,9 +148,11 @@ export const changeApproval = createAsyncThunk(
 export const purchaseBond = createAsyncThunk(
   "bondsV2/purchase",
   async ({ provider, address, bond, networkID, amount, maxPrice }: IBondV2PurchaseAsyncThunk, { dispatch }) => {
-    checkNetwork(networkID);
+    // checkNetwork(networkID);
     const signer = provider.getSigner();
     const depositoryContract = BondDepository__factory.connect(addresses[networkID].BOND_DEPOSITORY, signer);
+
+    console.log("HERE - 1", addresses[networkID].BOND_DEPOSITORY);
 
     let depositTx: ethers.ContractTransaction | undefined;
     try {
@@ -164,11 +166,13 @@ export const purchaseBond = createAsyncThunk(
       const text = `Purchase ${bond.displayName} Bond`;
       const pendingTxnType = `bond_${bond.displayName}`;
       if (depositTx) {
+        console.log("HERE - 2", depositTx);
         dispatch(fetchPendingTxns({ txnHash: depositTx.hash, text, type: pendingTxnType }));
         await depositTx.wait();
         dispatch(clearPendingTxn(depositTx.hash));
       }
     } catch (e: unknown) {
+      console.log("HERE - 3", e);
       dispatch(error((e as IJsonRPCError).message));
       return;
     } finally {
@@ -196,7 +200,7 @@ export const getSingleBond = createAsyncThunk(
 export const getTokenBalance = createAsyncThunk(
   "bondsV2/getBalance",
   async ({ provider, networkID, address, value }: IValueAsyncThunk, {}): Promise<IBondV2Balance> => {
-    checkNetwork(networkID);
+    // checkNetwork(networkID);
     const tokenContract = IERC20__factory.connect(value, provider);
     const balance = await tokenContract.balanceOf(address);
     const allowance = await tokenContract.allowance(address, addresses[networkID].BOND_DEPOSITORY);
@@ -302,7 +306,7 @@ async function processBond(
 export const getAllBonds = createAsyncThunk(
   "bondsV2/getAll",
   async ({ provider, networkID, address }: IBaseAddressAsyncThunk, { dispatch }) => {
-    checkNetwork(networkID);
+    // checkNetwork(networkID);
     const depositoryContract = BondDepository__factory.connect(addresses[networkID].BOND_DEPOSITORY, provider);
     const liveBondIndexes = await depositoryContract.liveMarkets();
     // `markets()` returns quote/price data
@@ -335,7 +339,7 @@ export const getAllBonds = createAsyncThunk(
 export const getUserNotes = createAsyncThunk(
   "bondsV2/notes",
   async ({ provider, networkID, address }: IBaseAddressAsyncThunk, { dispatch, getState }): Promise<IUserNote[]> => {
-    checkNetwork(networkID);
+    // checkNetwork(networkID);
     const currentTime = Date.now() / 1000;
     const depositoryContract = BondDepository__factory.connect(addresses[networkID].BOND_DEPOSITORY, provider);
     const userNoteIndexes = await depositoryContract.indexesFor(address);
@@ -408,7 +412,9 @@ export const claimAllNotes = createAsyncThunk(
 
     let claimTx: ethers.ContractTransaction | undefined;
     try {
+      console.log("HERE - 21");
       claimTx = await depositoryContract.redeemAll(address, gOHM);
+      console.log("HERE - 22");
       const text = `Claim All Bonds`;
       const pendingTxnType = `redeem_all_notes`;
       if (claimTx) {
@@ -418,6 +424,7 @@ export const claimAllNotes = createAsyncThunk(
         dispatch(clearPendingTxn(claimTx.hash));
       }
     } catch (e: unknown) {
+      console.log("HERE - 20", e);
       dispatch(error((e as IJsonRPCError).message));
       return;
     } finally {

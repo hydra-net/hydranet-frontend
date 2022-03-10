@@ -25,6 +25,7 @@ interface IProtocolMetrics {
 export const loadAppDetails = createAsyncThunk(
   "app/loadAppDetails",
   async ({ networkID, provider }: IBaseAsyncThunk, { dispatch }) => {
+    console.log("HERE - 13", networkID);
     const protocolMetricsQuery = `
       query {
         _meta {
@@ -104,6 +105,8 @@ export const loadAppDetails = createAsyncThunk(
 
     // Current index
     const currentIndex = await stakingContract.index();
+
+    console.log("HERE - 12", currentIndex);
     const currentIndexV1 = await stakingContractV1.index();
     return {
       currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),

@@ -19,8 +19,6 @@ export function ClaimBondTableData({ userNote, gOHM }: { userNote: IUserNote; gO
   const note = userNote;
   const bondName = note.displayName;
 
-  const isAppLoading = useAppSelector(state => state.app.loading ?? true);
-
   const pendingTransactions = useAppSelector(state => {
     return state.pendingTransactions;
   });
@@ -49,7 +47,7 @@ export function ClaimBondTableData({ userNote, gOHM }: { userNote: IUserNote; gO
       {/* Payout */}
       <TableCell align="center">
         {note.payout && currentIndex ? (
-          trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gOHM" : " sOHM")
+          trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gHDX" : " sHDX")
         ) : (
           <Skeleton width={100} />
         )}

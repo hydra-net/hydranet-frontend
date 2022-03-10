@@ -132,9 +132,6 @@ export function BondTableData({ bond, networkId }: { bond: IBondV2; networkId: N
           <>{isBondLoading ? <Skeleton width="50px" /> : <DisplayBondPrice key={bond.index} bond={bond} />}</>
         </Typography>
       </TableCell>
-      <TableCell align="left">
-        {isBondLoading ? <Skeleton width="50px" /> : <DisplayBondDiscount key={bond.index} bond={bond} />}
-      </TableCell>
       <TableCell align="left">{isBondLoading ? <Skeleton /> : bond.duration}</TableCell>
       <TableCell>
         <Link component={NavLink} to={`/bonds/${bond.index}`}>

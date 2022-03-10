@@ -14,7 +14,6 @@ import { AppDispatch } from "src/store";
 import ConnectButton from "../../components/ConnectButton/ConnectButton";
 import { shorten, trim } from "../../helpers";
 import { error } from "../../slices/MessagesSlice";
-import { DisplayBondDiscount } from "./BondV2";
 
 function BondPurchase({
   bond,
@@ -196,24 +195,18 @@ function BondPurchase({
             title={t`You Will Get`}
             balance={
               `${trim(Number(quantity) / bond.priceToken, 4) || "0"} ` +
-              `sOHM (≈${trim(+quantity / bond.priceToken / +currentIndex, 4) || "0"} gOHM)`
+              `sHDX (≈${trim(+quantity / bond.priceToken / +currentIndex, 4) || "0"} gHDX)`
             }
             tooltip={t`The total amount of payout asset you will recieve from this bond purhcase. (sOHM amount will be higher due to rebasing)`}
             isLoading={isBondLoading}
           />
           <DataRow
             title={t`Max You Can Buy`}
-            balance={`${trim(+bond.maxPayoutOrCapacityInBase, 4) || "0"} sOHM (≈${
+            balance={`${trim(+bond.maxPayoutOrCapacityInBase, 4) || "0"} sHDX (≈${
               trim(+bond.maxPayoutOrCapacityInQuote, 4) || "0"
             } ${bond.displayName})`}
             isLoading={isBondLoading}
             tooltip={t`The maximum quantity of payout token we are able to offer via bonds at this moment in time.`}
-          />
-          <DataRow
-            title={t`Discount`}
-            balance={<DisplayBondDiscount key={bond.displayName} bond={bond} />}
-            tooltip={t`Negative discount is bad (you pay more than the market value). The bond discount is the percentage difference between OHM's market value and the bond's price.`}
-            isLoading={isBondLoading}
           />
 
           <DataRow
