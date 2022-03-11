@@ -1,5 +1,10 @@
 import { useQuery } from "react-query";
+import { NetworkId } from "src/constants";
+import { OHM_ADDRESSES, SOHM_ADDRESSES } from "src/constants/addresses";
+import { parseBigNumber } from "src/helpers";
 import apollo from "src/lib/apolloClient";
+
+import { useStaticSohmContract, useStaticTokenContract } from "./useContract";
 
 const query = `
   query ProtcolMetrics {
@@ -102,7 +107,34 @@ export const useProtocolMetrics = <TSelectData = unknown>(select: (data: Protoco
 };
 
 export const useMarketCap = () => useProtocolMetrics(metrics => metrics[0].marketCap);
-export const useTotalSupply = () => useProtocolMetrics(metrics => metrics[0].totalSupply);
+
+export const totalSupplyQueryKey = () => ["useTotalSupply"];
+export const useTotalSupply = () => {
+  const hdxContract = useStaticTokenContract(OHM_ADDRESSES[NetworkId.ARBITRUM_TESTNET], NetworkId.ARBITRUM_TESTNET);
+
+  return useQuery<number, Error>(totalSupplyQueryKey(), async () => {
+    const totalSupply = await hdxContract.totalSupply();
+    return parseBigNumber(totalSupply, 9);
+  });
+};
+
+export const stakedSupplyQueryKey = () => ["useStakedSupply"];
+export const useStakedSupply = () => {
+  const shdxContract = useStaticSohmContract(SOHM_ADDRESSES[NetworkId.ARBITRUM_TESTNET], NetworkId.ARBITRUM_TESTNET);
+
+  return useQuery<number, Error>(stakedSupplyQueryKey(), async () => {
+    const stakedSupply = await shdxContract.circulatingSupply();
+
+    return parseBigNumber(stakedSupply, 9);
+  });
+};
+
 export const useTotalValueDeposited = () => useProtocolMetrics(metrics => metrics[0].totalValueLocked);
-export const useTreasuryMarketValue = () => useProtocolMetrics(metrics => metrics[0].treasuryMarketValue);
+
+export const useTreasuryMarketValue = () => {
+  return {
+    data: 0,
+  };
+};
+
 export const useOhmCirculatingSupply = () => useProtocolMetrics(metrics => metrics[0].ohmCirculatingSupply);

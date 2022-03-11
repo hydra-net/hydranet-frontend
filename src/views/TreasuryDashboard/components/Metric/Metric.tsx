@@ -7,6 +7,7 @@ import { useGohmPrice, useOhmPrice } from "src/hooks/usePrices";
 import {
   useMarketCap,
   useOhmCirculatingSupply,
+  useStakedSupply,
   useTotalSupply,
   useTotalValueDeposited,
   useTreasuryMarketValue,
@@ -46,14 +47,13 @@ export const OHMPrice: React.FC<AbstractedMetricProps> = props => {
 
 export const CircSupply: React.FC<AbstractedMetricProps> = props => {
   const { data: totalSupply } = useTotalSupply();
-  const { data: circSupply } = useOhmCirculatingSupply();
 
   const _props: MetricProps = {
     ...props,
-    label: t`Circulating Supply (total)`,
+    label: t`Total Supply`,
   };
 
-  if (circSupply && totalSupply) _props.metric = `${formatNumber(circSupply)} / ${formatNumber(totalSupply)}`;
+  if (totalSupply) _props.metric = `${formatNumber(totalSupply)}`;
   else _props.isLoading = true;
 
   return <Metric {..._props} />;
@@ -69,7 +69,7 @@ export const BackingPerOHM: React.FC<AbstractedMetricProps> = props => {
     tooltip: t`Treasury MV backing is the total USD budget the treasury has per HDX to spend on all market operations (LP, swaps, revenue generation, bonds and inverse bonds, etc)`,
   };
 
-  if (treasuryValue && circSupply) _props.metric = formatCurrency(treasuryValue / circSupply, 2);
+  if (treasuryValue !== undefined && circSupply) _props.metric = formatCurrency(treasuryValue / circSupply, 2);
   else _props.isLoading = true;
 
   return <Metric {..._props} />;
@@ -85,6 +85,22 @@ export const CurrentIndex: React.FC<AbstractedMetricProps> = props => {
   };
 
   if (currentIndex) _props.metric = `${parseBigNumber(currentIndex, STAKING_CONTRACT_DECIMALS).toFixed(2)} sHDX`;
+  else _props.isLoading = true;
+
+  return <Metric {..._props} />;
+};
+
+export const StakedTokens: React.FC<AbstractedMetricProps> = props => {
+  const { data: totalSupply } = useTotalSupply();
+  const { data: stakedSupply } = useStakedSupply();
+
+  const _props: MetricProps = {
+    ...props,
+    label: t`HDX Staked`,
+    tooltip: t`HDX Staked is the ratio of sHDX to total supply of HDX(staked vs total)`,
+  };
+
+  if (totalSupply && stakedSupply !== undefined) _props.metric = `${((stakedSupply / totalSupply) * 100).toFixed(2)} %`;
   else _props.isLoading = true;
 
   return <Metric {..._props} />;
