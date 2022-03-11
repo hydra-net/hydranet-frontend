@@ -60,15 +60,15 @@ export const TokenAllowanceGuard: React.FC<{ token: "HDX" | "sHDX" | "gHDX" }> =
             <Typography variant="body1" className="stake-note" color="textSecondary">
               {props.token === "HDX" ? (
                 <>
-                  <Trans>First time staking</Trans> <b>OHM</b>?
+                  <Trans>First time staking</Trans> <b>HDX</b>?
                   <br />
-                  <Trans>Please approve Olympus Dao to use your</Trans> <b>OHM</b> <Trans>for staking</Trans>.
+                  <Trans>Please approve Hydranet DAO to use your</Trans> <b>HDX</b> <Trans>for staking</Trans>.
                 </>
               ) : (
                 <>
                   <Trans>First time unstaking</Trans> <b>{props.token}</b>?
                   <br />
-                  <Trans>Please approve Olympus Dao to use your</Trans> <b>{props.token}</b>{" "}
+                  <Trans>Please approve Hydranet DAO to use your</Trans> <b>{props.token}</b>{" "}
                   <Trans>for unstaking</Trans>.
                 </>
               )}

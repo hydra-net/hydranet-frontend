@@ -1,6 +1,6 @@
 import "./ChooseBond.scss";
 
-import { t, Trans } from "@lingui/macro";
+import { Trans } from "@lingui/macro";
 import {
   Box,
   Grid,
@@ -54,7 +54,7 @@ function ChooseBondV2() {
       {(!isEmpty(accountNotes) || !isEmpty(v1AccountBonds)) && <ClaimBonds activeNotes={accountNotes} />}
 
       <Zoom in={true}>
-        <Paper headerText={`${t`Bond`} (4,4)`}>
+        <Paper headerText={`Bond`}>
           {bondsV2.length == 0 && !isBondsLoading && (
             <Box display="flex" justifyContent="center" marginY="24px">
               <Typography variant="h4">No active bonds</Typography>

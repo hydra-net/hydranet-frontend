@@ -28,10 +28,19 @@ import { getAllBonds, getUserNotes } from "src/slices/BondSliceV2";
 import { DisplayBondDiscount } from "src/views/BondV2/BondV2";
 
 import HydranetLogo from "../../assets/HYDRANET_LOGO.png";
+import DashboardLogo from "../../assets/icons/dashboard.png";
+import BondLogo from "../../assets/icons/bond.png";
+import StakeLogo from "../../assets/icons/stake.png";
 import useBonds from "../../hooks/useBonds";
 import WalletAddressEns from "../TopBar/Wallet/WalletAddressEns";
 import externalUrls from "./externalUrls";
 import Social from "./Social";
+
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import { makeStyles } from "@material-ui/core/styles";
 
 type NavContentProps = {
   handleDrawerToggle?: () => void;
@@ -39,11 +48,20 @@ type NavContentProps = {
 
 type CustomBond = Bond & Partial<IBondDetails>;
 
+const useStyles = makeStyles(theme => ({
+  ListItem: {
+    alignItems: "center",
+    marginLeft: "30px",
+  },
+}));
+
 const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
   const { networkId, address, provider } = useWeb3Context();
   const { bonds } = useBonds(networkId);
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const classes = useStyles();
 
   const bondsV2 = useAppSelector(state => state.bondingV2.indexes.map(index => state.bondingV2.bonds[index]));
 
@@ -83,8 +101,31 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
               networkId === NetworkId.ARBITRUM_TESTNET ||
               networkId === NetworkId.ARBITRUM ? (
                 <>
-                  <NavItem to="/dashboard" icon={"dashboard"} label={t`Dashboard`} />
-                  <NavItem to="/bonds" icon="bond" label={t`Bond`} />
+                  <List component={"nav"}>
+                    <ListItem
+                      alignItems={"center"}
+                      component={Link}
+                      classes={{ root: classes.ListItem }}
+                      href={"#/dashboard"}
+                    >
+                      <ListItemIcon>
+                        <img src={DashboardLogo} style={{ width: "25px", height: "auto" }} />
+                      </ListItemIcon>
+                      <ListItemText primary={"Dashboard"} />
+                    </ListItem>
+                    <ListItem component={Link} classes={{ root: classes.ListItem }} href={"#/bonds"}>
+                      <ListItemIcon>
+                        <img src={BondLogo} style={{ width: "25px", height: "auto" }} />
+                      </ListItemIcon>
+                      <ListItemText primary={"Bond"} />
+                    </ListItem>
+                    <ListItem component={Link} classes={{ root: classes.ListItem }} href={"#/stake"}>
+                      <ListItemIcon>
+                        <img src={StakeLogo} style={{ width: "25px", height: "auto" }} />
+                      </ListItemIcon>
+                      <ListItemText primary={"Stake"} />
+                    </ListItem>
+                  </List>
                   {/* <div className="dapp-menu-data discounts">
                     <div className="bond-discounts">
                       <Accordion className="discounts-accordion" square defaultExpanded={true}>
@@ -120,7 +161,6 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                       </Accordion>
                     </div>
                   </div> */}
-                  <NavItem to="/stake" icon="stake" label={t`Stake`} />
 
                   {/* NOTE (appleseed-olyzaps): OlyZaps disabled until v2 contracts */}
                   {/* <NavItem to="/zap" icon="zap" label={t`Zap`} /> */}

@@ -19,8 +19,8 @@ export const GOHMConversion: React.FC<{ amount: string; action: "STAKE" | "UNSTA
   return (
     <Typography variant="body2">
       {props.action === "STAKE"
-        ? `Stake ${props.amount} OHM → ${amountInGohm(_amount)} gOHM`
-        : `Unstake ${props.amount} gOHM → ${amountInSohm(_amount)} OHM`}
+        ? `Stake ${props.amount} HDX → ${amountInGohm(_amount)} gHDX`
+        : `Unstake ${props.amount} gHDX → ${amountInSohm(_amount)} HDX`}
     </Typography>
   );
 };

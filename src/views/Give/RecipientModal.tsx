@@ -405,7 +405,7 @@ export function RecipientModal({ isModalOpen, eventSource, callbackFunc, cancelF
           <Box className="help-text">
             <Typography variant="h6" className="stream-note" color="textSecondary">
               <Trans>
-                Is this your first time donating sOHM? Please approve OlympusDAO to use your sOHM for donating.
+                Is this your first time donating sHDX? Please approve Hydranet DAO to use your sHDX for donating.
               </Trans>
             </Typography>
           </Box>

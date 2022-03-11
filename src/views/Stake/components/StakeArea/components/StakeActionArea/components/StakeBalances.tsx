@@ -62,7 +62,7 @@ export const StakeBalances = () => {
 
           <DataRow
             indented
-            title={t`gOHM`}
+            title={t`gHDX`}
             isLoading={!gohmBalances[NetworkId.ARBITRUM].data}
             balance={`${formatBalance(gohmBalances[NetworkId.ARBITRUM].data, 18)} gOHM`}
           />

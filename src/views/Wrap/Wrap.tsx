@@ -109,9 +109,9 @@ const Wrap: FC = () => {
     if (!hasCorrectAllowance() && assetTo === "gOHM")
       return (
         <div className="no-input-visible">
-          First time wrapping to <b>gOHM</b>?
+          First time wrapping to <b>gHDX</b>?
           <br />
-          Please approve Olympus to use your <b>{assetFrom}</b> for this transaction.
+          Please approve Hydranet to use your <b>{assetFrom}</b> for this transaction.
         </div>
       );
     else if (!hasCorrectAllowance() && assetTo === "sOHM")
@@ -119,7 +119,7 @@ const Wrap: FC = () => {
         <div className="no-input-visible">
           First time unwrapping <b>{assetFrom}</b>?
           <br />
-          Please approve Olympus to use your <b>{assetFrom}</b> for unwrapping.
+          Please approve Hydranet to use your <b>{assetFrom}</b> for unwrapping.
         </div>
       );
 

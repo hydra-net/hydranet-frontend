@@ -1,4 +1,3 @@
-import { t } from "@lingui/macro";
 import { Grid, Zoom } from "@material-ui/core";
 import { MetricCollection, Paper } from "@olympusdao/component-library";
 import { useState } from "react";
@@ -12,7 +11,7 @@ export const StakeArea: React.FC = () => {
 
   return (
     <Zoom in onEntered={() => setIsZoomed(true)}>
-      <Paper headerText={t`Single Stake (3, 3)`} subHeader={<RebaseTimer />}>
+      <Paper headerText={`Stake`} subHeader={<RebaseTimer />}>
         <Grid container direction="column" spacing={2}>
           <Grid item>
             <MetricCollection>

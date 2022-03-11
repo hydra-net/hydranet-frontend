@@ -131,7 +131,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
       <Paper className="ohm-card confirm-dialog">
         <Box display={[null, "flex"]} alignItems="center" justifyContent="space-between">
           <Grid component="label" container alignItems="center" spacing={1} wrap="nowrap">
-            <Grid item>sOHM</Grid>
+            <Grid item>sHDX</Grid>
 
             <Grid item>
               <Switch
@@ -139,17 +139,17 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
                 disabled={isMutating}
                 className="stake-to-ohm-checkbox"
                 checked={stakedAssetType === "gHDX"}
-                inputProps={{ "aria-label": "stake to gohm" }}
+                inputProps={{ "aria-label": "stake to ghdx" }}
                 onChange={(_, checked) => setStakedAssetType(checked ? "gHDX" : "sHDX")}
               />
             </Grid>
 
             <Grid item>
-              gOHM
+              gHDX
               <InfoTooltip
                 message={`Toggle to switch between ${
                   currentAction === "STAKE" ? "staking to" : "unstaking from"
-                } sOHM or gOHM`}
+                } sHDX or gHDX`}
               />
             </Grid>
           </Grid>
