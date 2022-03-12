@@ -110,7 +110,7 @@ export const useMarketCap = () => useProtocolMetrics(metrics => metrics[0].marke
 
 export const totalSupplyQueryKey = () => ["useTotalSupply"];
 export const useTotalSupply = () => {
-  const hdxContract = useStaticTokenContract(OHM_ADDRESSES[NetworkId.ARBITRUM_TESTNET], NetworkId.ARBITRUM_TESTNET);
+  const hdxContract = useStaticTokenContract(OHM_ADDRESSES[NetworkId.ARBITRUM], NetworkId.ARBITRUM);
 
   return useQuery<number, Error>(totalSupplyQueryKey(), async () => {
     const totalSupply = await hdxContract.totalSupply();
@@ -120,7 +120,7 @@ export const useTotalSupply = () => {
 
 export const stakedSupplyQueryKey = () => ["useStakedSupply"];
 export const useStakedSupply = () => {
-  const shdxContract = useStaticSohmContract(SOHM_ADDRESSES[NetworkId.ARBITRUM_TESTNET], NetworkId.ARBITRUM_TESTNET);
+  const shdxContract = useStaticSohmContract(SOHM_ADDRESSES[NetworkId.ARBITRUM], NetworkId.ARBITRUM);
 
   return useQuery<number, Error>(stakedSupplyQueryKey(), async () => {
     const stakedSupply = await shdxContract.circulatingSupply();

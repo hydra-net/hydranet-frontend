@@ -29,7 +29,7 @@ export const useUnstakeToken = (fromToken: "sHDX" | "gHDX") => {
 
       if (!parsedAmount.gt(0)) throw new Error(t`Please enter a number greater than 0`);
 
-      const balance = balances[NetworkId.ARBITRUM_TESTNET].data;
+      const balance = balances[NetworkId.ARBITRUM].data;
 
       if (!balance) throw new Error(t`Please refresh your page and try again`);
 

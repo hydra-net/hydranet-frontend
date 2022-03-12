@@ -139,7 +139,8 @@ function App() {
       if (
         networkId === NetworkId.MAINNET ||
         networkId === NetworkId.TESTNET_RINKEBY ||
-        networkId == NetworkId.ARBITRUM_TESTNET
+        networkId == NetworkId.ARBITRUM_TESTNET ||
+        networkId == NetworkId.ARBITRUM
       ) {
         bonds.map(bond => {
           // NOTE (appleseed): getBondability & getLOLability control which bonds are active in the view for Bonds V1

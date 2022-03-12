@@ -55,7 +55,7 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
   const [amount, setAmount] = useState("");
   const addresses = fromToken === "HDX" ? OHM_ADDRESSES : fromToken === "sHDX" ? SOHM_ADDRESSES : GOHM_ADDRESSES;
   const balances = useBalance(addresses);
-  const balance = balances[NetworkId.ARBITRUM_TESTNET].data;
+  const balance = balances[NetworkId.ARBITRUM].data;
   const setMax = () => balance && setAmount(formatUnits(balance, fromToken === "gHDX" ? 18 : 9));
 
   // Staking/unstaking mutation stuff

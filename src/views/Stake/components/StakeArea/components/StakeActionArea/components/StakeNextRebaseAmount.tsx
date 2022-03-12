@@ -26,7 +26,7 @@ export const StakeNextRebaseAmount = () => {
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
 
-  const sohmTokens = [sohmBalances[NetworkId.ARBITRUM_TESTNET].data];
+  const sohmTokens = [sohmBalances[NetworkId.ARBITRUM].data];
   const totalSohmBalance = sohmTokens.filter(nonNullable).reduce((res, bal) => res.add(bal), BigNumber.from(0));
 
   const gohmTokens = [

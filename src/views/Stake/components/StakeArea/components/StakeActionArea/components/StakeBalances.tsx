@@ -23,8 +23,8 @@ export const StakeBalances = () => {
 
   const { data: currentIndex } = useCurrentIndex();
 
-  const totalSohmBalance = sohmBalances[NetworkId.ARBITRUM_TESTNET].data || BigNumber.from(0);
-  const totalGohmBalance = gohmBalances[NetworkId.ARBITRUM_TESTNET].data || BigNumber.from(0);
+  const totalSohmBalance = sohmBalances[NetworkId.ARBITRUM].data || BigNumber.from(0);
+  const totalGohmBalance = gohmBalances[NetworkId.ARBITRUM].data || BigNumber.from(0);
 
   const totalStakedBalance = currentIndex
     ? formatBalance(totalSohmBalance.mul(10 ** 9).add(convertGohmToOhm(totalGohmBalance, currentIndex)), 18)
@@ -37,8 +37,8 @@ export const StakeBalances = () => {
       <DataRow
         id="user-balance"
         title={t`Unstaked Balance`}
-        isLoading={!ohmBalances[NetworkId.ARBITRUM_TESTNET].data}
-        balance={`${formatBalance(ohmBalances[NetworkId.ARBITRUM_TESTNET].data)} HDX`}
+        isLoading={!ohmBalances[NetworkId.ARBITRUM].data}
+        balance={`${formatBalance(ohmBalances[NetworkId.ARBITRUM].data)} HDX`}
       />
 
       <Accordion className="stake-accordion" square defaultExpanded>
@@ -56,15 +56,15 @@ export const StakeBalances = () => {
             indented
             title={t`sHDX`}
             id="user-staked-balance"
-            isLoading={!sohmBalances[NetworkId.ARBITRUM_TESTNET].data}
-            balance={`${formatBalance(sohmBalances[NetworkId.ARBITRUM_TESTNET].data)} sHDX`}
+            isLoading={!sohmBalances[NetworkId.ARBITRUM].data}
+            balance={`${formatBalance(sohmBalances[NetworkId.ARBITRUM].data)} sHDX`}
           />
 
           <DataRow
             indented
             title={t`gOHM`}
-            isLoading={!gohmBalances[NetworkId.ARBITRUM_TESTNET].data}
-            balance={`${formatBalance(gohmBalances[NetworkId.ARBITRUM_TESTNET].data, 18)} gOHM`}
+            isLoading={!gohmBalances[NetworkId.ARBITRUM].data}
+            balance={`${formatBalance(gohmBalances[NetworkId.ARBITRUM].data, 18)} gOHM`}
           />
         </AccordionDetails>
       </Accordion>
