@@ -13,7 +13,7 @@
       become: yes
       template:
         src: "config/site"
-        dest: /etc/nginx/sites-available/testnet.hydranet.ai
+        dest: /etc/nginx/sites-available/hydranet.ai
 
     - name: Create the sites-enabled directory
       become: yes
@@ -24,8 +24,8 @@
     - name: Enable the site
       become: yes
       file:
-        src: /etc/nginx/sites-available/testnet.hydranet.ai
-        dest: /etc/nginx/sites-enabled/testnet.hydranet.ai
+        src: /etc/nginx/sites-available/hydranet.ai
+        dest: /etc/nginx/sites-enabled/hydranet.ai
         state: link
 
     # Get SSL certificate
@@ -38,4 +38,4 @@
 
     - name: Get SSL certificate
       become: yes
-      shell: certbot -n --agree-tos --nginx -m "certbot@wiringbits.net" --domains "testnet.hydranet.ai"
+      shell: certbot -n --agree-tos --nginx -m "certbot@wiringbits.net" --domains "hydranet.ai"
