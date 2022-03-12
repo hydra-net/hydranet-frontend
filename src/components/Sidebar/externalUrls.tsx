@@ -10,17 +10,17 @@ export interface ExternalUrl {
 const externalUrls: ExternalUrl[] = [
   {
     title: <Trans>Forum</Trans>,
-    url: "https://forum.olympusdao.finance/",
+    url: "https://forum.hydranet.ai/",
     icon: "forum",
   },
   {
     title: <Trans>Governance</Trans>,
-    url: "https://vote.olympusdao.finance/",
+    url: "https://vote.hydranet.ai/",
     icon: "governance",
   },
   {
     title: <Trans>Docs</Trans>,
-    url: "https://docs.olympusdao.finance/",
+    url: "https://docs.hydranet.ai/",
     icon: "docs",
   },
   {
@@ -30,7 +30,7 @@ const externalUrls: ExternalUrl[] = [
   },
   {
     title: <Trans>Grants</Trans>,
-    url: "https://grants.olympusdao.finance/",
+    url: "https://grants.hydranet.ai/",
     icon: "grants",
   },
 ];

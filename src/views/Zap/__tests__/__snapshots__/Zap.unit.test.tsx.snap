@@ -332,7 +332,7 @@ exports[`<Zap/> should render component 1`] = `
         <a
           aria-disabled="false"
           class="MuiButtonBase-root MuiButton-root MuiButton-outlined learn-more-button MuiButton-outlinedSecondary MuiButton-disableElevation"
-          href="https://docs.olympusdao.finance/main/using-the-website/olyzaps"
+          href="https://docs.hydranet.ai/main/using-the-website/olyzaps"
           tabindex="0"
           target="_blank"
         >

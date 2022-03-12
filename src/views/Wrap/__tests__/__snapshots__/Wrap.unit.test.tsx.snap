@@ -34,7 +34,7 @@ exports[`<Wrap/> should render component 1`] = `
               <a
                 aria-label="wsohm-wut"
                 class="MuiTypography-root MuiLink-root MuiLink-underlineNone migrate-sohm-button MuiTypography-colorPrimary"
-                href="https://docs.olympusdao.finance/main/contracts/tokens#gohm"
+                href="https://docs.hydranet.ai/main/contracts/tokens#gohm"
                 style="text-decoration: none;"
                 target="_blank"
               >

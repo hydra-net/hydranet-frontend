@@ -24,7 +24,7 @@ exports[`<Root/> should render component 1`] = `
               >
                 Information
               </div>
-              Safety Check: Always verify you're on app.olympusdao.finance!
+              Safety Check: Always verify you're on app.hydranet.ai!
               <div
                 class="makeStyles-root-307"
               >
@@ -227,7 +227,7 @@ exports[`<Root/> should render component 1`] = `
                   >
                     <a
                       class="MuiTypography-root-277 MuiLink-root-422 MuiLink-underlineNone-423 MuiTypography-colorPrimary-300"
-                      href="https://olympusdao.finance"
+                      href="https://hydranet.ai"
                       target="_blank"
                     >
                       <svg
@@ -561,7 +561,7 @@ exports[`<Root/> should render component 1`] = `
                       >
                         <a
                           class="MuiTypography-root-277 MuiLink-root-422 MuiLink-underlineNone-423 external-site-link  MuiTypography-colorPrimary-300"
-                          href="https://pro.olympusdao.finance/"
+                          href="https://pro.hydranet.ai/"
                           target="_blank"
                         >
                           <h6
@@ -609,7 +609,7 @@ exports[`<Root/> should render component 1`] = `
                       >
                         <a
                           class="MuiTypography-root-277 MuiLink-root-422 MuiLink-underlineNone-423 external-site-link  MuiTypography-colorPrimary-300"
-                          href="https://forum.olympusdao.finance/"
+                          href="https://forum.hydranet.ai/"
                           target="_blank"
                         >
                           <h6
@@ -650,7 +650,7 @@ exports[`<Root/> should render component 1`] = `
                       >
                         <a
                           class="MuiTypography-root-277 MuiLink-root-422 MuiLink-underlineNone-423 external-site-link  MuiTypography-colorPrimary-300"
-                          href="https://vote.olympusdao.finance/"
+                          href="https://vote.hydranet.ai/"
                           target="_blank"
                         >
                           <h6
@@ -691,7 +691,7 @@ exports[`<Root/> should render component 1`] = `
                       >
                         <a
                           class="MuiTypography-root-277 MuiLink-root-422 MuiLink-underlineNone-423 external-site-link  MuiTypography-colorPrimary-300"
-                          href="https://docs.olympusdao.finance/"
+                          href="https://docs.hydranet.ai/"
                           target="_blank"
                         >
                           <h6
@@ -773,7 +773,7 @@ exports[`<Root/> should render component 1`] = `
                       >
                         <a
                           class="MuiTypography-root-277 MuiLink-root-422 MuiLink-underlineNone-423 external-site-link  MuiTypography-colorPrimary-300"
-                          href="https://grants.olympusdao.finance/"
+                          href="https://grants.hydranet.ai/"
                           target="_blank"
                         >
                           <h6

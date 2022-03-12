@@ -1043,7 +1043,7 @@ exports[`<Give/> should render component 1`] = `
             <a
               aria-disabled="false"
               class="MuiButtonBase-root MuiButton-root MuiButton-outlined learn-more-button MuiButton-outlinedPrimary MuiButton-disableElevation"
-              href="https://docs.olympusdao.finance/main/basics/basics/olympusgive"
+              href="https://docs.hydranet.ai/main/basics/basics/olympusgive"
               tabindex="0"
               target="_blank"
             >

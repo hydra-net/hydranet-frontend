@@ -9,7 +9,7 @@ export const LearnMoreButton = () => (
   <Button
     variant="outlined"
     color="secondary"
-    href="https://docs.olympusdao.finance/main/basics/migration"
+    href="https://docs.hydranet.ai/main/basics/migration"
     target="_blank"
     className="learn-more-button"
   >

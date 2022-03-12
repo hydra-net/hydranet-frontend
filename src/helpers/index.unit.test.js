@@ -28,10 +28,10 @@ test("getTokenPrice returns 0 on remote call exceptions", async () => {
 });
 
 /**
- * Enable this test when api.olympusdao.finance allows anon hits.
+ * Enable this test when api.hydranet.ai allows anon hits.
  * Otherwise it throws a CORS access error and the test fails.
  */
-test.skip("getTokenPrice via api.olympusdao.finance (real)", async () => {
+test.skip("getTokenPrice via api.hydranet.ai (real)", async () => {
   const theSpiedMethod = jest.spyOn(axios, "get");
   when(theSpiedMethod)
     .calledWith(expect.stringMatching("https://api.coingecko.com"))
@@ -43,10 +43,10 @@ test.skip("getTokenPrice via api.olympusdao.finance (real)", async () => {
   expect(price).toBeGreaterThan(1);
 });
 
-test("getTokenPrice via api.olympusdao.finance (mock)", async () => {
+test("getTokenPrice via api.hydranet.ai (mock)", async () => {
   const resp = { data: { coingeckoTicker: { value: 356 } } };
   const theSpiedMethod = jest.spyOn(axios, "get");
-  when(theSpiedMethod).calledWith(expect.stringMatching("https://api.olympusdao.finance")).mockReturnValue(resp);
+  when(theSpiedMethod).calledWith(expect.stringMatching("https://api.hydranet.ai")).mockReturnValue(resp);
   when(theSpiedMethod)
     .calledWith(expect.stringMatching("https://api.coingecko.com"))
     .mockImplementation(async () => {
@@ -59,7 +59,7 @@ test("getTokenPrice via api.olympusdao.finance (mock)", async () => {
 test("getTokenPrice fallback via api.coingecko.com (real)", async () => {
   const theSpiedMethod = jest.spyOn(axios, "get");
   when(theSpiedMethod)
-    .calledWith(expect.stringMatching("https://api.olympusdao.finance"))
+    .calledWith(expect.stringMatching("https://api.hydranet.ai"))
     .mockImplementation(async () => {
       throw Error("Remote OHM API down");
     });
@@ -71,7 +71,7 @@ test("getTokenPrice fallback via api.coingecko.com (real)", async () => {
 test("getTokenPrice fallback via api.coingecko.com (mock)", async () => {
   const theSpiedMethod = jest.spyOn(axios, "get");
   when(theSpiedMethod)
-    .calledWith(expect.stringMatching("https://api.olympusdao.finance"))
+    .calledWith(expect.stringMatching("https://api.hydranet.ai"))
     .mockImplementation(async () => {
       throw Error("Remote OHM API down");
     });

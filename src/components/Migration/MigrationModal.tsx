@@ -142,7 +142,7 @@ function MigrationModal({ open, handleClose }: { open: boolean; handleClose: any
                   ? t`Click on the Migrate button to complete the upgrade to v2.`
                   : t`Olympus v2 introduces upgrades to on-chain governance and bonds to enhance decentralization and immutability.`}{" "}
                 <a
-                  href="https://docs.olympusdao.finance/main/basics/migration"
+                  href="https://docs.hydranet.ai/main/basics/migration"
                   target="_blank"
                   color="inherit"
                   rel="noreferrer"

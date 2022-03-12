@@ -78,7 +78,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
           <Box className="branding-header">
-            <Link href="https://olympusdao.finance" target="_blank">
+            <Link href="https://hydranet.ai" target="_blank">
               {/* <SvgIcon
                 color="primary"
                 component={HydranetLogo}
@@ -177,7 +177,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                   {/* <Box className="menu-divider">
                     <Divider />
                   </Box>
-                  <NavItem href="https://pro.olympusdao.finance/" icon="olympus" label={t`Olympus Pro`} />
+                  <NavItem href="https://pro.hydranet.ai/" icon="olympus" label={t`Olympus Pro`} />
                   <NavItem to="/33-together" icon="33-together" label={t`3,3 Together`} />
                   <Box className="menu-divider">
                     <Divider />

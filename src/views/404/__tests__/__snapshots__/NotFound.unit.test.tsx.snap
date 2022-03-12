@@ -9,7 +9,7 @@ exports[`<NotFound/> should render component 1`] = `
       class="not-found-header"
     >
       <a
-        href="https://olympusdao.finance"
+        href="https://hydranet.ai"
         target="_blank"
       >
         <img

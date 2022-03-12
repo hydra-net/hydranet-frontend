@@ -257,7 +257,7 @@ function App() {
       setWalletChecked(true);
     }
     if (shouldTriggerSafetyCheck()) {
-      dispatch(info("Safety Check: Always verify you're on https://hydranet.ai"));
+      dispatch(info("Safety Check: Always verify you're on https://app.hydranet.ai"));
     }
   }, []);
 

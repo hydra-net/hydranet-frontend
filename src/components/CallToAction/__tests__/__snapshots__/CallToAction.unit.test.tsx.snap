@@ -17,7 +17,7 @@ exports[`<CallToAction/> should render component 1`] = `
       <a
         aria-disabled="false"
         class="MuiButtonBase-root MuiButton-root MuiButton-outlined learn-more-button MuiButton-outlinedSecondary MuiButton-disableElevation"
-        href="https://docs.olympusdao.finance/main/basics/migration"
+        href="https://docs.hydranet.ai/main/basics/migration"
         tabindex="0"
         target="_blank"
       >

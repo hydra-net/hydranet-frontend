@@ -63,7 +63,7 @@ export async function getV1MarketPrice() {
  */
 export async function getTokenPrice(tokenId = "olympus"): Promise<number> {
   let tokenPrice = 0;
-  const priceApiURL = "https://api.olympusdao.finance/api/rest/coingecko_name";
+  const priceApiURL = "https://api.hydranet.ai/api/rest/coingecko_name";
   try {
     const ohmResp = (await axios.get(`${priceApiURL}/${tokenId}`)) as {
       data: { coingeckoTicker: { value: number } };

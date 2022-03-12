@@ -26,7 +26,7 @@ exports[`<Sidebar/> should render component 1`] = `
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineNone MuiTypography-colorPrimary"
-                  href="https://olympusdao.finance"
+                  href="https://hydranet.ai"
                   target="_blank"
                 >
                   <svg
@@ -359,7 +359,7 @@ exports[`<Sidebar/> should render component 1`] = `
                   >
                     <a
                       class="MuiTypography-root MuiLink-root MuiLink-underlineNone external-site-link  MuiTypography-colorPrimary"
-                      href="https://pro.olympusdao.finance/"
+                      href="https://pro.hydranet.ai/"
                       target="_blank"
                     >
                       <h6
@@ -407,7 +407,7 @@ exports[`<Sidebar/> should render component 1`] = `
                   >
                     <a
                       class="MuiTypography-root MuiLink-root MuiLink-underlineNone external-site-link  MuiTypography-colorPrimary"
-                      href="https://forum.olympusdao.finance/"
+                      href="https://forum.hydranet.ai/"
                       target="_blank"
                     >
                       <h6
@@ -448,7 +448,7 @@ exports[`<Sidebar/> should render component 1`] = `
                   >
                     <a
                       class="MuiTypography-root MuiLink-root MuiLink-underlineNone external-site-link  MuiTypography-colorPrimary"
-                      href="https://vote.olympusdao.finance/"
+                      href="https://vote.hydranet.ai/"
                       target="_blank"
                     >
                       <h6
@@ -489,7 +489,7 @@ exports[`<Sidebar/> should render component 1`] = `
                   >
                     <a
                       class="MuiTypography-root MuiLink-root MuiLink-underlineNone external-site-link  MuiTypography-colorPrimary"
-                      href="https://docs.olympusdao.finance/"
+                      href="https://docs.hydranet.ai/"
                       target="_blank"
                     >
                       <h6
@@ -571,7 +571,7 @@ exports[`<Sidebar/> should render component 1`] = `
                   >
                     <a
                       class="MuiTypography-root MuiLink-root MuiLink-underlineNone external-site-link  MuiTypography-colorPrimary"
-                      href="https://grants.olympusdao.finance/"
+                      href="https://grants.hydranet.ai/"
                       target="_blank"
                     >
                       <h6

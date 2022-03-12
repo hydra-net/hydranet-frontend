@@ -149,7 +149,7 @@ function WrapCrossChain() {
             <Link
               className="migrate-sohm-button"
               style={{ textDecoration: "none" }}
-              href={"https://docs.olympusdao.finance/main/contracts/tokens#gohm"}
+              href={"https://docs.hydranet.ai/main/contracts/tokens#gohm"}
               aria-label="wsohm-wut"
               target="_blank"
             >

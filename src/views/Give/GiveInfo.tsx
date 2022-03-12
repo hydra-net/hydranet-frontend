@@ -25,7 +25,7 @@ export function GiveInfo() {
         </Grid>
         <Box className="button-box">
           <TertiaryButton
-            href="https://docs.olympusdao.finance/main/basics/basics/olympusgive"
+            href="https://docs.hydranet.ai/main/basics/basics/olympusgive"
             target="_blank"
             className="learn-more-button"
           >

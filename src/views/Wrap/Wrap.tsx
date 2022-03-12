@@ -172,8 +172,8 @@ const Wrap: FC = () => {
                 style={{ textDecoration: "none" }}
                 href={
                   assetTo === "wsOHM"
-                    ? "https://docs.olympusdao.finance/main/contracts/tokens#wsohm"
-                    : "https://docs.olympusdao.finance/main/contracts/tokens#gohm"
+                    ? "https://docs.hydranet.ai/main/contracts/tokens#wsohm"
+                    : "https://docs.hydranet.ai/main/contracts/tokens#gohm"
                 }
                 aria-label="wsohm-wut"
                 target="_blank"
