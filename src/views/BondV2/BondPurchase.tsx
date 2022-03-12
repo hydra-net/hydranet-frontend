@@ -58,7 +58,7 @@ function BondPurchase({
           t`Max capacity is ${maxBondable} ${bond.displayName} for ${trim(
             +bond.maxPayoutOrCapacityInBase,
             4,
-          )} sOHM. Click Max to autocomplete.`,
+          )} sHDX. Click Max to autocomplete.`,
         ),
       );
     } else {
@@ -197,7 +197,7 @@ function BondPurchase({
               `${trim(Number(quantity) / bond.priceToken, 4) || "0"} ` +
               `sHDX (≈${trim(+quantity / bond.priceToken / +currentIndex, 4) || "0"} gHDX)`
             }
-            tooltip={t`The total amount of payout asset you will recieve from this bond purhcase. (sOHM amount will be higher due to rebasing)`}
+            tooltip={t`The total amount of payout asset you will recieve from this bond purhcase. (sHDX amount will be higher due to rebasing)`}
             isLoading={isBondLoading}
           />
           <DataRow
@@ -224,7 +224,7 @@ function BondPurchase({
         <em>
           <Typography variant="body2">
             Important: New bonds are auto-staked (accrue rebase rewards) and no longer vest linearly. Simply claim as
-            sOHM or gOHM at the end of the term.
+            sHDX or gHDX at the end of the term.
           </Typography>
         </em>
       </div>

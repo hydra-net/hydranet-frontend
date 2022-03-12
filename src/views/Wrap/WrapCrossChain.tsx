@@ -153,7 +153,7 @@ function WrapCrossChain() {
               aria-label="wsohm-wut"
               target="_blank"
             >
-              <Typography>gOHM</Typography> <Icon name="arrow-up" style={{ marginLeft: "5px" }} />
+              <Typography>gHDX</Typography> <Icon name="arrow-up" style={{ marginLeft: "5px" }} />
             </Link>
           }
         >
@@ -161,20 +161,20 @@ function WrapCrossChain() {
             <Grid item>
               <MetricCollection>
                 <Metric
-                  label={`sOHM ${t`Price`}`}
+                  label={`sHDX ${t`Price`}`}
                   metric={formatCurrency(sOhmPrice, 2)}
                   isLoading={sOhmPrice ? false : true}
                 />
                 <Metric
                   label={t`Current Index`}
-                  metric={`${trim(currentIndex, 1)} OHM`}
+                  metric={`${trim(currentIndex, 1)} HDX`}
                   isLoading={currentIndex ? false : true}
                 />
                 <Metric
                   label={`${assetTo} Price`}
                   metric={formatCurrency(gOhmPrice, 2)}
                   isLoading={gOhmPrice ? false : true}
-                  tooltip={`${assetTo} = sOHM * index\n\nThe price of ${assetTo} is equal to the price of OHM multiplied by the current index`}
+                  tooltip={`${assetTo} = sHDX * index\n\nThe price of ${assetTo} is equal to the price of HDX multiplied by the current index`}
                 />
               </MetricCollection>
             </Grid>
@@ -193,7 +193,7 @@ function WrapCrossChain() {
                     <Box style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                       <Box height="32px">
                         <Typography>
-                          Transform <b>wsOHM</b> to <b>gOHM</b>
+                          Transform <b>wsHDX</b> to <b>gHDX</b>
                         </Typography>
                       </Box>
                     </Box>
@@ -206,13 +206,13 @@ function WrapCrossChain() {
                   </Box>
                   <div className={`stake-user-data`}>
                     <DataRow
-                      title={`${t`wsOHM Balance`} (${networkName})`}
-                      balance={`${trim(wsOhmBalance, 4)} wsOHM`}
+                      title={`${t`wsHDX Balance`} (${networkName})`}
+                      balance={`${trim(wsOhmBalance, 4)} wsHDX`}
                       isLoading={isAppLoading}
                     />
                     <DataRow
-                      title={`${t`gOHM Balance`} (${networkName})`}
-                      balance={`${trim(gohmBalance, 4)} gOHM`}
+                      title={`${t`gHDX Balance`} (${networkName})`}
+                      balance={`${trim(gohmBalance, 4)} gHDX`}
                       isLoading={isAppLoading}
                     />
                     <Divider />

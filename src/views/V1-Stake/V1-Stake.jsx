@@ -218,7 +218,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                     <ConnectButton />
                   </div>
                   <Typography variant="h6">
-                    <Trans>Connect your wallet to stake OHM</Trans>
+                    <Trans>Connect your wallet to stake HDX</Trans>
                   </Typography>
                 </div>
               ) : (
@@ -243,10 +243,10 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         {view === 0 ? (
                           <>
                             {hasActiveV1Bonds
-                              ? t`Once your current bonds have been claimed, you can migrate your assets to stake more OHM`
+                              ? t`Once your current bonds have been claimed, you can migrate your assets to stake more HDX`
                               : !oldAssetsDetected
                               ? t`All your assets are migrated`
-                              : t`You must complete the migration of your assets to stake additional OHM`}
+                              : t`You must complete the migration of your assets to stake additional HDX`}
                           </>
                         ) : (
                           <br />
@@ -347,7 +347,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                               onChangeStake("unstake");
                             }}
                           >
-                            {txnButtonText(pendingTransactions, "unstaking", t`Unstake OHM`)}
+                            {txnButtonText(pendingTransactions, "unstaking", t`Unstake HDX`)}
                           </Button>
                         ) : (
                           <Button
@@ -369,7 +369,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                     <DataRow
                       title={`${t`Unstaked Balance`} (v1)`}
                       id="user-balance"
-                      balance={`${trim(Number(ohmBalance), 4)} OHM`}
+                      balance={`${trim(Number(ohmBalance), 4)} HDX`}
                       isLoading={isAppLoading}
                     />
                     <Accordion className="stake-accordion" square>
@@ -383,44 +383,44 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                       </AccordionSummary>
                       <AccordionDetails>
                         <DataRow
-                          title={`${t`sOHM Balance`} (v1)`}
-                          balance={`${trim(Number(sohmBalance), 4)} sOHM`}
+                          title={`${t`sHDX Balance`} (v1)`}
+                          balance={`${trim(Number(sohmBalance), 4)} sHDX`}
                           indented
                           isLoading={isAppLoading}
                         />
                         {Number(fsohmBalance) > 0.00009 && (
                           <DataRow
-                            title={`${t`gOHM Balance in Fuse`}`}
-                            balance={`${trim(Number(fsohmBalance), 4)} gOHM`}
+                            title={`${t`gHDX Balance in Fuse`}`}
+                            balance={`${trim(Number(fsohmBalance), 4)} gHDX`}
                             indented
                             isLoading={isAppLoading}
                           />
                         )}
                         {Number(wsohmBalance) > 0.0 && (
                           <DataRow
-                            title={`${t`wsOHM Balance`} (v1)`}
-                            balance={`${trim(Number(wsohmBalance), 4)} wsOHM`}
+                            title={`${t`wsHDX Balance`} (v1)`}
+                            balance={`${trim(Number(wsohmBalance), 4)} wsHDX`}
                             isLoading={isAppLoading}
                             indented
                           />
                         )}
                         {Number(fiatDaowsohmBalance) > 0.00009 && (
                           <DataRow
-                            title={`${t`wsOHM Balance in FiatDAO`} (v1)`}
-                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsOHM`}
+                            title={`${t`wsHDX Balance in FiatDAO`} (v1)`}
+                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsHDX`}
                             isLoading={isAppLoading}
                             indented
                           />
                         )}
                         <DataRow
-                          title={`${t`sOHM Balance`} (v2)`}
-                          balance={`${trim(Number(sohmV2Balance), 4)} sOHM`}
+                          title={`${t`sHDX Balance`} (v2)`}
+                          balance={`${trim(Number(sohmV2Balance), 4)} sHDX`}
                           indented
                           isLoading={isAppLoading}
                         />
                         <DataRow
-                          title={`${t`gOHM Balance`} (v2)`}
-                          balance={`${trim(Number(gOhmBalance), 4)} gOHM`}
+                          title={`${t`gHDX Balance`} (v2)`}
+                          balance={`${trim(Number(gOhmBalance), 4)} gHDX`}
                           indented
                           isLoading={isAppLoading}
                         />
@@ -429,7 +429,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                     <Divider color="secondary" />
                     <DataRow
                       title={t`Next Reward Amount`}
-                      balance={`${nextRewardValue} sOHM`}
+                      balance={`${nextRewardValue} sHDX`}
                       isLoading={isAppLoading}
                     />
                     <DataRow
