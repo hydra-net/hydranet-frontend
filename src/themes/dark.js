@@ -90,6 +90,8 @@ export const dark = responsiveFontSizes(
             "@font-face": fonts,
             body: {
               background: darkTheme.background,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
             },
           },
         },
