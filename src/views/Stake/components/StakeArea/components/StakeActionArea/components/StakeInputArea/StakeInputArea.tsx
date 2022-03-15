@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { TokenAllowanceGuard } from "src/components/TokenAllowanceGuard/TokenAllowanceGuard";
 import { GOHM_ADDRESSES, OHM_ADDRESSES, SOHM_ADDRESSES } from "src/constants/addresses";
 import { useBalance } from "src/hooks/useBalance";
-import { useTestableNetworks } from "src/hooks/useTestableNetworks";
+import { useWeb3Context } from "src/hooks/web3Context";
 import { NetworkId } from "src/networkDetails";
 
 import { GOHMConversion } from "./components/GOHMConversion";
@@ -44,8 +44,8 @@ const useStyles = makeStyles<Theme>(theme => ({
 }));
 
 export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
+  const { networkId } = useWeb3Context();
   const classes = useStyles();
-  const networks = useTestableNetworks();
   const [stakedAssetType, setStakedAssetType] = useState<"sHDX" | "gHDX">("sHDX");
   const [currentAction, setCurrentAction] = useState<"STAKE" | "UNSTAKE">("STAKE");
 
@@ -67,6 +67,18 @@ export const StakeInputArea: React.FC<{ isZoomed: boolean }> = props => {
     const amount = event.currentTarget.elements["amount-input"].value;
     (currentAction === "STAKE" ? stakeMutation : unstakeMutation).mutate(amount);
   };
+
+  if (networkId !== NetworkId.ARBITRUM) {
+    return (
+      <Box style={{ fontSize: "20px", marginTop: "10px", marginBottom: "30px" }}>
+        <span style={{ fontWeight: "bold" }}>Notice: </span>
+        {"Staking is only available on the Arbitrum One network, for more info on the Arbitrum One network see "}
+        <a style={{ fontWeight: "bold" }} href="https://arbitrum.io/bridge-tutorial/">
+          Here
+        </a>
+      </Box>
+    );
+  }
 
   return (
     <Box className="stake-action-area">

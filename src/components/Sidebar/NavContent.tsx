@@ -1,31 +1,15 @@
 /* eslint-disable */
 import "./Sidebar.scss";
 
-import { t, Trans } from "@lingui/macro";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Divider,
-  Link,
-  Paper,
-  SvgIcon,
-  Typography,
-} from "@material-ui/core";
-import { ExpandMore } from "@material-ui/icons";
+import { t } from "@lingui/macro";
+import { Box, Link, Paper } from "@material-ui/core";
 import { NavItem } from "@olympusdao/component-library";
-import React, { useEffect, useState, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import React from "react";
 import { NetworkId } from "src/constants";
-import { EnvHelper } from "src/helpers/Environment";
 import { useAppSelector } from "src/hooks";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { Bond } from "src/lib/Bond";
 import { IBondDetails } from "src/slices/BondSlice";
-import { getAllBonds, getUserNotes } from "src/slices/BondSliceV2";
-import { DisplayBondDiscount } from "src/views/BondV2/BondV2";
 
 import HydranetLogo from "../../assets/HYDRANET_LOGO.png";
 import DashboardLogo from "../../assets/icons/dashboard.png";
@@ -33,8 +17,6 @@ import BondLogo from "../../assets/icons/bond.png";
 import StakeLogo from "../../assets/icons/stake.png";
 import useBonds from "../../hooks/useBonds";
 import WalletAddressEns from "../TopBar/Wallet/WalletAddressEns";
-import externalUrls from "./externalUrls";
-import Social from "./Social";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -56,10 +38,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
-  const { networkId, address, provider } = useWeb3Context();
+  const { networkId } = useWeb3Context();
   const { bonds } = useBonds(networkId);
-  const location = useLocation();
-  const dispatch = useDispatch();
 
   const classes = useStyles();
 

@@ -7,14 +7,12 @@ import { GOHM_ADDRESSES, OHM_ADDRESSES, SOHM_ADDRESSES, STAKING_ADDRESSES } from
 import { useWeb3Context } from "src/hooks";
 import { balanceQueryKey, useBalance } from "src/hooks/useBalance";
 import { useDynamicStakingContract } from "src/hooks/useContract";
-import { useTestableNetworks } from "src/hooks/useTestableNetworks";
 import { NetworkId } from "src/networkDetails";
 import { error as createErrorToast, info as createInfoToast } from "src/slices/MessagesSlice";
 
 export const useStakeToken = (toToken: "sHDX" | "gHDX") => {
   const dispatch = useDispatch();
   const client = useQueryClient();
-  const networks = useTestableNetworks();
   const { address, networkId } = useWeb3Context();
   const balances = useBalance(OHM_ADDRESSES);
   const contract = useDynamicStakingContract(STAKING_ADDRESSES, true);
@@ -31,9 +29,9 @@ export const useStakeToken = (toToken: "sHDX" | "gHDX") => {
 
       if (!balance) throw new Error(t`Please refresh your page and try again`);
 
-      if (parsedAmount.gt(balance)) throw new Error(t`You cannot stake more than your OHM balance`);
+      if (parsedAmount.gt(balance)) throw new Error(t`You cannot stake more than your HDX balance`);
 
-      if (!contract) throw new Error(t`Please switch to the Ethereum network to stake your OHM`);
+      if (!contract) throw new Error(t`Please switch to the Ethereum network to stake your HDX`);
 
       if (!address) throw new Error(t`Please refresh your page and try again`);
 
@@ -56,7 +54,7 @@ export const useStakeToken = (toToken: "sHDX" | "gHDX") => {
 
         await Promise.all(promises);
 
-        dispatch(createInfoToast(t`Successfully staked OHM`));
+        dispatch(createInfoToast(t`Successfully staked HDX`));
       },
     },
   );
