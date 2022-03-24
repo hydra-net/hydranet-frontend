@@ -20,7 +20,7 @@ import { loadAccountDetails, calculateUserBondDetails, getMigrationAllowances } 
 import { getZapTokenBalances } from "./slices/ZapSlice";
 import { info } from "./slices/MessagesSlice";
 
-import { Stake, TreasuryDashboard, Zap, Wrap, V1Stake, Give, BondV2, ChooseBondV2 } from "./views";
+import { Stake, TreasuryDashboard, V1Stake, Give, BondV2, ChooseBondV2 } from "./views";
 import Sidebar from "./components/Sidebar/Sidebar";
 import TopBar from "./components/TopBar/TopBar";
 import CallToAction from "./components/CallToAction/CallToAction";
@@ -386,7 +386,7 @@ function App() {
               <Give selectedIndex={2} />
             </Route>
 
-            <Route path="/wrap">
+            {/* <Route path="/wrap">
               <Route exact path={`/wrap`}>
                 <Wrap />
               </Route>
@@ -396,7 +396,7 @@ function App() {
               <Route exact path={`/zap`}>
                 <Zap />
               </Route>
-            </Route>
+            </Route> */}
 
             {/* <Route path="/33-together">
               <PoolTogether />
