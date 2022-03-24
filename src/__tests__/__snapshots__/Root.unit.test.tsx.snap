@@ -24,7 +24,7 @@ exports[`<Root/> should render component 1`] = `
               >
                 Information
               </div>
-              Safety Check: Always verify you're on app.hydranet.ai!
+              Safety Check: Always verify you're on hydranet.ai!
               <div
                 class="makeStyles-root-307"
               >
