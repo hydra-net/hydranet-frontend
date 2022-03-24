@@ -125,6 +125,13 @@ export const getEtherscanUrl = ({ bond, networkId }: { bond: IBondV2; networkId:
   return `https://etherscan.io/address/${bond.quoteToken}`;
 };
 
+export const getArbitrumscanUrl = ({ bond, networkId }: { bond: IBondV2; networkId: NetworkId }) => {
+  if (networkId === NetworkId.ARBITRUM_TESTNET) {
+    return `https://testnet.arbiscan.io/address/${bond.quoteToken}`;
+  }
+  return `https://arbiscan.io/address/${bond.quoteToken}`;
+};
+
 export function shorten(str: string) {
   if (str.length < 10) return str;
   return `${str.slice(0, 6)}...${str.slice(str.length - 4)}`;

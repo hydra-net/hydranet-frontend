@@ -5,7 +5,7 @@ import { Link, Paper, Slide, SvgIcon, TableCell, TableRow, Typography } from "@m
 import { Skeleton } from "@material-ui/lab";
 import { TertiaryButton, TokenStack } from "@olympusdao/component-library";
 import { NavLink } from "react-router-dom";
-import { getEtherscanUrl } from "src/helpers";
+import { getArbitrumscanUrl } from "src/helpers";
 import { useAppSelector } from "src/hooks";
 import { IBondV2 } from "src/slices/BondSliceV2";
 
@@ -34,7 +34,7 @@ export function BondDataCard({ bond, networkId }: { bond: IBondV2; networkId: Ne
               </div>
             ) : (
               <div>
-                <Link href={getEtherscanUrl({ bond, networkId })} target="_blank">
+                <Link href={getArbitrumscanUrl({ bond, networkId })} target="_blank">
                   <Typography variant="body1">
                     <Trans>View Asset</Trans>
                     <SvgIcon component={ArrowUp} htmlColor="#A3A3A3" />
@@ -116,7 +116,7 @@ export function BondTableData({ bond, networkId }: { bond: IBondV2; networkId: N
           ) : (
             <>
               <Typography variant="body1">{bond.displayName}</Typography>
-              <Link color="primary" href={getEtherscanUrl({ bond, networkId })} target="_blank">
+              <Link color="primary" href={getArbitrumscanUrl({ bond, networkId })} target="_blank">
                 <Typography variant="body1">
                   <Trans>View Asset</Trans>
                   <SvgIcon component={ArrowUp} htmlColor="#A3A3A3" />
