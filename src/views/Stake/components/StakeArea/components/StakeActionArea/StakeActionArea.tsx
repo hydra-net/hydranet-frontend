@@ -1,6 +1,7 @@
 import { Trans } from "@lingui/macro";
 import { Divider, Typography } from "@material-ui/core";
 import ConnectButton from "src/components/ConnectButton/ConnectButton";
+import { useStakingRebaseRate } from "src/hooks/useStakingRebaseRate";
 import { useWeb3Context } from "src/hooks/web3Context";
 
 import { StakeBalances } from "./components/StakeBalances";
@@ -11,6 +12,7 @@ import { StakeRebaseYield } from "./components/StakeRebaseYield";
 
 export const StakeActionArea: React.FC<{ isZoomed: boolean }> = props => {
   const { address } = useWeb3Context();
+  const { data: rebaseRate } = useStakingRebaseRate();
 
   if (!address)
     return (
@@ -32,13 +34,13 @@ export const StakeActionArea: React.FC<{ isZoomed: boolean }> = props => {
       <div className="stake-user-data">
         <StakeBalances />
 
-        <Divider color="secondary" />
+        {rebaseRate !== 0 && <Divider color="secondary" />}
 
-        <StakeNextRebaseAmount />
+        {rebaseRate !== 0 && <StakeNextRebaseAmount />}
 
-        <StakeRebaseYield />
+        {rebaseRate !== 0 && <StakeRebaseYield />}
 
-        <StakeFiveDayYield />
+        {rebaseRate !== 0 && <StakeFiveDayYield />}
       </div>
     </>
   );
