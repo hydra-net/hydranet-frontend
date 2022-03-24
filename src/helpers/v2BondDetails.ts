@@ -159,8 +159,11 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
     ["0x69b81152c5a8d35a67b32a4d3772795d96cae4da"]: OhmEthDetails,
     ["0x055475920a8c93cffb64d039a8205f7acc7722d3"]: OhmDaiDetails,
   },
+  [NetworkId.ARBITRUM]: {
+    ["0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"]: DaiDetails,
+  },
   [NetworkId.ARBITRUM_TESTNET]: {
-    ["0x0ea36da8eeba93dd84beabf51a11625c966f7e10"]: DaiDetails,
+    ["0x962fc5c29e5b41bce3c907c77c3b19090b845f4d"]: DaiDetails,
   },
 
   // TODO: Arbitrum
