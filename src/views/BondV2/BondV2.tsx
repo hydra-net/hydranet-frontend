@@ -132,7 +132,7 @@ export const DisplayBondPrice = ({ bond }: { bond: IBondV2 }): ReactElement => {
       {new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 5,
         minimumFractionDigits: 2,
       }).format(bond.priceUSD)}
     </Fragment>
