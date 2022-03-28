@@ -45,13 +45,13 @@ export function ClaimBondTableData({ userNote, gOHM }: { userNote: IUserNote; gO
       {/* Remaining Duration */}
       <TableCell align="center">{vestingPeriod()}</TableCell>
       {/* Payout */}
-      <TableCell align="center">
+      {/* <TableCell align="center">
         {note.payout && currentIndex ? (
           trim(note.payout * (gOHM ? 1 : Number(currentIndex)), 4) + (gOHM ? " gHDX" : " sHDX")
         ) : (
           <Skeleton width={100} />
         )}
-      </TableCell>
+      </TableCell> */}
       {/* Claim Button */}
       <TableCell align="right">
         {vestingPeriod() === "Fully Vested" ? (

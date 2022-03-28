@@ -1,6 +1,6 @@
 import "./ChooseBond.scss";
 
-import { t, Trans } from "@lingui/macro";
+import { Trans } from "@lingui/macro";
 import {
   Accordion,
   AccordionDetails,
@@ -21,7 +21,7 @@ const AccordionSection = ({
   bonds,
   title,
   gOHM,
-  vested,
+  //vested,
   isSmallScreen,
 }: {
   bonds: IUserNote[];
@@ -47,7 +47,7 @@ const AccordionSection = ({
               </TableCell>
               <TableCell align="center">{`Duration`}</TableCell>
               <TableCell align="center">{`Remaining`}</TableCell>
-              <TableCell align="center">{vested ? t`Payout` : t`Pending Payout`}</TableCell>
+              {/* <TableCell align="center">{vested ? t`Payout` : t`Pending Payout`}</TableCell> */}
               {/* <TableCell align="right"></TableCell> */}
             </TableRow>
           </TableHead>
