@@ -6,8 +6,6 @@ import { idFromHexString, initNetworkFunc } from "src/helpers/NetworkHelper";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import Web3Modal from "web3modal";
 
-import { NETWORKS } from "../constants";
-
 /**
  * determine if in IFrame for Ledger Live
  */
@@ -24,6 +22,7 @@ type onChainProvider = {
   hasCachedProvider: () => boolean;
   address: string;
   connected: boolean;
+  connectionError: IConnectionError | null;
   provider: JsonRpcProvider;
   web3Modal: Web3Modal;
   networkId: number;
@@ -31,6 +30,11 @@ type onChainProvider = {
   providerUri: string;
   providerInitialized: boolean;
 };
+
+interface IConnectionError {
+  text: string;
+  created: number;
+}
 
 export type Web3ContextData = {
   onChainProvider: onChainProvider;
@@ -59,17 +63,14 @@ export const useAddress = () => {
 const initModal = new Web3Modal({
   // network: "mainnet", // optional
   cacheProvider: true, // optional
+
   providerOptions: {
     walletconnect: {
       package: WalletConnectProvider,
       options: {
         rpc: {
-          1: NETWORKS[1].uri(),
-          4: NETWORKS[4].uri(),
-          42161: NETWORKS[42161].uri(),
-          421611: NETWORKS[421611].uri(),
-          43113: NETWORKS[43113].uri(),
-          43114: NETWORKS[43114].uri(),
+          42161: "https://arb1.arbitrum.io/rpc",
+          421611: "https://rinkeby.arbitrum.io/rpc",
         },
       },
     },
@@ -78,6 +79,7 @@ const initModal = new Web3Modal({
 
 export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ children }) => {
   const [connected, setConnected] = useState(false);
+  const [connectionError, setConnectionError] = useState<IConnectionError | null>(null);
   const [address, setAddress] = useState("");
   // NOTE (appleseed): loading eth mainnet as default rpc provider for a non-connected wallet
   const [provider, setProvider] = useState<JsonRpcProvider>(NodeHelper.getMainnetStaticProvider());
@@ -127,7 +129,19 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     if (isIframe()) {
       rawProvider = new IFrameEthereumProvider();
     } else {
-      rawProvider = await web3Modal.connect();
+      try {
+        rawProvider = await web3Modal.connect();
+      } catch (e) {
+        console.log("wallet connection status:", e);
+        if (e !== "Modal closed by user") {
+          setConnectionError({
+            created: Date.now(),
+            text: "Please check your Wallet UI for connection errors",
+          });
+        }
+        setConnected(false);
+        return;
+      }
     }
 
     // new _initListeners implementation matches Web3Modal Docs
@@ -155,6 +169,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
   const disconnect = useCallback(async () => {
     web3Modal.clearCachedProvider();
+    setConnectionError(null);
     setConnected(false);
 
     setTimeout(() => {
@@ -169,6 +184,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
       hasCachedProvider,
       provider,
       connected,
+      connectionError,
       address,
       web3Modal,
       networkId,
@@ -182,6 +198,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
       hasCachedProvider,
       provider,
       connected,
+      connectionError,
       address,
       web3Modal,
       networkId,
