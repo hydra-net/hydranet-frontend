@@ -1,9 +1,8 @@
 /* eslint-disable */
 import "./Sidebar.scss";
 
-import { t } from "@lingui/macro";
-import { Box, Link, Paper } from "@material-ui/core";
-import { NavItem } from "@olympusdao/component-library";
+import { Trans } from "@lingui/macro";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Link, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { NetworkId } from "src/constants";
 import { useAppSelector } from "src/hooks";
@@ -23,6 +22,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core/styles";
+import { ExpandMore } from "@material-ui/icons";
+import { NavLink } from "react-router-dom";
+import { DisplayBondPrice } from "src/views/BondV2/BondV2";
 
 type NavContentProps = {
   handleDrawerToggle?: () => void;
@@ -106,7 +108,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                       <ListItemText primary={"Stake"} />
                     </ListItem>
                   </List>
-                  {/* <div className="dapp-menu-data discounts">
+                  <div className="dapp-menu-data discounts">
                     <div className="bond-discounts">
                       <Accordion className="discounts-accordion" square defaultExpanded={true}>
                         <AccordionSummary
@@ -115,7 +117,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                           }
                         >
                           <Typography variant="body2">
-                            <Trans>Highest Discount</Trans>
+                            <Trans>Active bonds</Trans>
                           </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -131,8 +133,11 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                                 <Typography variant="body2">
                                   {bond.displayName}
                                   <span className="bond-pair-roi">
-                                    <DisplayBondDiscount key={bond.index} bond={bond} />
+                                    <DisplayBondPrice key={bond.index} bond={bond} />
                                   </span>
+                                  {/* <span className="bond-pair-roi">
+                                    <DisplayBondDiscount key={bond.index} bond={bond} />
+                                  </span> */}
                                 </Typography>
                               </Link>
                             );
@@ -140,7 +145,7 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                         </AccordionDetails>
                       </Accordion>
                     </div>
-                  </div> */}
+                  </div>
 
                   {/* NOTE (appleseed-olyzaps): OlyZaps disabled until v2 contracts */}
                   {/* <NavItem to="/zap" icon="zap" label={t`Zap`} /> */}
@@ -165,12 +170,12 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                 </>
               ) : (
                 <>
-                  <NavItem to="/wrap" icon="wrap" label={t`Wrap`} />
+                  {/* <NavItem to="/wrap" icon="wrap" label={t`Wrap`} />
                   <NavItem
                     href="https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"
                     icon="bridge"
                     label={t`Bridge`}
-                  />
+                  /> */}
                 </>
               )}
               {}
