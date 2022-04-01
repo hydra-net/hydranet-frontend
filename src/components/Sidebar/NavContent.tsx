@@ -108,44 +108,46 @@ const NavContent: React.FC<NavContentProps> = ({ handleDrawerToggle }) => {
                       <ListItemText primary={"Stake"} />
                     </ListItem>
                   </List>
-                  <div className="dapp-menu-data discounts">
-                    <div className="bond-discounts">
-                      <Accordion className="discounts-accordion" square defaultExpanded={true}>
-                        <AccordionSummary
-                          expandIcon={
-                            <ExpandMore className="discounts-expand" style={{ width: "18px", height: "18px" }} />
-                          }
-                        >
-                          <Typography variant="body2">
-                            <Trans>Active bonds</Trans>
-                          </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                          {sortedBonds.map((bond, i) => {
-                            return (
-                              <Link
-                                component={NavLink}
-                                to={`/bonds/${bond.index}`}
-                                key={i}
-                                className={"bond"}
-                                onClick={handleDrawerToggle}
-                              >
-                                <Typography variant="body2">
-                                  {bond.displayName}
-                                  <span className="bond-pair-roi">
-                                    <DisplayBondPrice key={bond.index} bond={bond} />
-                                  </span>
-                                  {/* <span className="bond-pair-roi">
+                  {sortedBonds.length > 0 && (
+                    <div className="dapp-menu-data discounts">
+                      <div className="bond-discounts">
+                        <Accordion className="discounts-accordion" square defaultExpanded={true}>
+                          <AccordionSummary
+                            expandIcon={
+                              <ExpandMore className="discounts-expand" style={{ width: "18px", height: "18px" }} />
+                            }
+                          >
+                            <Typography variant="body2">
+                              <Trans>Active bonds</Trans>
+                            </Typography>
+                          </AccordionSummary>
+                          <AccordionDetails>
+                            {sortedBonds.map((bond, i) => {
+                              return (
+                                <Link
+                                  component={NavLink}
+                                  to={`/bonds/${bond.index}`}
+                                  key={i}
+                                  className={"bond"}
+                                  onClick={handleDrawerToggle}
+                                >
+                                  <Typography variant="body2">
+                                    {bond.displayName}
+                                    <span className="bond-pair-roi">
+                                      <DisplayBondPrice key={bond.index} bond={bond} />
+                                    </span>
+                                    {/* <span className="bond-pair-roi">
                                     <DisplayBondDiscount key={bond.index} bond={bond} />
                                   </span> */}
-                                </Typography>
-                              </Link>
-                            );
-                          })}
-                        </AccordionDetails>
-                      </Accordion>
+                                  </Typography>
+                                </Link>
+                              );
+                            })}
+                          </AccordionDetails>
+                        </Accordion>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* NOTE (appleseed-olyzaps): OlyZaps disabled until v2 contracts */}
                   {/* <NavItem to="/zap" icon="zap" label={t`Zap`} /> */}
