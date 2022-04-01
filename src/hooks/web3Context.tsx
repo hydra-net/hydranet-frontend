@@ -169,6 +169,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
   const disconnect = useCallback(async () => {
     web3Modal.clearCachedProvider();
+    localStorage.removeItem("walletconnect");
     setConnectionError(null);
     setConnected(false);
 
