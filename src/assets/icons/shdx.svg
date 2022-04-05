@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#182037"/>
+      <stop offset="1" stop-color="#384263"/>
+    </linearGradient>
+  </defs>
+  <g id="sHDX" transform="translate(-336 -416)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="32" cy="32" r="32" transform="translate(336 416)" fill="#192038"/>
+    <path id="Union_2" data-name="Union 2" d="M19.544-40.514A31.914,31.914,0,0,1,9.373-47.372,31.9,31.9,0,0,1,2.515-57.544,31.8,31.8,0,0,1,0-70H0a2,2,0,0,1,2-2,2,2,0,0,1,2,2H4A27.811,27.811,0,0,0,12.21-50.21,27.811,27.811,0,0,0,32-42,28.032,28.032,0,0,0,60-70h0a2,2,0,0,1,2-2,2,2,0,0,1,2,2h0a31.789,31.789,0,0,1-2.515,12.455,31.9,31.9,0,0,1-6.858,10.172,31.9,31.9,0,0,1-10.172,6.858A31.8,31.8,0,0,1,32-38,31.8,31.8,0,0,1,19.544-40.514Z" transform="translate(336 518)" fill="url(#linear-gradient)"/>
+    <circle id="Ellipse_6" data-name="Ellipse 6" cx="28" cy="28" r="28" transform="translate(340 420)" fill="#384263"/>
+    <path id="Ellipse_6_-_Outline" data-name="Ellipse 6 - Outline" d="M28,1A27.007,27.007,0,0,0,17.491,52.879,27.007,27.007,0,0,0,38.509,3.121,26.83,26.83,0,0,0,28,1m0-1A28,28,0,1,1,0,28,28,28,0,0,1,28,0Z" transform="translate(340 420)" fill="#192038"/>
+    <g id="Group_420" data-name="Group 420" transform="translate(-48.74 282.986)">
+      <path id="Union_1" data-name="Union 1" d="M0,32.459V10.819L18.74,0,37.48,10.819v21.64L18.74,43.279Zm19.474,8.588,16.441-9.492V12.676l-2.535,1.474V30.091L19.474,38.12ZM1.566,31.555,17.908,40.99V38.063L4.1,30.091V14.1L1.566,12.66Zm4.1-17.464v15.1L18.74,36.735l13.074-7.548v-15.1L18.74,6.543Zm26.98-1.327L35.173,11.3,18.74,1.808,2.32,11.288,4.875,12.74l13.864-8Z" transform="translate(398 143.375)" fill="#bfc9e7"/>
+      <path id="Union_1_-_Outline" data-name="Union 1 - Outline" d="M18.74,43.856-.5,32.748V10.531L18.74-.577,37.98,10.531V32.748ZM.5,32.17,18.74,42.7,36.98,32.17V11.108L18.74.577.5,11.108Zm18.474,9.742V37.831L32.879,29.8V13.862l3.535-2.055V31.843Zm1-3.5v1.772l15.441-8.915V13.545l-1.535.892V30.38Zm-1.566,3.448L1.066,31.843V11.8L4.6,13.81V29.8l13.807,7.972ZM2.066,31.266l15.342,8.858V38.352L3.6,30.38V14.391l-1.535-.872ZM18.74,37.313,5.166,29.476V13.8L18.74,5.966,32.314,13.8V29.476ZM6.166,28.9,18.74,36.158,31.314,28.9V14.38L18.74,7.121,6.166,14.38ZM32.648,13.342,18.74,5.313l-13.862,8L1.314,11.292,18.74,1.231,36.17,11.294ZM18.74,4.158l13.906,8.029,1.53-.889L18.74,2.385l-15.413,8.9,1.547.879Z" transform="translate(398 143.375)" fill="rgba(0,0,0,0)"/>
+      <path id="Path_1538" data-name="Path 1538" d="M479,285.6l2.838-1.638v15.763L479,298.085Z" transform="translate(-73.073 -126.827)" fill="#bfc9e7"/>
+      <path id="Path_1538_-_Outline" data-name="Path 1538 - Outline" d="M482.338,283.094v17.5l-3.838-2.215V285.309Zm-1,15.763V284.826l-1.838,1.061V297.8Z" transform="translate(-73.073 -126.827)" fill="rgba(0,0,0,0)"/>
+      <path id="Path_1539" data-name="Path 1539" d="M550.165,247.01l2.642,1.526v8.259H544v-8.2l2.642-1.526v6.988h3.523Z" transform="translate(-131.712 -93.493)" fill="#bfc9e7"/>
+      <path id="Path_1539_-_Outline" data-name="Path 1539 - Outline" d="M549.665,246.144l3.642,2.1v9.048H543.5V248.3l3.642-2.1v7.354h2.523Zm2.642,2.68-1.642-.948v6.679h-4.523v-6.622l-1.642.948v7.414h7.807Z" transform="translate(-131.712 -93.493)" fill="rgba(0,0,0,0)"/>
+      <path id="Path_1540" data-name="Path 1540" d="M552.807,383v8.161l-2.642,1.526v-7.241h-3.523v7.184L544,391.1V383Z" transform="translate(-131.712 -216.175)" fill="#bfc9e7"/>
+      <path id="Path_1540_-_Outline" data-name="Path 1540 - Outline" d="M543.5,382.5h9.807v8.95l-3.642,2.1v-7.607h-2.523v7.55l-3.642-2.1Zm8.807,1H544.5v7.316l1.642.948v-6.818h4.523v6.875l1.642-.948Z" transform="translate(-131.712 -216.175)" fill="rgba(0,0,0,0)"/>
+      <path id="Path_1541" data-name="Path 1541" d="M672.936,285.075v12.487L670,299.257V283.38Z" transform="translate(-245.382 -126.304)" fill="#bfc9e7"/>
+      <path id="Path_1541_-_Outline" data-name="Path 1541 - Outline" d="M669.5,282.514l3.936,2.272V297.85l-3.936,2.272Zm2.936,2.85-1.936-1.118v14.145l1.936-1.118Z" transform="translate(-245.382 -126.304)" fill="rgba(0,0,0,0)"/>
+    </g>
+  </g>
+</svg>

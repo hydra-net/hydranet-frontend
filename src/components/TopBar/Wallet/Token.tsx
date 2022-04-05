@@ -1,7 +1,9 @@
+/* eslint-disable simple-import-sort/imports */
 import {
   Accordion as MuiAccordion,
   AccordionSummary as MuiAccordionSummary,
   Box,
+  // SvgIcon,
   Typography,
   useTheme,
   withStyles,
@@ -9,6 +11,9 @@ import {
 import { Skeleton } from "@material-ui/lab";
 import { OHMTokenProps, Token as TokenSVG } from "@olympusdao/component-library";
 import { ChangeEvent, useState } from "react";
+import hdxIcon from "../../../assets/icons/hdx.svg";
+import shdxIcon from "../../../assets/icons/shdx.svg";
+import ghdxIcon from "../../../assets/icons/ghdx.svg";
 import { useQuery } from "react-query";
 import { addresses } from "src/constants";
 import { NetworkId } from "src/constants";
@@ -174,12 +179,19 @@ export const Token = ({
 
   // cleanedDecimals provides up to 7 sigFigs on an 18 decimal token (gOHM) & 5 sigFigs on 9 decimal Token
   const sigFigs = decimals === 18 ? 7 : 5;
-
+  console.log("symb", symbol);
   return (
     <Accordion expanded={expanded} onChange={onChangeExpanded}>
       <AccordionSummary>
         <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-          <TokenSVG name={icon} style={{ fontSize: 28, marginRight: theme.spacing(1) }} />
+          {/* <TokenSVG name={icon} style={{ fontSize: 28, marginRight: theme.spacing(1) }} /> */}
+          {symbol === "HDX" ? (
+            <img src={hdxIcon} width={"28px"} height={"28px"} style={{ marginRight: theme.spacing(1) }} />
+          ) : symbol === "sHDX" ? (
+            <img src={shdxIcon} width={"28px"} height={"28px"} style={{ marginRight: theme.spacing(1) }} />
+          ) : (
+            <img src={ghdxIcon} width={"28px"} height={"28px"} style={{ marginRight: theme.spacing(1) }} />
+          )}
           <Typography>{symbol}</Typography>
         </Box>
         <BalanceValue
