@@ -13,7 +13,7 @@ export default function WalletAddressEns() {
     <div className="wallet-link">
       {ens?.avatar && <img className="avatar" src={ens.avatar} alt={address} />}
 
-      <Link href={`https://etherscan.io/address/${address}`} target="_blank">
+      <Link href={`https://arbiscan.io/address/${address}`} target="_blank">
         {ens?.name || shorten(address)}
       </Link>
     </div>
