@@ -15,15 +15,20 @@ const pricingFunctionHelper = async (
   const reserves = await baseContract.getReserves();
   const totalSupply = +(await baseContract.totalSupply()) / Math.pow(10, await baseContract.decimals());
   const token0Contract = IERC20__factory.connect(await baseContract.token0(), provider);
+
   const token0Decimals = await token0Contract.decimals();
   const token0Amount = +reserves._reserve0 / Math.pow(10, token0Decimals);
-  const price = await getHdxTokenPriceSushi();
-  const token0TotalValue = price * token0Amount;
+  const ethTokenPrice = await getTokenPrice(secondToken);
+
+  const token0TotalValue = ethTokenPrice * token0Amount;
   const token1Contract = IERC20__factory.connect(await baseContract.token1(), provider);
   const token1Decimals = await token1Contract.decimals();
+
   const token1Amount = +reserves._reserve1 / Math.pow(10, token1Decimals);
-  const ethTokenPrice = await getTokenPrice(secondToken);
-  const token1TotalValue = ethTokenPrice * token1Amount;
+
+  const price = await getHdxTokenPriceSushi();
+
+  const token1TotalValue = price * token1Amount;
 
   const totalValue = token0TotalValue + token1TotalValue;
   const valuePerLpToken = totalValue / totalSupply;
