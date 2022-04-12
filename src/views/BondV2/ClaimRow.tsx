@@ -1,9 +1,12 @@
+/* eslint-disable simple-import-sort/imports */
 import "./ChooseBond.scss";
 
 import { t } from "@lingui/macro";
 import { Box, TableCell, TableRow, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { TertiaryButton, TokenStack } from "@olympusdao/component-library";
+import hdxIcon from "../../assets/icons/hdx.svg";
+import ethIcon from "../../assets/icons/eth.svg";
 import { useDispatch } from "react-redux";
 import { useAppSelector, useWeb3Context } from "src/hooks";
 import { claimSingleNote, IUserNote } from "src/slices/BondSliceV2";
@@ -34,8 +37,25 @@ export function ClaimBondTableData({ userNote, gOHM }: { userNote: IUserNote; gO
       {/* Name */}
       <TableCell align="left">
         <Box display="flex" alignItems="center">
-          <TokenStack tokens={note.bondIconSvg} />
-          <div className="bond-name" style={{ marginLeft: "10px" }}>
+          {note.displayName === "HDX-ETH LP" ? (
+            <div
+              style={{
+                position: "relative",
+              }}
+            >
+              <img
+                src={hdxIcon}
+                style={{
+                  width: "35px",
+                  height: "35px",
+                }}
+              />
+              <img src={ethIcon} style={{ width: "35px", height: "35px", position: "absolute", left: "30px" }} />
+            </div>
+          ) : (
+            <TokenStack tokens={note.bondIconSvg} />
+          )}
+          <div className="bond-name" style={{ marginLeft: "50px" }}>
             <Typography variant="body1">{bondName ? bondName : <Skeleton width={100} />}</Typography>
           </div>
         </Box>

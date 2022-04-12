@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import "./Bond.scss";
 
 import { t, Trans } from "@lingui/macro";
@@ -5,6 +6,8 @@ import { Box, Fade, Grid, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { Icon, Modal, TokenStack } from "@olympusdao/component-library";
 import { ChangeEvent, Fragment, ReactElement, useEffect, useState } from "react";
+import hdxIcon from "../../assets/icons/hdx.svg";
+import ethIcon from "../../assets/icons/eth.svg";
 import { useHistory } from "react-router";
 import { useAppSelector } from "src/hooks";
 import useEscape from "src/hooks/useEscape";
@@ -70,7 +73,25 @@ const BondV2 = ({ index }: { index: number }) => {
   );
   const headerContent = (
     <Box display="flex" flexDirection="row">
-      <TokenStack tokens={bond.bondIconSvg} />
+      {bond.isLP && bond.displayName === "HDX-ETH LP" ? (
+        <div
+          style={{
+            position: "relative",
+            marginRight: "30px",
+          }}
+        >
+          <img
+            src={hdxIcon}
+            style={{
+              width: "35px",
+              height: "35px",
+            }}
+          />
+          <img src={ethIcon} style={{ width: "35px", height: "35px", position: "absolute", left: "30px" }} />
+        </div>
+      ) : (
+        <TokenStack tokens={bond.bondIconSvg} />
+      )}
       <Box display="flex" flexDirection="column" ml={1} justifyContent="center" alignItems="center">
         <Typography variant="h5">{`${bond.displayName}`}</Typography>
       </Box>
