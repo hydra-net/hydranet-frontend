@@ -1,9 +1,12 @@
+/* eslint-disable simple-import-sort/imports */
 import "./ChooseBond.scss";
 
 import { t, Trans } from "@lingui/macro";
 import { Link, Paper, Slide, SvgIcon, TableCell, TableRow, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { TertiaryButton, TokenStack } from "@olympusdao/component-library";
+import hdxIcon from "../../assets/icons/hdx.svg";
+import ethIcon from "../../assets/icons/eth.svg";
 import { NavLink } from "react-router-dom";
 import { getArbitrumscanUrl } from "src/helpers";
 import { useAppSelector } from "src/hooks";
@@ -101,12 +104,32 @@ export function BondTableData({ bond, networkId }: { bond: IBondV2; networkId: N
   return (
     <TableRow id={`${bond.index}--bond`}>
       <TableCell align="left" className="bond-name-cell">
-        <TokenStack tokens={bond.bondIconSvg} />
+        {bond.isLP && bond.displayName === "HDX-ETH LP" ? (
+          <div
+            style={{
+              position: "relative",
+            }}
+          >
+            <img
+              src={hdxIcon}
+              style={{
+                width: "35px",
+                height: "35px",
+              }}
+            />
+            <img src={ethIcon} style={{ width: "35px", height: "35px", position: "absolute", left: "30px" }} />
+          </div>
+        ) : (
+          <TokenStack tokens={bond.bondIconSvg} />
+        )}
+
         <div className="bond-name">
           {bond && bond.isLP ? (
             <>
-              <Typography variant="body1">{bond.displayName}</Typography>
-              <Link color="primary" href={bond.lpUrl} target="_blank">
+              <Typography style={{ paddingLeft: "5px" }} variant="body1">
+                {bond.displayName}
+              </Typography>
+              <Link style={{ paddingLeft: "5px" }} color="primary" href={bond.lpUrl} target="_blank">
                 <Typography variant="body1">
                   <Trans>Get LP</Trans>
                   <SvgIcon component={ArrowUp} htmlColor="#A3A3A3" />

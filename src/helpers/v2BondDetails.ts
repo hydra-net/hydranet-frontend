@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 
 import { NetworkId } from "../networkDetails";
 import { IERC20__factory, UniswapV2Lp__factory } from "../typechain";
-import { getTokenByContract, getTokenPrice } from "./";
+import { getHdxTokenPriceSushi, getTokenByContract, getTokenPrice } from "./";
 
 const pricingFunctionHelper = async (
   provider: ethers.providers.JsonRpcProvider,
@@ -14,16 +14,16 @@ const pricingFunctionHelper = async (
   const baseContract = UniswapV2Lp__factory.connect(quoteToken, provider);
   const reserves = await baseContract.getReserves();
   const totalSupply = +(await baseContract.totalSupply()) / Math.pow(10, await baseContract.decimals());
-
   const token0Contract = IERC20__factory.connect(await baseContract.token0(), provider);
   const token0Decimals = await token0Contract.decimals();
   const token0Amount = +reserves._reserve0 / Math.pow(10, token0Decimals);
-  const token0TotalValue = (await getTokenPrice(firstToken)) * token0Amount;
-
+  const price = await getHdxTokenPriceSushi();
+  const token0TotalValue = price * token0Amount;
   const token1Contract = IERC20__factory.connect(await baseContract.token1(), provider);
   const token1Decimals = await token1Contract.decimals();
   const token1Amount = +reserves._reserve1 / Math.pow(10, token1Decimals);
-  const token1TotalValue = (await getTokenPrice(secondToken)) * token1Amount;
+  const ethTokenPrice = await getTokenPrice(secondToken);
+  const token1TotalValue = ethTokenPrice * token1Amount;
 
   const totalValue = token0TotalValue + token1TotalValue;
   const valuePerLpToken = totalValue / totalSupply;
@@ -114,16 +114,16 @@ const OhmDaiDetails: V2BondDetails = {
   },
 };
 
-const OhmEthDetails: V2BondDetails = {
-  name: "OHM-ETH LP",
+const HdxEthDetails: V2BondDetails = {
+  name: "HDX-ETH LP",
   bondIconSvg: ["OHM", "wETH"],
   async pricingFunction(provider, quoteToken) {
-    return pricingFunctionHelper(provider, quoteToken, "olympus", "ethereum");
+    return pricingFunctionHelper(provider, quoteToken, "hdx", "ethereum");
   },
   isLP: true,
   lpUrl: {
-    [NetworkId.MAINNET]:
-      "https://app.sushi.com/add/0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    [NetworkId.ARBITRUM]:
+      "https://app.sushi.com/add/0xF4fe727C855c2D395852ca43F645caB4b504Af23/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1?tokens=0xF4fe727C855c2D395852ca43F645caB4b504Af23&tokens=0x82aF49447D8a07e3bd95BD0d56f35241523fBab1&chainId=42161",
   },
 };
 
@@ -148,6 +148,7 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
     ["0xc778417e063141139fce010982780140aa0cd5ab"]: EthDetails,
     // ["0xb2180448f8945c8cc8ae9809e67d6bd27d8b2f2c"]: CvxDetails, // we do not have CVX rinkeby in previous bonds
     ["0x80edbf2f58c7b130df962bb485c28188f6b5ed29"]: OhmDaiDetails,
+    ["0x60544b12bce9f650419450f0cc235070fac9cbcd"]: HdxEthDetails,
   },
   [NetworkId.MAINNET]: {
     ["0x6b175474e89094c44da98b954eedeac495271d0f"]: DaiDetails,
@@ -156,12 +157,13 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
     ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"]: WbtcDetails,
     ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"]: EthDetails,
     ["0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b"]: CvxDetails,
-    ["0x69b81152c5a8d35a67b32a4d3772795d96cae4da"]: OhmEthDetails,
+    ["0x69b81152c5a8d35a67b32a4d3772795d96cae4da"]: HdxEthDetails,
     ["0x055475920a8c93cffb64d039a8205f7acc7722d3"]: OhmDaiDetails,
   },
   [NetworkId.ARBITRUM]: {
     ["0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"]: DaiDetails,
     ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"]: EthDetails,
+    ["0x260e9733ba45017cc57ce94747d2aa941ef4e6a7"]: HdxEthDetails,
   },
   [NetworkId.ARBITRUM_TESTNET]: {
     ["0x0eef05a0ca8847bdb762f687f8fdfa1f24cff43a"]: DaiDetails,

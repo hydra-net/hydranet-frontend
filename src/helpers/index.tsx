@@ -5,6 +5,7 @@ import { SvgIcon } from "@material-ui/core";
 import axios from "axios";
 import { ethers } from "ethers";
 import { QueryKey, useQuery } from "react-query";
+import { apolloExt } from "src/lib/apolloClient";
 import { IBondV2 } from "src/slices/BondSliceV2";
 import { IBaseAsyncThunk } from "src/slices/interfaces";
 import { GOHM__factory } from "src/typechain/factories/GOHM__factory";
@@ -18,6 +19,26 @@ import { PairContract, RedeemHelper } from "../typechain";
 import { ohm_dai, ohm_daiOld, ohm_weth } from "./AllBonds";
 import { EnvHelper } from "./Environment";
 import { NodeHelper } from "./NodeHelper";
+
+const GET_SUSHI_PAIR = `
+query GetSushiPair {
+pair(id: "0x260e9733ba45017cc57ce94747d2aa941ef4e6a7") {
+    id
+    token0Price
+    token1Price
+    token0 {
+      id
+      symbol
+    }
+    token1 {
+      id
+      symbol
+    }
+  }
+}
+`;
+
+const SUSHI_ARBITRUM_GRAPH_URL = "https://api.thegraph.com/subgraphs/name/sushiswap/arbitrum-exchange";
 
 /**
  * gets marketPrice from Ohm-DAI v2
@@ -80,6 +101,18 @@ export async function getTokenPrice(tokenId = "olympus"): Promise<number> {
     tokenPrice = cgResp.data[tokenId].usd;
   } finally {
     // console.info(`Token price from coingecko: ${tokenPrice}`);
+    return tokenPrice;
+  }
+}
+
+export async function getHdxTokenPriceSushi(): Promise<number> {
+  let tokenPrice = 0;
+  try {
+    const res = await apolloExt(GET_SUSHI_PAIR, SUSHI_ARBITRUM_GRAPH_URL);
+    tokenPrice = res?.data.pair.token0Price;
+  } catch (e) {
+    console.warn(`Error accessing sushi subgraph ${SUSHI_ARBITRUM_GRAPH_URL}`, e);
+  } finally {
     return tokenPrice;
   }
 }
