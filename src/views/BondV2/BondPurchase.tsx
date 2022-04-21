@@ -224,7 +224,7 @@ function BondPurchase({
         <em>
           <Typography variant="body2">
             Important: New bonds are auto-staked (accrue rebase rewards) and no longer vest linearly. Simply claim as
-            sHDX at the end of the term.
+            sHDX at the end of the term. American citizens are not allowed to buy bonds.
           </Typography>
         </em>
       </div>

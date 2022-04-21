@@ -65,7 +65,7 @@ const FraxDetails: V2BondDetails = {
 };
 
 const EthDetails: V2BondDetails = {
-  name: "ETH",
+  name: "wETH",
   bondIconSvg: ["wETH"],
   pricingFunction: async () => {
     return getTokenPrice("ethereum");
