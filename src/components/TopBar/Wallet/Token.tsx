@@ -132,13 +132,6 @@ const BalanceValue = ({
     <Typography variant="body2" style={{ fontWeight: 600 }} data-testid="balance-token">
       {!isLoading ? formatNumber(Number(balance), 9) : <Skeleton variant="text" width={50} />}
     </Typography>
-    {/* <Typography variant="body2" color="textSecondary" data-testid="balance-usd">
-      {!isLoading ? (
-        formatCurrency(balanceValueUSD === NaN ? 0 : balanceValueUSD, 2)
-      ) : (
-        <Skeleton variant="text" width={50} />
-      )}
-    </Typography> */}
   </Box>
 );
 
