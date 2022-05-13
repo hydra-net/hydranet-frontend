@@ -52,6 +52,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: create env file
+        run: |
+          touch .env
+          echo REACT_APP_INFURA_IDS=${{ secrets.INFURA_ID }} >> .env
+
       - name: Run unit tests
         run: yarn test:unit
 
