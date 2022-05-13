@@ -16,7 +16,7 @@ jobs:
 
     steps:
 
-      - name: Configuration for production branch
+#      - name: Configuration for production branch
 
 #        if: ${{ github.ref == 'refs/heads/arbitrum' }}
 #        run: |
