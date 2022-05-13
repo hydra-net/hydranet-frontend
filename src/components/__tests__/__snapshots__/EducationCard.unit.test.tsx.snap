@@ -96,7 +96,7 @@ exports[`<CurrPositionGraphic/> should render component 1`] = `
         class="MuiTypography-root cta-text MuiTypography-h6 MuiTypography-alignCenter"
       >
         1.00
-         sOHM
+         sHDX
       </h6>
     </div>
   </div>
@@ -183,7 +183,7 @@ exports[`<DepositSohm/> should render component 1`] = `
         class="MuiTypography-root education-message MuiTypography-body2 MuiTypography-alignCenter"
         style="line-height: 16px;"
       >
-        Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
+        Hydranet Give is a means of directing the yield that is accrued on your sHDX to another wallet. The first step is depositing your sHDX and specifying a recipient.
       </p>
     </div>
   </div>
@@ -245,7 +245,7 @@ exports[`<LockInVault/> should render component 1`] = `
         class="MuiTypography-root education-message MuiTypography-body2 MuiTypography-alignCenter"
         style="line-height: 16px;"
       >
-        Then, your deposited sOHM is kept in a vault smart contract that will send your rebases to the recipient. You can withdraw or edit your principal sOHM amount at any time.
+        Then, your deposited sHDX is kept in a vault smart contract that will send your rebases to the recipient. You can withdraw or edit your principal sHDX amount at any time.
       </p>
     </div>
   </div>
@@ -321,7 +321,7 @@ exports[`<NewPositionGraphic/> should render component 1`] = `
         class="MuiTypography-root cta-text MuiTypography-h6 MuiTypography-alignCenter"
       >
         1.00
-         sOHM
+         sHDX
       </h6>
     </div>
   </div>
@@ -394,7 +394,7 @@ exports[`<ReceivesYield/> should render component 1`] = `
         class="MuiTypography-root education-message MuiTypography-body2 MuiTypography-alignCenter"
         style="line-height: 16px;"
       >
-        The recipient you specified, or the project you selected, will then receive the rebases associated with your sOHM deposit until you withdraw your sOHM principal from the vault.
+        The recipient you specified, or the project you selected, will then receive the rebases associated with your sHDX deposit until you withdraw your sHDX principal from the vault.
       </p>
     </div>
   </div>
@@ -454,7 +454,7 @@ exports[`<RedeemGraphic/> should render component 1`] = `
       <h6
         class="MuiTypography-root cta-text MuiTypography-h6 MuiTypography-alignCenter"
       >
-        Redeem 1.00 sOHM in yield
+        Redeem 1.00 sHDX in yield
       </h6>
     </div>
   </div>
@@ -504,7 +504,7 @@ exports[`<VaultGraphic/> should render component 1`] = `
       <h6
         class="MuiTypography-root message-text MuiTypography-h6 MuiTypography-alignCenter"
       >
-        1.00 sOHM deposited
+        1.00 sHDXdeposited
       </h6>
     </div>
   </div>
@@ -580,7 +580,7 @@ exports[`<WalletGraphic/> should render component 1`] = `
         class="MuiTypography-root message-text MuiTypography-h6 MuiTypography-alignCenter"
       >
         1.00
-         sOHM 
+         sHDX 
         retained
       </h6>
     </div>
@@ -641,7 +641,7 @@ exports[`<YieldGraphic/> should render component 1`] = `
       <h6
         class="MuiTypography-root message-text MuiTypography-h6 MuiTypography-alignCenter"
       >
-        Receives yield from 1.00 sOHM
+        Receives yield from 1.00 sHDX
       </h6>
     </div>
   </div>

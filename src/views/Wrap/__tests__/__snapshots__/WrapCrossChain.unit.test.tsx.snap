@@ -41,7 +41,7 @@ exports[`<WrapCrossChain/> should render component 1`] = `
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  gOHM
+                  gHDX
                 </p>
                  
                 <svg
@@ -86,7 +86,7 @@ exports[`<WrapCrossChain/> should render component 1`] = `
                         <h5
                           class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary"
                         >
-                          sOHM Price
+                          sHDX Price
                         </h5>
                         <h4
                           class="MuiTypography-root MuiTypography-h4"
