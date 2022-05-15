@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-end",
     background: "transparent",
     backdropFilter: "none",
-    zIndex: 10,
+    zIndex: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
