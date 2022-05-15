@@ -23,13 +23,6 @@ describe("<InitialWalletView/>", () => {
     expect(onClose).toHaveBeenCalled();
   });
 
-  it("Changes the currency when WalletValue heading clicked", () => {
-    const walletValueEl = screen.getByRole("heading");
-    expect(walletValueEl.textContent).toContain("$");
-    userEvent.click(walletValueEl);
-    expect(walletValueEl.textContent).toContain("Ω");
-  });
-
   it("Has disconnect button", () => {
     const disconnectButton = screen.getByText(/disconnect/i);
     expect(disconnectButton).toBeInTheDocument();
