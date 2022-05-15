@@ -84,7 +84,7 @@ exports[`<Wrap/> should render component 1`] = `
                       <h5
                         class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary"
                       >
-                        sOHM Price
+                        sHDX Price
                       </h5>
                       <h4
                         class="MuiTypography-root MuiTypography-h4"
@@ -136,7 +136,7 @@ exports[`<Wrap/> should render component 1`] = `
                       <h5
                         class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary"
                       >
-                        gOHM Price
+                        gHDX Price
                         <div
                           class="MuiBox-root MuiBox-root-11"
                           style="font-size: 16px;"

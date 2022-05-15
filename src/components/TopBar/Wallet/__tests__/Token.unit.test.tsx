@@ -9,7 +9,7 @@ import { Token } from "../Token";
 describe("<Token/>", () => {
   let container: HTMLElement;
   const balance = "0";
-  const totalBalance = "33.33";
+  const totalBalance = "33.330000000";
   const price = 99.99;
   const decimals = 9;
   const onChangeExpanded = jest.fn();
@@ -37,19 +37,14 @@ describe("<Token/>", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("shows the total balance and value in USD", () => {
-    const sigFigs = 5;
-    const precision = 2;
-    const balanceValueUSD = parseFloat(totalBalance) * price;
+  it("shows the total balance", () => {
+    const sigFigs = 12;
 
     const tokenBalanceEl = getByTestId(container, "balance-token");
-    const usdBalanceEl = getByTestId(container, "balance-usd");
 
     expect(tokenBalanceEl).toBeInTheDocument();
-    expect(usdBalanceEl).toBeInTheDocument();
 
     expect(tokenBalanceEl.textContent).toBe(totalBalance.substring(0, sigFigs));
-    expect(usdBalanceEl.textContent).toBe(formatCurrency(balanceValueUSD, precision));
   });
 
   it("call onChangeExpanded when clicked", () => {

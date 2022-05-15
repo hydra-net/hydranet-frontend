@@ -16,10 +16,12 @@ describe("<Tokens/>", () => {
   });
 
   it("should show default tokens", async () => {
-    const gOhmElement = await screen.findByText(/gOhm/i);
-    expect(gOhmElement).toBeInTheDocument();
+    const HDXElement = await screen.findByText(/^HDX/i);
+    const sHDXElement = await screen.findByText(/sHDX/i);
+    const gHDXElement = await screen.findByText(/gHDX/i);
 
-    const sOhmElement = await screen.findByText(/sOhm/i);
-    expect(sOhmElement).toBeInTheDocument();
+    expect(HDXElement).toBeInTheDocument();
+    expect(sHDXElement).toBeInTheDocument();
+    expect(gHDXElement).toBeInTheDocument();
   });
 });

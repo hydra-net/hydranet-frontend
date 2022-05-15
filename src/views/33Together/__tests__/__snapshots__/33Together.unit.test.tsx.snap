@@ -472,7 +472,7 @@ exports[`<PoolTogether/> should render component 1`] = `
               <a
                 aria-disabled="false"
                 class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-root-20 makeStyles-root-38 undefined MuiButton-outlinedSecondary MuiButton-disableElevation"
-                href="https://community.pooltogether.com/pools/mainnet/0xEaB695A8F5a44f583003A8bC97d677880D528248/manage#stats"
+                href="https://community.pooltogether.com/pools/mainnet//manage#stats"
                 tabindex="0"
                 target="_blank"
               >

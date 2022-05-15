@@ -24,7 +24,7 @@ exports[`<ChooseBondV2/> should render component 1`] = `
               <h5
                 class="MuiTypography-root header-text MuiTypography-h5"
               >
-                Bond (4,4)
+                Bond
               </h5>
             </div>
             <div
@@ -38,66 +38,6 @@ exports[`<ChooseBondV2/> should render component 1`] = `
           <div
             class="MuiBox-root MuiBox-root-5"
           >
-            <div
-              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-align-items-xs-flex-end"
-            >
-              <div
-                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
-              >
-                <div
-                  class="makeStyles-root-6 "
-                >
-                  <div
-                    class="MuiBox-root MuiBox-root-7"
-                  >
-                    <h5
-                      class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary"
-                    >
-                      Treasury Balance
-                    </h5>
-                    <h4
-                      class="MuiTypography-root MuiTypography-h4"
-                      style="width: 100%;"
-                    >
-                      <span
-                        class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                        style="width: 100%;"
-                      />
-                    </h4>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
-              >
-                <div
-                  class="makeStyles-root-6 "
-                >
-                  <div
-                    class="MuiBox-root MuiBox-root-8"
-                  >
-                    <h5
-                      class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary"
-                    >
-                      OHM Price
-                    </h5>
-                    <h4
-                      class="MuiTypography-root MuiTypography-h4"
-                      style="width: 100%;"
-                    >
-                      <span
-                        class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                        style="width: 100%;"
-                      />
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root MuiBox-root-9"
-          >
             <h4
               class="MuiTypography-root MuiTypography-h4"
             >
@@ -105,13 +45,13 @@ exports[`<ChooseBondV2/> should render component 1`] = `
             </h4>
           </div>
           <div
-            class="MuiBox-root MuiBox-root-10 help-text"
+            class="MuiBox-root MuiBox-root-6 help-text"
           >
             <em>
               <p
                 class="MuiTypography-root MuiTypography-body2"
               >
-                Important: New bonds are auto-staked (accrue rebase rewards) and no longer vest linearly. Simply claim as sOHM or gOHM at the end of the term.
+                Important: New bonds are auto-staked (accrue rebase rewards) and no longer vest linearly. Simply claim as sHDX at the end of the term. American citizens are not allowed to buy bonds.
               </p>
             </em>
           </div>
