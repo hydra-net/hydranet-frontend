@@ -10,7 +10,7 @@ import { useWeb3Context } from "src/hooks/web3Context";
 import { Bond } from "src/lib/Bond";
 import { IBondDetails } from "src/slices/BondSlice";
 
-import HydranetLogo from "../../assets/HYDRANET_LOGO.png";
+import HydranetLogo from "../../assets/hydranet-full-logo.png";
 import DashboardLogo from "../../assets/icons/dashboard.png";
 import BondLogo from "../../assets/icons/bond.png";
 import StakeLogo from "../../assets/icons/stake.png";
