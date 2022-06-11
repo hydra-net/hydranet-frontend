@@ -216,7 +216,7 @@ exports[`<Root/> should render component 1`] = `
                     >
                       <img
                         alt="HydranetLogo"
-                        src="HYDRANET_LOGO.png"
+                        src="hydranet-full-logo.png"
                         style="min-width: 151px; min-height: auto; width: 200px;"
                       />
                     </a>
