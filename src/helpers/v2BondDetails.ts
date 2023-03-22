@@ -74,6 +74,16 @@ const EthDetails: V2BondDetails = {
   lpUrl: {},
 };
 
+const ArbDetails: V2BondDetails = {
+  name: "ARB",
+  bondIconSvg: ["wETH"],
+  pricingFunction: async () => {
+    return getTokenPrice("arbitrum");
+  },
+  isLP: false,
+  lpUrl: {},
+};
+
 const CvxDetails: V2BondDetails = {
   name: "CVX",
   bondIconSvg: ["CVX"],
@@ -168,9 +178,11 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
     ["0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"]: DaiDetails,
     ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"]: EthDetails,
     ["0x260e9733ba45017cc57ce94747d2aa941ef4e6a7"]: HdxEthDetails,
+    ["0x912ce59144191c1204e64559fe8253a0e49e6548"]: ArbDetails,
   },
   [NetworkId.ARBITRUM_TESTNET]: {
     ["0x0eef05a0ca8847bdb762f687f8fdfa1f24cff43a"]: DaiDetails,
     ["0xb47e6a5f8b33b3f17603c83a0535a9dcd7e32681"]: EthDetails,
+    ["0xf861378b543525ae0c47d33c90c954dc774ac1f9"]: ArbDetails,
   },
 };

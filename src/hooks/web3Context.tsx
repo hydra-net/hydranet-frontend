@@ -70,7 +70,7 @@ const initModal = new Web3Modal({
       options: {
         rpc: {
           42161: "https://arb1.arbitrum.io/rpc",
-          421611: "https://rinkeby.arbitrum.io/rpc",
+          421613: "https://goerli-rollup.arbitrum.io/rpc",
         },
       },
     },
