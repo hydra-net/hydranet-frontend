@@ -10,7 +10,7 @@ export enum NetworkId {
   TESTNET_RINKEBY = 4,
 
   ARBITRUM = 42161,
-  ARBITRUM_TESTNET = 421611,
+  ARBITRUM_TESTNET = 421613,
 
   AVALANCHE = 43114,
   AVALANCHE_TESTNET = 43113,
@@ -99,8 +99,9 @@ export const addresses: IAddresses = {
     ZAP: "",
   },
   [NetworkId.ARBITRUM]: {
-    DAI_ADDRESS: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+    DAI_ADDRESS: "0xf556C102F47d806E21E8E78438E58ac06A14A29E",
     OHM_ADDRESS: "0xF4fe727C855c2D395852ca43F645caB4b504Af23",
+    ARB_ADDRESS: "0x912CE59144191C1204E64559FE8253a0e49E6548",
     STAKING_ADDRESS: "0xd20CDF95a08ACDf8Aa360232Caeda6E59a06951D",
     STAKING_HELPER_ADDRESS: "0xd20CDF95a08ACDf8Aa360232Caeda6E59a06951D",
     OLD_STAKING_ADDRESS: "",
@@ -125,30 +126,31 @@ export const addresses: IAddresses = {
     AUTHORITY: "0xC1Fa33137139C9348561D15F207E3a885F5f5f85",
   },
   [NetworkId.ARBITRUM_TESTNET]: {
-    DAI_ADDRESS: "0x0eEf05a0CA8847BdB762F687F8fDFA1F24cFF43A",
-    OHM_ADDRESS: "0xcDadE202fAc2102452b8Bef119EAC165e14c3F28",
-    STAKING_ADDRESS: "0x6d22cd7C806468aE47B5049C64e32522f4EBb7C9",
-    STAKING_HELPER_ADDRESS: "0x6Af49d80aC9A027389939Df53a1bdE0a9d89E237",
+    DAI_ADDRESS: "0x836eFBdc059892500e0b33297BB23B630BB4a4AA",
+    OHM_ADDRESS: "0x42Eda3BDCbccC429d5f1844D0190F1cc09Cd5280",
+    ARB_ADDRESS: "0xF861378B543525ae0C47d33C90C954Dc774Ac1F9",
+    STAKING_ADDRESS: "0xB0254c4665142C9a201c27E106e6eC4E407472d4",
+    STAKING_HELPER_ADDRESS: "0xB0254c4665142C9a201c27E106e6eC4E407472d4",
     OLD_STAKING_ADDRESS: "",
-    SOHM_ADDRESS: "0x785FC8751A93330A888064aF305263856841f54e",
+    SOHM_ADDRESS: "0x81c600b2EF33f46e7981eE7392d9a1fef9B1bCF6",
     OLD_SOHM_ADDRESS: "",
     PRESALE_ADDRESS: "",
     AOHM_ADDRESS: "",
     MIGRATE_ADDRESS: "",
-    DISTRIBUTOR_ADDRESS: "0x368214C8817742f5d38BcA545bd464ac11cC4F31",
-    BONDINGCALC_ADDRESS: "",
+    DISTRIBUTOR_ADDRESS: "0x4E61E45770915641b2CE9072Ff90b2E180CB5257",
+    BONDINGCALC_ADDRESS: "0xDe6315Bcdc87850A3e224Ea1155F512515017202",
     CIRCULATING_SUPPLY_ADDRESS: "",
-    TREASURY_ADDRESS: "0x393d2F9d78058bde615fa56Ef1D36437DD8B018e",
+    TREASURY_ADDRESS: "0x09295657D9062384e7710B3bEe667d37450198c9",
     REDEEM_HELPER_ADDRESS: "",
     WSOHM_ADDRESS: "",
     MIGRATOR_ADDRESS: "",
-    GOHM_ADDRESS: "0xAE3cCd4698603b28a01169dAB059d6Fb09840f3A",
-    OHM_V2: "0x1c165166458DB1af89B83023c9D29e9885dF9d5F",
-    SOHM_V2: "0x785FC8751A93330A888064aF305263856841f54e",
+    GOHM_ADDRESS: "0x524f722Df09CAb703aF425c14F040f4403fa9d17",
+    OHM_V2: "0x42Eda3BDCbccC429d5f1844D0190F1cc09Cd5280",
+    SOHM_V2: "0x81c600b2EF33f46e7981eE7392d9a1fef9B1bCF6",
     STAKING_V2: "0x6Af49d80aC9A027389939Df53a1bdE0a9d89E237",
-    BOND_DEPOSITORY: "0x0AA742F6cB7B07b66b6714cC6378B41904C158f4",
-    DAO_TREASURY: "0x393d2F9d78058bde615fa56Ef1D36437DD8B018e",
-    AUTHORITY: "0xf69eaa79705ADe27681157007B3946eEFD7180f8",
+    BOND_DEPOSITORY: "0x81999A3239238c655961B03680a30e43C9F9D9Ff",
+    DAO_TREASURY: "0x09295657D9062384e7710B3bEe667d37450198c9",
+    AUTHORITY: "0x15d1295942d4c6799E65Cce228e854a64d928Bb6",
   },
   [NetworkId.AVALANCHE_TESTNET]: {
     DAI_ADDRESS: "",
@@ -223,7 +225,8 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [NetworkId.MAINNET, NetworkId.ARBITRUM, NetworkId.AVALANCHE];
+export const USER_SELECTABLE_NETWORKS = [NetworkId.ARBITRUM];
+// export const USER_SELECTABLE_NETWORKS = [NetworkId.MAINNET, NetworkId.ARBITRUM, NetworkId.AVALANCHE];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
@@ -274,14 +277,14 @@ export const NETWORKS: { [key: number]: INetwork } = {
   },
   [NetworkId.ARBITRUM_TESTNET]: {
     chainName: "Arbitrum Testnet",
-    chainId: 421611,
+    chainId: 421613,
     nativeCurrency: {
       name: "Ethereum",
       symbol: "ETH",
       decimals: 18,
     },
-    rpcUrls: ["https://rinkeby.arbitrum.io/rpc"],
-    blockExplorerUrls: ["https://rinkeby-explorer.arbitrum.io/#/"],
+    rpcUrls: ["https://goerli-rollup.arbitrum.io/rpc"],
+    blockExplorerUrls: ["https://goerli.arbiscan.io/#/"],
     image: arbitrum,
     imageAltText: "Arbitrum Logo",
     uri: () => EnvHelper.alchemyArbitrumTestnetURI,
