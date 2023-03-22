@@ -22,6 +22,8 @@ jobs:
         run: |
           yarn install
           yarn build
+        env:
+          CI: "false"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
