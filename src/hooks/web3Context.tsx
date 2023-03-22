@@ -4,6 +4,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import React, { ReactElement, useCallback, useContext, useMemo, useState } from "react";
 import { idFromHexString, initNetworkFunc } from "src/helpers/NetworkHelper";
 import { NodeHelper } from "src/helpers/NodeHelper";
+import { NetworkId } from "src/networkDetails";
 import Web3Modal from "web3modal";
 
 /**
@@ -83,7 +84,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [address, setAddress] = useState("");
   // NOTE (appleseed): loading eth mainnet as default rpc provider for a non-connected wallet
   const [provider, setProvider] = useState<JsonRpcProvider>(NodeHelper.getMainnetStaticProvider());
-  const [networkId, setNetworkId] = useState(1);
+  const [networkId, setNetworkId] = useState(NetworkId.ARBITRUM);
   const [networkName, setNetworkName] = useState("");
   const [providerUri, setProviderUri] = useState("");
   const [providerInitialized, setProviderInitialized] = useState(false);
