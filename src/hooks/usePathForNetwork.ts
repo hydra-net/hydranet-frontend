@@ -47,13 +47,13 @@ export function usePathForNetwork({
           history.push("/wrap");
           break;
         }
-      case "zap":
-        if (VIEWS_FOR_NETWORK[networkID] && VIEWS_FOR_NETWORK[networkID].zap) {
-          break;
-        } else {
-          history.push("/wrap");
-          break;
-        }
+      // case "zap":
+      //   if (VIEWS_FOR_NETWORK[networkID] && VIEWS_FOR_NETWORK[networkID].zap) {
+      //     break;
+      //   } else {
+      //     history.push("/wrap");
+      //     break;
+      //   }
       default:
         console.log("pathForNetwork ok");
     }

@@ -14,6 +14,6 @@ export const useTestableNetworks = () => {
   const { networkId } = useWeb3Context();
 
   return {
-    MAINNET: getTestnet(NetworkId.MAINNET, NetworkId.TESTNET_RINKEBY, networkId),
+    MAINNET: getTestnet(NetworkId.MAINNET, NetworkId.TESTNET_GOERLI, networkId),
   };
 };

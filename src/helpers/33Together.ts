@@ -70,17 +70,17 @@ export const poolTogetherUILinks = (networkId: NetworkId): Array<string> => {
   // if (networkId === -1) networkId = 1;
   const contractAddress = addresses[networkId].PT_PRIZE_POOL_ADDRESS;
 
-  if (networkId === NetworkId.TESTNET_RINKEBY) {
-    return [
-      `https://community.pooltogether.com/pools/rinkeby/${contractAddress}/home`,
-      `https://community.pooltogether.com/pools/rinkeby/${contractAddress}/manage#stats`,
-    ];
-  } else {
+  // if (networkId === NetworkId.TESTNET_RINKEBY) {
+  //   return [
+  //     `https://community.pooltogether.com/pools/rinkeby/${contractAddress}/home`,
+  //     `https://community.pooltogether.com/pools/rinkeby/${contractAddress}/manage#stats`,
+  //   ];
+  // } else {
     return [
       `https://app.pooltogether.com/pools/mainnet/sOHM`,
       `https://community.pooltogether.com/pools/mainnet/${contractAddress}/manage#stats`,
     ];
-  }
+  // }
 };
 
 /**

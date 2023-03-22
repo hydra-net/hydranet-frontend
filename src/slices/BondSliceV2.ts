@@ -105,7 +105,7 @@ export interface IUserNote {
 }
 
 function checkNetwork(networkID: NetworkId) {
-  if (networkID !== 1 && networkID !== 4) {
+  if (networkID !== NetworkId.MAINNET) {
     //ENABLE FOR MAINNET LAUNCH
     throw Error(`Network=${networkID} is not supported for V2 bonds`);
   }
@@ -114,7 +114,7 @@ function checkNetwork(networkID: NetworkId) {
 export const changeApproval = createAsyncThunk(
   "bondsV2/changeApproval",
   async ({ bond, provider, networkID, address }: IBondV2AysncThunk, { dispatch, getState }) => {
-    // checkNetwork(networkID);
+    checkNetwork(networkID);
     const signer = provider.getSigner();
     const bondState: IBondV2 = (getState() as RootState).bondingV2.bonds[bond.index];
     const tokenContractAddress: string = bondState.quoteToken;

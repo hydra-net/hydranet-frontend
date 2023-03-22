@@ -99,14 +99,6 @@ export interface IRedeemAsyncThunk extends IBaseAddressAsyncThunk {
   readonly eventSource: string;
 }
 
-export interface IZapAsyncThunk extends IBaseAddressAsyncThunk {
-  readonly tokenAddress: string;
-  readonly sellAmount: BigNumber;
-  readonly slippage: string;
-  readonly minimumAmount: string;
-  readonly gOHM: boolean;
-}
-
 // Account Slice
 
 export interface ICalcUserBondDetailsAsyncThunk extends IBaseAddressAsyncThunk, IBaseBondAsyncThunk {}

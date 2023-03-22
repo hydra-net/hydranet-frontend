@@ -77,7 +77,7 @@ function MigrationModal({ open, handleClose }: { open: boolean; handleClose: any
   useEffect(() => {
     if (
       networkId &&
-      (networkId === NetworkId.MAINNET || networkId === NetworkId.TESTNET_RINKEBY) &&
+      (networkId === NetworkId.MAINNET /*|| networkId === NetworkId.TESTNET_RINKEBY*/) &&
       isAllApproved &&
       (currentOhmBalance || currentSOhmBalance || currentWSOhmBalance)
     ) {

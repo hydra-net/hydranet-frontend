@@ -39,7 +39,7 @@ export const ACTION_GIVE_WITHDRAW = "endGive";
 
 export const isSupportedChain = (chainID: NetworkId): boolean => {
   // Give is only supported on Ethereum mainnet (1) and rinkeby (4) for the moment.
-  if (chainID === NetworkId.MAINNET || chainID === NetworkId.TESTNET_RINKEBY) return true;
+  if (chainID === NetworkId.MAINNET /*|| chainID === NetworkId.TESTNET_RINKEBY*/) return true;
 
   return false;
 };
@@ -106,7 +106,7 @@ export const changeMockApproval = createAsyncThunk(
 
     /*
       On testnet it's been best for testing Give to use a pseudo-sOHM contract
-      that gives us more control to rebase manually when needed. However, this 
+      that gives us more control to rebase manually when needed. However, this
       makes it not as perfectly translatable to mainnet without changing any parameters
       this is the best way to avoid manually switching out code every deployment
     */

@@ -22,6 +22,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["./index.d.ts", "src", "babel.config.js", "**/*.test.ts", "**/*.test.tsx"],
-  "exclude": ["node_modules", "vendor", "public"],
+  "exclude": ["node_modules", "vendor", "public", "src/views/Zap/**"],
   "compileOnSave": false
 }

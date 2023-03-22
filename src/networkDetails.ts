@@ -7,10 +7,12 @@ import { NodeHelper } from "./helpers/NodeHelper";
 
 export enum NetworkId {
   MAINNET = 1,
-  TESTNET_RINKEBY = 4,
+  // TESTNET_RINKEBY = 4,
+  TESTNET_GOERLI = 5,
 
   ARBITRUM = 42161,
   ARBITRUM_TESTNET = 421611,
+  ARBITRUM_GOERLI = 421613,
 
   AVALANCHE = 43114,
   AVALANCHE_TESTNET = 43113,
@@ -29,20 +31,51 @@ interface IAddresses {
 }
 
 export const addresses: IAddresses = {
-  [NetworkId.TESTNET_RINKEBY]: {
-    DAI_ADDRESS: "0xb2180448f8945c8cc8ae9809e67d6bd27d8b2f2c",
-    OHM_ADDRESS: "0x771Ae5801FC69201Bb82DA0eD3593EaceA1733f7",
-    STAKING_ADDRESS: "0x2Fc97bF2e95a6218413Ce0a81Ff290701507C925",
+  // [NetworkId.TESTNET_RINKEBY]: {
+  //   DAI_ADDRESS: "0xb2180448f8945c8cc8ae9809e67d6bd27d8b2f2c",
+  //   OHM_ADDRESS: "0x771Ae5801FC69201Bb82DA0eD3593EaceA1733f7",
+  //   STAKING_ADDRESS: "0x2Fc97bF2e95a6218413Ce0a81Ff290701507C925",
+  //   STAKING_HELPER_ADDRESS: "",
+  //   OLD_STAKING_ADDRESS: "",
+  //   SOHM_ADDRESS: "0xc3447cd18e2b93c40e1255067CA7C63eD20d45Cd",
+  //   WSOHM_ADDRESS: "",
+  //   OLD_SOHM_ADDRESS: "",
+  //   MIGRATE_ADDRESS: "",
+  //   DISTRIBUTOR_ADDRESS: "0x1E859808a7e24cEeEB25b79d08Db4047F12520C2",
+  //   BONDINGCALC_ADDRESS: "",
+  //   CIRCULATING_SUPPLY_ADDRESS: "",
+  //   TREASURY_ADDRESS: "0x23935eb155128dB6B0cef7F3BE4e90Be5771A9fA",
+  //   REDEEM_HELPER_ADDRESS: "",
+  //   PT_TOKEN_ADDRESS: "", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
+  //   PT_PRIZE_POOL_ADDRESS: "", // NEW
+  //   PT_PRIZE_STRATEGY_ADDRESS: "", // NEW
+  //   GIVING_ADDRESS: "",
+  //   MOCK_GIVING_ADDRESS: "",
+  //   MOCK_SOHM: "",
+  //   MIGRATOR_ADDRESS: "",
+  //   GOHM_ADDRESS: "0x8aae5C27Cc0588384A69aE02F8C77AE730308C37",
+  //   OHM_V2: "0x771Ae5801FC69201Bb82DA0eD3593EaceA1733f7",
+  //   TREASURY_V2: "0x23935eb155128dB6B0cef7F3BE4e90Be5771A9fA",
+  //   SOHM_V2: "0xc3447cd18e2b93c40e1255067CA7C63eD20d45Cd",
+  //   STAKING_V2: "0x2Fc97bF2e95a6218413Ce0a81Ff290701507C925",
+  //   BOND_DEPOSITORY: "0x3e7331ccB7AF79b0a50828961e804212C1c55A59",
+  //   DAO_TREASURY: "0x23935eb155128dB6B0cef7F3BE4e90Be5771A9fA",
+  //   AUTHORITY: "0x6a2Ece98B5b0a652a4BBF42dd5ea9949D50c1f98",
+  // },
+  [NetworkId.TESTNET_GOERLI]: {
+    DAI_ADDRESS: "0x9d233a907e065855d2a9c7d4b552ea27fb2e5a36",
+    OHM_ADDRESS: "",
+    STAKING_ADDRESS: "",
     STAKING_HELPER_ADDRESS: "",
     OLD_STAKING_ADDRESS: "",
-    SOHM_ADDRESS: "0xc3447cd18e2b93c40e1255067CA7C63eD20d45Cd",
+    SOHM_ADDRESS: "",
     WSOHM_ADDRESS: "",
     OLD_SOHM_ADDRESS: "",
     MIGRATE_ADDRESS: "",
-    DISTRIBUTOR_ADDRESS: "0x1E859808a7e24cEeEB25b79d08Db4047F12520C2",
+    DISTRIBUTOR_ADDRESS: "",
     BONDINGCALC_ADDRESS: "",
     CIRCULATING_SUPPLY_ADDRESS: "",
-    TREASURY_ADDRESS: "0x23935eb155128dB6B0cef7F3BE4e90Be5771A9fA",
+    TREASURY_ADDRESS: "",
     REDEEM_HELPER_ADDRESS: "",
     PT_TOKEN_ADDRESS: "", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
     PT_PRIZE_POOL_ADDRESS: "", // NEW
@@ -51,14 +84,14 @@ export const addresses: IAddresses = {
     MOCK_GIVING_ADDRESS: "",
     MOCK_SOHM: "",
     MIGRATOR_ADDRESS: "",
-    GOHM_ADDRESS: "0x8aae5C27Cc0588384A69aE02F8C77AE730308C37",
-    OHM_V2: "0x771Ae5801FC69201Bb82DA0eD3593EaceA1733f7",
-    TREASURY_V2: "0x23935eb155128dB6B0cef7F3BE4e90Be5771A9fA",
-    SOHM_V2: "0xc3447cd18e2b93c40e1255067CA7C63eD20d45Cd",
-    STAKING_V2: "0x2Fc97bF2e95a6218413Ce0a81Ff290701507C925",
-    BOND_DEPOSITORY: "0x3e7331ccB7AF79b0a50828961e804212C1c55A59",
-    DAO_TREASURY: "0x23935eb155128dB6B0cef7F3BE4e90Be5771A9fA",
-    AUTHORITY: "0x6a2Ece98B5b0a652a4BBF42dd5ea9949D50c1f98",
+    GOHM_ADDRESS: "",
+    OHM_V2: "",
+    TREASURY_V2: "",
+    SOHM_V2: "",
+    STAKING_V2: "",
+    BOND_DEPOSITORY: "",
+    DAO_TREASURY: "",
+    AUTHORITY: "",
   },
   [NetworkId.MAINNET]: {
     DAI_ADDRESS: "", // duplicate
@@ -83,7 +116,7 @@ export const addresses: IAddresses = {
     PT_TOKEN_ADDRESS: "", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
     PT_PRIZE_POOL_ADDRESS: "", // NEW
     PT_PRIZE_STRATEGY_ADDRESS: "", // NEW
-    ZAPPER_POOL_V1: "",
+    // ZAPPER_POOL_V1: "",
     BONDINGCALC_V2: "",
     MIGRATOR_ADDRESS: "",
     GOHM_ADDRESS: "",
@@ -96,7 +129,7 @@ export const addresses: IAddresses = {
     BOND_DEPOSITORY: "", // updated
     DAO_TREASURY: "",
     TOKEMAK_GOHM: "",
-    ZAP: "",
+    // ZAP: "",
   },
   [NetworkId.ARBITRUM]: {
     DAI_ADDRESS: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
@@ -125,6 +158,32 @@ export const addresses: IAddresses = {
     AUTHORITY: "0xC1Fa33137139C9348561D15F207E3a885F5f5f85",
   },
   [NetworkId.ARBITRUM_TESTNET]: {
+    DAI_ADDRESS: "0x0eEf05a0CA8847BdB762F687F8fDFA1F24cFF43A",
+    OHM_ADDRESS: "0xcDadE202fAc2102452b8Bef119EAC165e14c3F28",
+    STAKING_ADDRESS: "0x6d22cd7C806468aE47B5049C64e32522f4EBb7C9",
+    STAKING_HELPER_ADDRESS: "0x6Af49d80aC9A027389939Df53a1bdE0a9d89E237",
+    OLD_STAKING_ADDRESS: "",
+    SOHM_ADDRESS: "0x785FC8751A93330A888064aF305263856841f54e",
+    OLD_SOHM_ADDRESS: "",
+    PRESALE_ADDRESS: "",
+    AOHM_ADDRESS: "",
+    MIGRATE_ADDRESS: "",
+    DISTRIBUTOR_ADDRESS: "0x368214C8817742f5d38BcA545bd464ac11cC4F31",
+    BONDINGCALC_ADDRESS: "",
+    CIRCULATING_SUPPLY_ADDRESS: "",
+    TREASURY_ADDRESS: "0x393d2F9d78058bde615fa56Ef1D36437DD8B018e",
+    REDEEM_HELPER_ADDRESS: "",
+    WSOHM_ADDRESS: "",
+    MIGRATOR_ADDRESS: "",
+    GOHM_ADDRESS: "0xAE3cCd4698603b28a01169dAB059d6Fb09840f3A",
+    OHM_V2: "0x1c165166458DB1af89B83023c9D29e9885dF9d5F",
+    SOHM_V2: "0x785FC8751A93330A888064aF305263856841f54e",
+    STAKING_V2: "0x6Af49d80aC9A027389939Df53a1bdE0a9d89E237",
+    BOND_DEPOSITORY: "0x0AA742F6cB7B07b66b6714cC6378B41904C158f4",
+    DAO_TREASURY: "0x393d2F9d78058bde615fa56Ef1D36437DD8B018e",
+    AUTHORITY: "0xf69eaa79705ADe27681157007B3946eEFD7180f8",
+  },
+  [NetworkId.ARBITRUM_GOERLI]: {
     DAI_ADDRESS: "0x0eEf05a0CA8847BdB762F687F8fDFA1F24cFF43A",
     OHM_ADDRESS: "0xcDadE202fAc2102452b8Bef119EAC165e14c3F28",
     STAKING_ADDRESS: "0x6d22cd7C806468aE47B5049C64e32522f4EBb7C9",
@@ -244,19 +303,33 @@ export const NETWORKS: { [key: number]: INetwork } = {
     imageAltText: "Ethereum Logo",
     uri: () => NodeHelper.getMainnetURI(NetworkId.MAINNET),
   },
-  [NetworkId.TESTNET_RINKEBY]: {
-    chainName: "Rinkeby Testnet",
-    chainId: 4,
+  // [NetworkId.TESTNET_RINKEBY]: {
+  //   chainName: "Rinkeby Testnet",
+  //   chainId: 4,
+  //   nativeCurrency: {
+  //     name: "Ethereum",
+  //     symbol: "ETH",
+  //     decimals: 18,
+  //   },
+  //   rpcUrls: [""],
+  //   blockExplorerUrls: ["https://rinkeby.etherscan.io/#/"],
+  //   image: ethereum,
+  //   imageAltText: "Ethereum Logo",
+  //   uri: () => NodeHelper.getMainnetURI(NetworkId.TESTNET_RINKEBY),
+  // },
+  [NetworkId.TESTNET_GOERLI]: {
+    chainName: "Goerli Testnet",
+    chainId: 5,
     nativeCurrency: {
       name: "Ethereum",
       symbol: "ETH",
       decimals: 18,
     },
     rpcUrls: [""],
-    blockExplorerUrls: ["https://rinkeby.etherscan.io/#/"],
+    blockExplorerUrls: ["https://goerli.etherscan.io/#/"],
     image: ethereum,
     imageAltText: "Ethereum Logo",
-    uri: () => NodeHelper.getMainnetURI(NetworkId.TESTNET_RINKEBY),
+    uri: () => NodeHelper.getMainnetURI(NetworkId.TESTNET_GOERLI),
   },
   [NetworkId.ARBITRUM]: {
     chainName: "Arbitrum",
@@ -352,7 +425,7 @@ interface IViewsForNetwork {
   dashboard: boolean;
   stake: boolean;
   wrap: boolean;
-  zap: boolean;
+  // zap: boolean;
   threeTogether: boolean;
   bonds: boolean;
   network: boolean;
@@ -364,17 +437,17 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
     dashboard: true,
     stake: true,
     wrap: true,
-    zap: true,
+    // zap: true,
     threeTogether: true,
     bonds: true,
     network: true,
     bondsV2: true,
   },
-  [NetworkId.TESTNET_RINKEBY]: {
+  [NetworkId.TESTNET_GOERLI]: {
     dashboard: true,
     stake: true,
     wrap: true,
-    zap: true,
+    // zap: true,
     threeTogether: true,
     bonds: true,
     network: true,
@@ -384,17 +457,17 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
     dashboard: true,
     stake: true,
     wrap: true,
-    zap: false,
+    // zap: false,
     threeTogether: false,
     bonds: true,
     network: true,
     bondsV2: false,
   },
-  [NetworkId.ARBITRUM_TESTNET]: {
+  [NetworkId.ARBITRUM_GOERLI]: {
     dashboard: true,
     stake: true,
     wrap: true,
-    zap: false,
+    // zap: false,
     threeTogether: false,
     bonds: true,
     network: true,
@@ -404,7 +477,7 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
     dashboard: true,
     stake: false,
     wrap: false,
-    zap: false,
+    // zap: false,
     threeTogether: false,
     bonds: false,
     network: true,
@@ -414,7 +487,7 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
     dashboard: true,
     stake: false,
     wrap: true,
-    zap: false,
+    // zap: false,
     threeTogether: false,
     bonds: false,
     network: true,

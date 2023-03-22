@@ -7,7 +7,7 @@ import { bondingReducerV2 } from "./slices/BondSliceV2";
 import messagesReducer from "./slices/MessagesSlice";
 import pendingTransactionsReducer from "./slices/PendingTxnsSlice";
 import poolDataReducer from "./slices/PoolThunk";
-import zapReducer from "./slices/ZapSlice";
+// import zapReducer from "./slices/ZapSlice";
 // reducers are named automatically based on the name field in the slice
 // exported in slice files by default as nameOfSlice.reducer
 
@@ -22,7 +22,7 @@ const store = configureStore({
     pendingTransactions: pendingTransactionsReducer,
     poolData: poolDataReducer,
     messages: messagesReducer,
-    zap: zapReducer,
+    // zap: zapReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
 });

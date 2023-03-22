@@ -15,7 +15,8 @@ import { redeemBond } from "../../slices/BondSlice";
 export function ClaimBondTableData({ userBond }: { userBond: [string, IUserBondDetails] }) {
   const dispatch = useDispatch();
   const { address, provider, networkId } = useWeb3Context();
-  const { bonds, expiredBonds } = useBonds(networkId);
+  // const { bonds, expiredBonds } = useBonds(networkId);
+  const { bonds } = useBonds(networkId);
 
   const bond = userBond[1];
   const bondName = bond.bond;
@@ -36,7 +37,8 @@ export function ClaimBondTableData({ userBond }: { userBond: [string, IUserBondD
 
   async function onRedeem({ autostake }: { autostake: boolean }) {
     // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-    const currentBond = [...bonds, ...expiredBonds].find(bnd => bnd.name === bondName);
+    // const currentBond = [...bonds, ...expiredBonds].find(bnd => bnd.name === bondName);
+    const currentBond = [...bonds].find(bnd => bnd.name === bondName);
     await dispatch(redeemBond({ address, bond: currentBond!, networkID: networkId, provider, autostake }));
   }
 
@@ -78,7 +80,8 @@ export function ClaimBondTableData({ userBond }: { userBond: [string, IUserBondD
 export function ClaimBondCardData({ userBond }: { userBond: [string, IUserBondDetails] }) {
   const dispatch = useDispatch();
   const { address, provider, networkId } = useWeb3Context();
-  const { bonds, expiredBonds } = useBonds(networkId);
+  // const { bonds, expiredBonds } = useBonds(networkId);
+  const { bonds } = useBonds(networkId);
 
   const bond = userBond[1];
   const bondName = bond.bond;
@@ -97,7 +100,8 @@ export function ClaimBondCardData({ userBond }: { userBond: [string, IUserBondDe
 
   async function onRedeem({ autostake }: { autostake: boolean }) {
     // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-    const currentBond = [...bonds, ...expiredBonds].find(bnd => bnd.name === bondName);
+    // const currentBond = [...bonds, ...expiredBonds].find(bnd => bnd.name === bondName);
+    const currentBond = [...bonds].find(bnd => bnd.name === bondName);
     await dispatch(redeemBond({ address, bond: currentBond!, networkID: networkId, provider, autostake }));
   }
 

@@ -8,6 +8,6 @@ export { default as TreasuryDashboard } from "./TreasuryDashboard/TreasuryDashbo
 export { default as CausesDashboard } from "./Give/CausesDashboard";
 export { default as RedeemYield } from "./Give/RedeemYield";
 export { default as Give } from "./Give/Give";
-export { default as Zap } from "./Zap/Zap";
+// export { default as Zap } from "./Zap/Zap";
 export { default as BondV2 } from "./BondV2/BondV2";
 export { default as ChooseBondV2 } from "./BondV2/ChooseBondV2";

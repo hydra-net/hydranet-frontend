@@ -151,9 +151,6 @@ export class NodeHelper {
 
     // return the remaining elements
     if (allURIs.length === 0) {
-      // NodeHelper._emptyInvalidNodesList(networkId);
-      // allURIs = EnvHelper.getAPIUris(networkId);
-      // In the meantime use the fallbacks
       allURIs = EnvHelper.getFallbackURIs(networkId);
     }
     return allURIs;

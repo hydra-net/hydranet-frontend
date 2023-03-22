@@ -11,7 +11,6 @@ export class EnvHelper {
    * @returns `process.env`
    */
   static env = process.env;
-  // static alchemyEthereumTestnetURI = `https://eth-rinkeby.alchemyapi.io/v2/${EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY}`;
   static alchemyArbitrumTestnetURI = `https://arb-rinkeby.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_ARBITRUM_TESTNET_ALCHEMY}`;
   static alchemyAvalancheTestnetURI = ``;
 
@@ -70,17 +69,6 @@ export class EnvHelper {
         }
         uriPath = "https://eth-mainnet.alchemyapi.io/v2/";
         break;
-      case NetworkId.TESTNET_RINKEBY:
-        if (
-          EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY &&
-          EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY)
-        ) {
-          ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY.split(EnvHelper.whitespaceRegex);
-        } else {
-          ALCHEMY_ID_LIST = ["aF5TH9E9RGZwaAUdUd90BNsrVkDDoeaO"];
-        }
-        uriPath = "https://eth-rinkeby.alchemyapi.io/v2/";
-        break;
       case NetworkId.ARBITRUM:
         if (
           EnvHelper.env.NODE_ENV !== "development" &&
@@ -91,7 +79,7 @@ export class EnvHelper {
         } else {
           ALCHEMY_ID_LIST = ["7Fz2U-NiLphizjlRkJzWtK5jef-5rX-G"];
         }
-        uriPath = "https://arb-mainnet.alchemyapi.io/v2/";
+        uriPath = "https://arb-mainnet.g.alchemy.com/v2/";
         break;
       case NetworkId.POLYGON:
         if (

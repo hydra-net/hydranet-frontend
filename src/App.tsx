@@ -17,10 +17,9 @@ import { shouldTriggerSafetyCheck } from "./helpers";
 import { calcBondDetails } from "./slices/BondSlice";
 import { loadAppDetails } from "./slices/AppSlice";
 import { loadAccountDetails, calculateUserBondDetails, getMigrationAllowances } from "./slices/AccountSlice";
-import { getZapTokenBalances } from "./slices/ZapSlice";
 import { info } from "./slices/MessagesSlice";
 
-import { Stake, TreasuryDashboard, V1Stake, Give, BondV2, ChooseBondV2 } from "./views";
+import { Stake, TreasuryDashboard, V1Stake, BondV2, ChooseBondV2 } from "./views";
 import Sidebar from "./components/Sidebar/Sidebar";
 import TopBar from "./components/TopBar/TopBar";
 import CallToAction from "./components/CallToAction/CallToAction";
@@ -36,7 +35,7 @@ import projectData from "src/views/Give/projects.json";
 import { getAllBonds, getUserNotes } from "./slices/BondSliceV2";
 import { NetworkId } from "./constants";
 import MigrationModalSingle from "./components/Migration/MigrationModalSingle";
-import ProjectInfo from "./views/Give/ProjectInfo";
+// import ProjectInfo from "./views/Give/ProjectInfo";
 import { trackGAEvent, trackSegmentEvent } from "./helpers/analytics";
 
 // 😬 Sorry for all the console logging
@@ -110,7 +109,8 @@ function App() {
   const { projects } = projectData;
 
   // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-  const { bonds, expiredBonds } = useBonds(networkId);
+  // const { bond, expiredBonds } = useBonds(networkId);
+  const { bonds } = useBonds(networkId);
 
   const bondIndexes = useAppSelector(state => state.bondingV2.indexes);
 
@@ -138,7 +138,8 @@ function App() {
       dispatch(loadAppDetails({ networkID: networkId, provider: loadProvider }));
       if (
         networkId === NetworkId.MAINNET ||
-        networkId === NetworkId.TESTNET_RINKEBY ||
+        // networkId === NetworkId.TESTNET_RINKEBY ||
+        networkId === NetworkId.TESTNET_GOERLI ||
         networkId == NetworkId.ARBITRUM_TESTNET ||
         networkId == NetworkId.ARBITRUM
       ) {
@@ -152,7 +153,7 @@ function App() {
         dispatch(getAllBonds({ provider: loadProvider, networkID: networkId, address }));
       }
     },
-    [networkId, address],
+    [networkId, address, bonds, dispatch],
   );
 
   const loadAccount = useCallback(
@@ -169,18 +170,18 @@ function App() {
           dispatch(calculateUserBondDetails({ address, bond, provider: loadProvider, networkID: networkId }));
         }
       });
-      dispatch(getZapTokenBalances({ address, networkID: networkId, provider: loadProvider }));
-      expiredBonds.map(bond => {
-        if (bond.getClaimability(networkId)) {
-          dispatch(calculateUserBondDetails({ address, bond, provider: loadProvider, networkID: networkId }));
-        }
-      });
+      // dispatch(getZapTokenBalances({ address, networkID: networkId, provider: loadProvider }));
+      // expiredBonds.map(bond => {
+      //   if (bond.getClaimability(networkId)) {
+      //     dispatch(calculateUserBondDetails({ address, bond, provider: loadProvider, networkID: networkId }));
+      //   }
+      // });
     },
     [networkId, address, providerInitialized],
   );
 
   const oldAssetsDetected = useAppSelector(state => {
-    if (networkId && (networkId === NetworkId.MAINNET || networkId === NetworkId.TESTNET_RINKEBY)) {
+    if (networkId && (networkId === NetworkId.MAINNET /*|| networkId === NetworkId.TESTNET_RINKEBY*/)) {
       return (
         state.account.balances &&
         (Number(state.account.balances.sohmV1) ||
@@ -350,57 +351,6 @@ function App() {
                 />
               )}
             </Route>
-
-            <Route path="/v1-stake">
-              <V1Stake
-                hasActiveV1Bonds={hasActiveV1Bonds}
-                oldAssetsDetected={oldAssetsDetected}
-                setMigrationModalOpen={setMigrationModalOpen}
-              />
-            </Route>
-
-            <Route exact path="/give">
-              <Give />
-            </Route>
-            <Redirect from="/olympusgive" to="/give" />
-            <Redirect from="/tyche" to="/give" />
-            <Redirect from="/olygive" to="/give" />
-            <Redirect from="/olympusdaogive" to="/give" />
-            <Redirect from="/ohmgive" to="/give" />
-
-            <Route path="/give/projects">
-              {projects.map(project => {
-                return (
-                  <Route exact key={project.slug} path={`/give/projects/${project.slug}`}>
-                    <ProjectInfo project={project} />
-                  </Route>
-                );
-              })}
-            </Route>
-
-            <Route exact path="/give/donations">
-              <Give selectedIndex={1} />
-            </Route>
-
-            <Route exact path="/give/redeem">
-              <Give selectedIndex={2} />
-            </Route>
-
-            {/* <Route path="/wrap">
-              <Route exact path={`/wrap`}>
-                <Wrap />
-              </Route>
-            </Route>
-
-            <Route path="/zap">
-              <Route exact path={`/zap`}>
-                <Zap />
-              </Route>
-            </Route> */}
-
-            {/* <Route path="/33-together">
-              <PoolTogether />
-            </Route> */}
 
             <Redirect from="/bonds-v1" to="/bonds" />
 

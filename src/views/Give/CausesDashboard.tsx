@@ -9,11 +9,11 @@ import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useUIDSeed } from "react-uid";
 import ProjectCard, { ProjectDetailsMode } from "src/components/GiveProject/ProjectCard";
-import { NetworkId } from "src/constants";
-import { EnvHelper } from "src/helpers/Environment";
+// import { NetworkId } from "src/constants";
+// import { EnvHelper } from "src/helpers/Environment";
 import { useAppDispatch } from "src/hooks";
 import { useWeb3Context } from "src/hooks/web3Context";
-import { ACTION_GIVE, changeGive, changeMockGive, isSupportedChain } from "src/slices/GiveThunk";
+import { ACTION_GIVE, changeGive, /*changeMockGive,*/ isSupportedChain } from "src/slices/GiveThunk";
 import { CancelCallback, SubmitCallback } from "src/views/Give/Interfaces";
 import { RecipientModal } from "src/views/Give/RecipientModal";
 
@@ -54,21 +54,21 @@ export default function CausesDashboard() {
 
     // If on Rinkeby and using Mock Sohm, use the changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(
-        changeMockGive({
-          action: ACTION_GIVE,
-          value: depositAmount.toFixed(),
-          recipient: walletAddress,
-          provider,
-          address,
-          networkID: networkId,
-          version2: false,
-          rebase: false,
-          eventSource: eventSource,
-        }),
-      );
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(
+    //     changeMockGive({
+    //       action: ACTION_GIVE,
+    //       value: depositAmount.toFixed(),
+    //       recipient: walletAddress,
+    //       provider,
+    //       address,
+    //       networkID: networkId,
+    //       version2: false,
+    //       rebase: false,
+    //       eventSource: eventSource,
+    //     }),
+    //   );
+    // } else {
       await dispatch(
         changeGive({
           action: ACTION_GIVE,
@@ -85,7 +85,7 @@ export default function CausesDashboard() {
     }
 
     setIsCustomGiveModalOpen(false);
-  };
+  // };
 
   const handleCustomGiveModalCancel: CancelCallback = () => {
     setIsCustomGiveModalOpen(false);

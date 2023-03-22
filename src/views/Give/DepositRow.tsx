@@ -8,13 +8,13 @@ import { BigNumber } from "bignumber.js";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { NetworkId } from "src/constants";
-import { EnvHelper } from "src/helpers/Environment";
+// import { NetworkId } from "src/constants";
+// import { EnvHelper } from "src/helpers/Environment";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { SubmitCallback } from "src/views/Give/Interfaces";
 
 import { Project } from "../../components/GiveProject/project.type";
-import { ACTION_GIVE_EDIT, ACTION_GIVE_WITHDRAW, changeGive, changeMockGive } from "../../slices/GiveThunk";
+import { ACTION_GIVE_EDIT, ACTION_GIVE_WITHDRAW, changeGive/*, changeMockGive*/ } from "../../slices/GiveThunk";
 import { error } from "../../slices/MessagesSlice";
 import { ManageDonationModal, WithdrawSubmitCallback } from "./ManageDonationModal";
 import data from "./projects.json";
@@ -67,21 +67,21 @@ export const DepositTableRow = ({ depositObject }: DepositRowProps) => {
 
     // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(
-        changeMockGive({
-          action: ACTION_GIVE_EDIT,
-          value: depositAmountDiff.toFixed(),
-          recipient: walletAddress,
-          provider,
-          address,
-          networkID: networkId,
-          version2: false,
-          rebase: false,
-          eventSource,
-        }),
-      );
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(
+    //     changeMockGive({
+    //       action: ACTION_GIVE_EDIT,
+    //       value: depositAmountDiff.toFixed(),
+    //       recipient: walletAddress,
+    //       provider,
+    //       address,
+    //       networkID: networkId,
+    //       version2: false,
+    //       rebase: false,
+    //       eventSource,
+    //     }),
+    //   );
+    // } else {
       await dispatch(
         changeGive({
           action: ACTION_GIVE_EDIT,
@@ -95,7 +95,7 @@ export const DepositTableRow = ({ depositObject }: DepositRowProps) => {
           eventSource,
         }),
       );
-    }
+    // }
 
     setIsManageModalOpen(false);
   };
@@ -104,21 +104,21 @@ export const DepositTableRow = ({ depositObject }: DepositRowProps) => {
   // Else use standard call
   const handleWithdrawModalSubmit: WithdrawSubmitCallback = async (walletAddress, eventSource, depositAmount) => {
     // Issue withdrawal from smart contract
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(
-        changeMockGive({
-          action: ACTION_GIVE_WITHDRAW,
-          value: depositAmount.toFixed(),
-          recipient: walletAddress,
-          provider,
-          address,
-          networkID: networkId,
-          version2: false,
-          rebase: false,
-          eventSource,
-        }),
-      );
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(
+    //     changeMockGive({
+    //       action: ACTION_GIVE_WITHDRAW,
+    //       value: depositAmount.toFixed(),
+    //       recipient: walletAddress,
+    //       provider,
+    //       address,
+    //       networkID: networkId,
+    //       version2: false,
+    //       rebase: false,
+    //       eventSource,
+    //     }),
+    //   );
+    // } else {
       await dispatch(
         changeGive({
           action: ACTION_GIVE_WITHDRAW,
@@ -132,7 +132,7 @@ export const DepositTableRow = ({ depositObject }: DepositRowProps) => {
           eventSource,
         }),
       );
-    }
+    // }
 
     setIsManageModalOpen(false);
   };

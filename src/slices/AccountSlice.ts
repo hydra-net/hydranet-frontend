@@ -1,7 +1,7 @@
 import { OHMTokenStackProps } from "@olympusdao/component-library";
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import { BigNumber, BigNumberish, ethers } from "ethers";
-import { EnvHelper } from "src/helpers/Environment";
+// import { EnvHelper } from "src/helpers/Environment";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import { RootState } from "src/store";
 import { FiatDAOContract, FuseProxy, IERC20, IERC20__factory, SOhmv2, WsOHM } from "src/typechain";
@@ -494,6 +494,7 @@ export const loadAccountDetails = createAsyncThunk(
     let wsOhmMigrateAllowance = BigNumber.from("0");
 
     try {
+      console.log("Network: "+networkID+" - Gomh address: "+addresses[networkID].GOHM_ADDRESS);
       const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
       gOhmUnwrapAllowance = await gOhmContract.allowance(address, addresses[networkID].STAKING_V2);
 
@@ -523,12 +524,12 @@ export const loadAccountDetails = createAsyncThunk(
     await dispatch(getBalances({ address, networkID, provider }));
     await dispatch(getDonationBalances({ address, networkID, provider }));
     await dispatch(getRedemptionBalances({ address, networkID, provider }));
-    if (networkID === NetworkId.TESTNET_RINKEBY) {
-      await dispatch(getMockDonationBalances({ address, networkID, provider }));
-      await dispatch(getMockRedemptionBalances({ address, networkID, provider }));
-    } else {
-      if (EnvHelper.env.NODE_ENV !== "production") console.log("Give - Contract mocks skipped except on Rinkeby");
-    }
+    // if (networkID === NetworkId.TESTNET_RINKEBY) {
+    //   await dispatch(getMockDonationBalances({ address, networkID, provider }));
+    //   await dispatch(getMockRedemptionBalances({ address, networkID, provider }));
+    // } else {
+    //   if (EnvHelper.env.NODE_ENV !== "production") console.log("Give - Contract mocks skipped except on Rinkeby");
+    // }
 
     return {
       staking: {

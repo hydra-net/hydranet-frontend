@@ -16,7 +16,8 @@ import { ReactComponent as OhmImg } from "../assets/tokens/token_OHM.svg";
 import { ReactComponent as SOhmImg } from "../assets/tokens/token_sOHM.svg";
 import { addresses, BLOCK_RATE_SECONDS, EPOCH_INTERVAL, NetworkId } from "../constants";
 import { PairContract, RedeemHelper } from "../typechain";
-import { ohm_dai, ohm_daiOld, ohm_weth } from "./AllBonds";
+// import { ohm_dai, ohm_daiOld, ohm_weth } from "./AllBonds";
+import { ohm_dai, ohm_weth } from "./AllBonds";
 import { EnvHelper } from "./Environment";
 import { NodeHelper } from "./NodeHelper";
 
@@ -68,14 +69,14 @@ export async function getMarketPriceFromWeth() {
   return (Number(reserves[1].toString()) / Number(reserves[0].toString()) / 10 ** 9) * wethPrice;
 }
 
-export async function getV1MarketPrice() {
-  const mainnetProvider = NodeHelper.getMainnetStaticProvider();
-  // v1 price
-  const ohm_dai_address = ohm_daiOld.getAddressForReserve(NetworkId.MAINNET);
-  const pairContract = new ethers.Contract(ohm_dai_address || "", PairContractABI, mainnetProvider) as PairContract;
-  const reserves = await pairContract.getReserves();
-  return Number(reserves[1].toString()) / Number(reserves[0].toString()) / 10 ** 9;
-}
+// export async function getV1MarketPrice() {
+//   const mainnetProvider = NodeHelper.getMainnetStaticProvider();
+//   // v1 price
+//   const ohm_dai_address = ohm_daiOld.getAddressForReserve(NetworkId.MAINNET);
+//   const pairContract = new ethers.Contract(ohm_dai_address || "", PairContractABI, mainnetProvider) as PairContract;
+//   const reserves = await pairContract.getReserves();
+//   return Number(reserves[1].toString()) / Number(reserves[0].toString()) / 10 ** 9;
+// }
 
 /**
  * gets price of token from coingecko
@@ -152,14 +153,14 @@ export async function getTokenIdByContract(contractAddress: string): Promise<str
 }
 
 export const getEtherscanUrl = ({ bond, networkId }: { bond: IBondV2; networkId: NetworkId }) => {
-  if (networkId === NetworkId.TESTNET_RINKEBY) {
-    return `https://rinkeby.etherscan.io/address/${bond.quoteToken}`;
+  if (networkId === NetworkId.TESTNET_GOERLI) {
+    return `https://goerli.etherscan.io/address/${bond.quoteToken}`;
   }
   return `https://etherscan.io/address/${bond.quoteToken}`;
 };
 
 export const getArbitrumscanUrl = ({ bond, networkId }: { bond: IBondV2; networkId: NetworkId }) => {
-  if (networkId === NetworkId.ARBITRUM_TESTNET) {
+  if (networkId === NetworkId.ARBITRUM_GOERLI) {
     return `https://testnet.arbiscan.io/address/${bond.quoteToken}`;
   }
   return `https://arbiscan.io/address/${bond.quoteToken}`;

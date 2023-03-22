@@ -23,8 +23,8 @@ import ReactGA from "react-ga";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { ReactComponent as GiveSohm } from "src/assets/icons/give_sohm.svg";
-import { NetworkId } from "src/constants";
-import { EnvHelper } from "src/helpers/Environment";
+// import { NetworkId } from "src/constants";
+// import { EnvHelper } from "src/helpers/Environment";
 import { getTotalDonated } from "src/helpers/GetTotalDonated";
 import { getDonorNumbers, getRedemptionBalancesAsync } from "src/helpers/GiveRedemptionBalanceHelper";
 import { useAppDispatch } from "src/hooks";
@@ -36,7 +36,7 @@ import {
   ACTION_GIVE_EDIT,
   ACTION_GIVE_WITHDRAW,
   changeGive,
-  changeMockGive,
+  // changeMockGive,
   isSupportedChain,
 } from "src/slices/GiveThunk";
 import { IPendingTxn } from "src/slices/PendingTxnsSlice";
@@ -99,9 +99,10 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
 
   const donationInfo = useSelector((state: State) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)
-      ? state.account.mockGiving && state.account.mockGiving.donationInfo
-      : state.account.giving && state.account.giving.donationInfo;
+    // return networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)
+    //   ? state.account.mockGiving && state.account.mockGiving.donationInfo
+    //   : state.account.giving && state.account.giving.donationInfo;
+    return state.account.giving && state.account.giving.donationInfo;
   });
 
   const theme = useTheme();
@@ -376,21 +377,21 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
 
     // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(
-        changeMockGive({
-          action: ACTION_GIVE,
-          value: depositAmount.toFixed(),
-          recipient: walletAddress,
-          provider,
-          address,
-          networkID: networkId,
-          version2: false,
-          rebase: false,
-          eventSource: eventSource,
-        }),
-      );
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(
+    //     changeMockGive({
+    //       action: ACTION_GIVE,
+    //       value: depositAmount.toFixed(),
+    //       recipient: walletAddress,
+    //       provider,
+    //       address,
+    //       networkID: networkId,
+    //       version2: false,
+    //       rebase: false,
+    //       eventSource: eventSource,
+    //     }),
+    //   );
+    // } else {
       await dispatch(
         changeGive({
           action: ACTION_GIVE,
@@ -404,7 +405,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
           eventSource: eventSource,
         }),
       );
-    }
+    // }
 
     setIsGiveModalOpen(false);
   };
@@ -427,21 +428,21 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
 
     // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(
-        changeMockGive({
-          action: ACTION_GIVE_EDIT,
-          value: depositAmountDiff.toFixed(),
-          recipient: walletAddress,
-          provider,
-          address,
-          networkID: networkId,
-          version2: false,
-          rebase: false,
-          eventSource,
-        }),
-      );
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(
+    //     changeMockGive({
+    //       action: ACTION_GIVE_EDIT,
+    //       value: depositAmountDiff.toFixed(),
+    //       recipient: walletAddress,
+    //       provider,
+    //       address,
+    //       networkID: networkId,
+    //       version2: false,
+    //       rebase: false,
+    //       eventSource,
+    //     }),
+    //   );
+    // } else {
       await dispatch(
         changeGive({
           action: ACTION_GIVE_EDIT,
@@ -455,7 +456,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
           eventSource,
         }),
       );
-    }
+    // }
 
     setIsManageModalOpen(false);
   };
@@ -463,21 +464,21 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
   const handleWithdrawModalSubmit: WithdrawSubmitCallback = async (walletAddress, eventSource, depositAmount) => {
     // If on Rinkeby and using Mock Sohm, use changeMockGive async thunk
     // Else use standard call
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(
-        changeMockGive({
-          action: ACTION_GIVE_WITHDRAW,
-          value: depositAmount.toFixed(),
-          recipient: walletAddress,
-          provider,
-          address,
-          networkID: networkId,
-          version2: false,
-          rebase: false,
-          eventSource,
-        }),
-      );
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(
+    //     changeMockGive({
+    //       action: ACTION_GIVE_WITHDRAW,
+    //       value: depositAmount.toFixed(),
+    //       recipient: walletAddress,
+    //       provider,
+    //       address,
+    //       networkID: networkId,
+    //       version2: false,
+    //       rebase: false,
+    //       eventSource,
+    //     }),
+    //   );
+    // } else {
       await dispatch(
         changeGive({
           action: ACTION_GIVE_WITHDRAW,
@@ -491,7 +492,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
           eventSource,
         }),
       );
-    }
+    // }
 
     setIsManageModalOpen(false);
   };

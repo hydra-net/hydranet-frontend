@@ -159,10 +159,10 @@ test("getCreditMaturationDaysAndLimitPercentage days is monotonously decreasing 
   );
 });
 
-test("poolTogetherUILinks returns rinkeby URLs when NetworkId is Rinkeby", async () => {
-  const urls: string[] = poolTogetherUILinks(NetworkId.TESTNET_RINKEBY);
-  urls.forEach(url => expect(url).toContain("rinkeby"));
-});
+// test("poolTogetherUILinks returns rinkeby URLs when NetworkId is Rinkeby", async () => {
+//   const urls: string[] = poolTogetherUILinks(NetworkId.TESTNET_RINKEBY);
+//   urls.forEach(url => expect(url).toContain("rinkeby"));
+// });
 
 test("poolTogetherUILinks returns mainnet URLs when NetworkId is Mainnet", async () => {
   const urls: string[] = poolTogetherUILinks(NetworkId.MAINNET);

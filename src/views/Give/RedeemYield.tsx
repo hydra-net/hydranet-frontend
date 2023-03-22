@@ -7,15 +7,15 @@ import { BigNumber } from "bignumber.js";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { NetworkId } from "src/constants";
-import { EnvHelper } from "src/helpers/Environment";
+// import { NetworkId } from "src/constants";
+// import { EnvHelper } from "src/helpers/Environment";
 import { getTotalDonated } from "src/helpers/GetTotalDonated";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { loadAccountDetails } from "src/slices/AccountSlice";
 import { isPendingTxn, txnButtonText } from "src/slices/PendingTxnsSlice";
 
 import { Project } from "../../components/GiveProject/project.type";
-import { redeemBalance, redeemMockBalance } from "../../slices/RedeemThunk";
+import { redeemBalance/*, redeemMockBalance*/ } from "../../slices/RedeemThunk";
 import { DonationInfoState } from "./Interfaces";
 import data from "./projects.json";
 import { RedeemCancelCallback, RedeemYieldModal } from "./RedeemYieldModal";
@@ -32,9 +32,10 @@ export default function RedeemYield() {
   const isAppLoading = useSelector((state: DonationInfoState) => state.app.loading);
 
   const redeemableBalance = useSelector((state: DonationInfoState) => {
-    return networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)
-      ? state.account.mockRedeeming && state.account.mockRedeeming.sohmRedeemable
-      : state.account.redeeming && state.account.redeeming.sohmRedeemable;
+    // return networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)
+    //   ? state.account.mockRedeeming && state.account.mockRedeeming.sohmRedeemable
+    //   : state.account.redeeming && state.account.redeeming.sohmRedeemable;
+    return state.account.redeeming && state.account.redeeming.sohmRedeemable;
   });
 
   const recipientInfo = useSelector((state: DonationInfoState) => {
@@ -131,11 +132,11 @@ export default function RedeemYield() {
   };
 
   const handleRedeemYieldModalSubmit = async () => {
-    if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
-      await dispatch(redeemMockBalance({ address, provider, networkID: networkId, eventSource: "Redeem" }));
-    } else {
+    // if (networkId === NetworkId.TESTNET_RINKEBY && EnvHelper.isMockSohmEnabled(location.search)) {
+    //   await dispatch(redeemMockBalance({ address, provider, networkID: networkId, eventSource: "Redeem" }));
+    // } else {
       await dispatch(redeemBalance({ address, provider, networkID: networkId, eventSource: "Redeem" }));
-    }
+    // }
     setIsRedeemYieldModalOpen(false);
   };
 
