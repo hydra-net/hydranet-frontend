@@ -314,27 +314,25 @@ export const arb = new CustomBond({
   },
   networkAddrs: {
     [NetworkId.MAINNET]: {
-      bondAddress: "0xE6295201CD1ff13CeD5f063a5421c39A1D236F1c",
-      reserveAddress: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      bondAddress: "",
+      reserveAddress: "",
     },
     [NetworkId.ARBITRUM]: {
       bondAddress: "",
-      reserveAddress: "0x912CE59144191C1204E64559FE8253a0e49E6548",
+      reserveAddress: "0x912ce59144191c1204e64559fe8253a0e49e6548",
     },
     [NetworkId.ARBITRUM_TESTNET]: {
-      bondAddress: "0x81999A3239238c655961B03680a30e43C9F9D9Ff",
-      reserveAddress: "0xF861378B543525ae0C47d33C90C954Dc774Ac1F9",
+      bondAddress: "",
+      reserveAddress: "0xcf7cff063c643842210aff90ff015b235da4d511",
     },
     // FIXME
     [NetworkId.Localhost]: {
-      bondAddress: "0xca7b90f8158A4FAA606952c023596EE6d322bcf0",
-      reserveAddress: "0xc778417e063141139fce010982780140aa0cd5ab",
+      bondAddress: "",
+      reserveAddress: "",
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
-    const arbBondContract = this.getContractForBond(NetworkId, provider);
-    let arbPrice: BigNumberish = await arbBondContract.assetPrice();
-    arbPrice = Number(arbPrice.toString()) / Math.pow(10, 8);
+    const arbPrice: number = await getTokenPrice("arbitrum");
     const token = this.getContractForReserve(NetworkId, provider);
     let arbAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
     arbAmount = Number(arbAmount.toString()) / Math.pow(10, 18);
