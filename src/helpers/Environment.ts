@@ -212,8 +212,16 @@ export class EnvHelper {
   }
 
   static getFallbackURIs(networkId: NetworkId) {
-    const ALL_URIs = [...EnvHelper.getAlchemyAPIKeyList(networkId), ...EnvHelper.getInfuraIdList()];
-    return ALL_URIs;
+    switch (networkId) {
+      case NetworkId.MAINNET:
+        return ["https://mainnet.infura.io/v3/be0719cb3b2645159bf43f036d7eb216"];
+      case NetworkId.ARBITRUM:
+        return ["https://arbitrum-mainnet.infura.io/v3/be0719cb3b2645159bf43f036d7eb216"];
+      default:
+        return [""];
+    }
+    // const ALL_URIs = [...EnvHelper.getAlchemyAPIKeyList(networkId), ...EnvHelper.getInfuraIdList()];
+    // return ALL_URIs;
   }
 
   /**
@@ -226,13 +234,14 @@ export class EnvHelper {
    * @returns
    */
   static isGiveEnabled(url: string): boolean {
-    const giveEnabled = EnvHelper.env.REACT_APP_GIVE_ENABLED;
+    return false;
+    // const giveEnabled = EnvHelper.env.REACT_APP_GIVE_ENABLED;
 
     // If the variable isn't set, we default to true.
     // We also want to be case-insensitive.
-    if (giveEnabled !== undefined && giveEnabled.toLowerCase() === "false") return false;
+    // if (giveEnabled !== undefined && giveEnabled.toLowerCase() === "false") return false;
 
-    return true;
+    // return true;
   }
 
   /**
@@ -248,6 +257,7 @@ export class EnvHelper {
    * @returns
    */
   static isMockSohmEnabled(url: string): boolean {
+    return false;
     const mockSohmEnabled = EnvHelper.env.REACT_APP_MOCK_SOHM_ENABLED;
     const mockSohmEnabledParameter = url && url.includes("mock_sohm");
 

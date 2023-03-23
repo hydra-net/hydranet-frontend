@@ -99,9 +99,14 @@ export async function getTokenPrice(tokenId = "olympus"): Promise<number> {
       data: { [id: string]: { usd: number } };
     };
     tokenPrice = cgResp.data[tokenId].usd;
-    console.log(cgResp);
+    // DEBUG
+    // console.log(cgResp);
   } finally {
     console.info(`Token price from coingecko for ${tokenId}: ${tokenPrice}`);
+    if (!!!tokenPrice) {
+      tokenPrice = 0;
+      console.info(`Token price from coingecko for ${tokenId} is invalid, setting to 0`);
+    }
     return tokenPrice;
   }
 }
