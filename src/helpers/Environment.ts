@@ -30,11 +30,9 @@ export class EnvHelper {
   }
 
   static getCovalentKey() {
-    let CKEYS: string[] = [];
+    let CKEYS: string[] = ["ckey_bec1297a70734279b8d239565c2"];
     if (EnvHelper.env.REACT_APP_COVALENT && EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_COVALENT)) {
       CKEYS = EnvHelper.env.REACT_APP_COVALENT.split(EnvHelper.whitespaceRegex);
-    } else {
-      console.warn("you must set at least 1 REACT_APP_COVALENT key in your ENV");
     }
     const randomIndex = Math.floor(Math.random() * CKEYS.length);
     return CKEYS[randomIndex];

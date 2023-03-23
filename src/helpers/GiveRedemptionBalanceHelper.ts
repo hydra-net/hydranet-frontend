@@ -43,9 +43,11 @@ export const getRedemptionBalancesAsync = async ({ address, networkID, provider 
     } catch (e: unknown) {
       console.log(e);
     }
-  } else {
-    console.log("Unable to find MOCK_SOHM contract on chain ID " + networkID);
   }
+  // TODO: remove
+  // else {
+  //   console.log("Unable to find MOCK_SOHM contract on chain ID " + networkID);
+  // }
 
   return {
     redeeming: {
