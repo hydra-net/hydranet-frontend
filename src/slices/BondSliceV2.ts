@@ -226,11 +226,17 @@ async function processBond(
     console.error(`Add details for bond index=${index}`);
   }
   const quoteTokenPrice = await v2BondDetail.pricingFunction(provider, bond.quoteToken);
+  console.log(`${bond.quoteToken}: quoteTokenPrice=${quoteTokenPrice}`);
   const bondPriceBigNumber = await depositoryContract.marketPrice(index);
+  console.log(`${bond.quoteToken}: bondPriceBigNumber=${bondPriceBigNumber}`);
   const bondPrice = +bondPriceBigNumber / Math.pow(10, BASE_TOKEN_DECIMALS);
+  console.log(`${bond.quoteToken}: bondPrice=${bondPrice}`);
   const bondPriceUSD = quoteTokenPrice * +bondPrice;
+  console.log(`${bond.quoteToken}: bondPriceUSD=${bondPriceUSD}`);
   const ohmPrice = (await dispatch(findOrLoadMarketPrice({ provider, networkID })).unwrap())?.marketPrice;
+  console.log(`${bond.quoteToken}: ohmPrice=${ohmPrice}`);
   const bondDiscount = (ohmPrice - bondPriceUSD) / ohmPrice;
+  console.log(`${bond.quoteToken}: bondDiscount=${bondDiscount}`);
 
   let capacityInBaseToken: string, capacityInQuoteToken: string;
   if (bond.capacityInQuote) {
@@ -322,6 +328,9 @@ export const getAllBonds = createAsyncThunk(
         const bondMetadata: IBondV2Meta = await liveBondMetadataPromises[i];
         const bondTerms: IBondV2Terms = await liveBondTermsPromises[i];
         const finalBond = await processBond(bond, bondMetadata, bondTerms, bondIndex, provider, networkID, dispatch);
+        // DEBUG
+        // console.log(`finalBond -- ${finalBond.displayName}`);
+        // console.log(finalBond);
         liveBonds.push(finalBond);
 
         if (address) {
