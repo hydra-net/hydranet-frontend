@@ -17,7 +17,7 @@ import { shouldTriggerSafetyCheck } from "./helpers";
 import { calcBondDetails } from "./slices/BondSlice";
 import { loadAppDetails } from "./slices/AppSlice";
 import { loadAccountDetails, calculateUserBondDetails, getMigrationAllowances } from "./slices/AccountSlice";
-import { getZapTokenBalances } from "./slices/ZapSlice";
+// import { getZapTokenBalances } from "./slices/ZapSlice";
 import { info } from "./slices/MessagesSlice";
 
 import { Stake, TreasuryDashboard, V1Stake, Give, BondV2, ChooseBondV2 } from "./views";
@@ -169,14 +169,14 @@ function App() {
           dispatch(calculateUserBondDetails({ address, bond, provider: loadProvider, networkID: networkId }));
         }
       });
-      dispatch(getZapTokenBalances({ address, networkID: networkId, provider: loadProvider }));
+      // dispatch(getZapTokenBalances({ address, networkID: networkId, provider: loadProvider }));
       expiredBonds.map(bond => {
         if (bond.getClaimability(networkId)) {
           dispatch(calculateUserBondDetails({ address, bond, provider: loadProvider, networkID: networkId }));
         }
       });
     },
-    [networkId, address, providerInitialized],
+    [providerInitialized, dispatch, networkId, address, bonds, expiredBonds],
   );
 
   const oldAssetsDetected = useAppSelector(state => {

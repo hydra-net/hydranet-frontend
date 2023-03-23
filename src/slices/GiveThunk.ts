@@ -9,7 +9,7 @@ import { abi as OlympusMockGiving } from "../abi/OlympusMockGiving.json";
 import { addresses, NetworkId } from "../constants";
 import { trackGAEvent, trackSegmentEvent } from "../helpers/analytics";
 import { getGiveProjectName } from "../helpers/GiveProjectNameHelper";
-import { fetchAccountSuccess, getBalances, getDonationBalances, getMockDonationBalances } from "./AccountSlice";
+import { fetchAccountSuccess, getBalances, getMockDonationBalances } from "./AccountSlice";
 import {
   IActionValueRecipientAsyncThunk,
   IBaseAddressAsyncThunk,
@@ -227,7 +227,7 @@ export const changeGive = createAsyncThunk(
       }
     }
     dispatch(getBalances({ address, networkID, provider }));
-    dispatch(getDonationBalances({ address, networkID, provider }));
+    // dispatch(getDonationBalances({ address, networkID, provider }));
   },
 );
 

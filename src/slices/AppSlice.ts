@@ -4,7 +4,7 @@ import { RootState } from "src/store";
 
 import { abi as sOHMv2 } from "../abi/sOhmv2.json";
 import { addresses } from "../constants";
-import { getMarketPrice, getTokenPrice, setAll } from "../helpers";
+import { getTokenPrice, setAll } from "../helpers";
 import apollo from "../lib/apolloClient";
 import { OlympusStaking__factory, OlympusStakingv2__factory, SOhmv2 } from "../typechain";
 import { IBaseAsyncThunk } from "./interfaces";
@@ -171,14 +171,15 @@ export const findOrLoadMarketPrice = createAsyncThunk(
  * - updates the App.slice when it runs
  */
 const loadMarketPrice = createAsyncThunk("app/loadMarketPrice", async ({ networkID, provider }: IBaseAsyncThunk) => {
-  let marketPrice: number;
-  try {
-    // only get marketPrice from eth mainnet
-    marketPrice = await getMarketPrice();
-    // v1MarketPrice = await getV1MarketPrice();
-  } catch (e) {
-    marketPrice = await getTokenPrice("olympus");
-  }
+  // let marketPrice: number;
+  // try {
+  //   // only get marketPrice from eth mainnet
+  //   marketPrice = await getMarketPrice();
+  //   // v1MarketPrice = await getV1MarketPrice();
+  // } catch (e) {
+  //   marketPrice = await getTokenPrice("hydranet");
+  // }
+  const marketPrice = await getTokenPrice("hydranet");
   return { marketPrice };
 });
 

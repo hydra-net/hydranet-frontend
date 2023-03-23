@@ -1,7 +1,6 @@
 import { OHMTokenStackProps } from "@olympusdao/component-library";
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import { BigNumber, BigNumberish, ethers } from "ethers";
-import { EnvHelper } from "src/helpers/Environment";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import { RootState } from "src/store";
 import { FiatDAOContract, FuseProxy, IERC20, IERC20__factory, SOhmv2, WsOHM } from "src/typechain";
@@ -80,7 +79,6 @@ export const getBalances = createAsyncThunk(
     let gOhmOnTokemakAsSohm = BigNumber.from("0");
     let ohmBalance = BigNumber.from("0");
     let sohmBalance = BigNumber.from("0");
-    let mockSohmBalance = BigNumber.from("0");
     let ohmV2Balance = BigNumber.from("0");
     let sohmV2Balance = BigNumber.from("0");
     let wsohmBalance = BigNumber.from("0");
@@ -89,6 +87,8 @@ export const getBalances = createAsyncThunk(
     let fgohmBalance = BigNumber.from(0);
     let fgOHMAsfsOHMBalance = BigNumber.from(0);
     let fiatDaowsohmBalance = BigNumber.from("0");
+    // TODO: remove
+    const mockSohmBalance = BigNumber.from("0");
 
     const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
     try {
@@ -225,16 +225,16 @@ export const getBalances = createAsyncThunk(
       Needed a sOHM contract on testnet that could easily
       be manually rebased to test redeem features
     */
-    if (addresses[networkID] && addresses[networkID].MOCK_SOHM) {
-      const mockSohmContract = new ethers.Contract(
-        addresses[networkID].MOCK_SOHM as string,
-        MockSohm,
-        provider,
-      ) as IERC20;
-      mockSohmBalance = await mockSohmContract.balanceOf(address);
-    } else {
-      console.debug("Unable to find MOCK_SOHM contract on chain ID " + networkID);
-    }
+    // if (addresses[networkID] && addresses[networkID].MOCK_SOHM) {
+    //   const mockSohmContract = new ethers.Contract(
+    //     addresses[networkID].MOCK_SOHM as string,
+    //     MockSohm,
+    //     provider,
+    //   ) as IERC20;
+    //   mockSohmBalance = await mockSohmContract.balanceOf(address);
+    // } else {
+    //   console.debug("Unable to find MOCK_SOHM contract on chain ID " + networkID);
+    // }
 
     return {
       balances: {
@@ -521,14 +521,14 @@ export const loadAccountDetails = createAsyncThunk(
       handleContractError(e);
     }
     await dispatch(getBalances({ address, networkID, provider }));
-    await dispatch(getDonationBalances({ address, networkID, provider }));
+    // await dispatch(getDonationBalances({ address, networkID, provider }));
     await dispatch(getRedemptionBalances({ address, networkID, provider }));
-    if (networkID === NetworkId.TESTNET_RINKEBY) {
-      await dispatch(getMockDonationBalances({ address, networkID, provider }));
-      await dispatch(getMockRedemptionBalances({ address, networkID, provider }));
-    } else {
-      if (EnvHelper.env.NODE_ENV !== "production") console.log("Give - Contract mocks skipped except on Rinkeby");
-    }
+    // if (networkID === NetworkId.TESTNET_RINKEBY) {
+    //   await dispatch(getMockDonationBalances({ address, networkID, provider }));
+    //   await dispatch(getMockRedemptionBalances({ address, networkID, provider }));
+    // } else {
+    //   if (EnvHelper.env.NODE_ENV !== "production") console.log("Give - Contract mocks skipped except on Rinkeby");
+    // }
 
     return {
       staking: {
