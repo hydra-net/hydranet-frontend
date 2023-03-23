@@ -183,6 +183,6 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
   [NetworkId.ARBITRUM_TESTNET]: {
     ["0x0eef05a0ca8847bdb762f687f8fdfa1f24cff43a"]: DaiDetails,
     ["0xb47e6a5f8b33b3f17603c83a0535a9dcd7e32681"]: EthDetails,
-    ["0xf861378b543525ae0c47d33c90c954dc774ac1f9"]: ArbDetails,
+    ["0xcf7cff063c643842210aff90ff015b235da4d511"]: ArbDetails,
   },
 };
