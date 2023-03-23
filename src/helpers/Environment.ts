@@ -201,12 +201,14 @@ export class EnvHelper {
    * @returns array of API urls
    */
   static getAPIUris(networkId: NetworkId) {
-    let ALL_URIs = EnvHelper.getSelfHostedNode(networkId);
-    if (ALL_URIs.length === 0) {
-      console.warn("API keys must be set in the .env, reverting to fallbacks");
-      ALL_URIs = EnvHelper.getFallbackURIs(networkId);
-    }
-    return ALL_URIs;
+    // TODO: reasonable local node detection and remove this nonsense
+    // let ALL_URIs = EnvHelper.getSelfHostedNode(networkId);
+    // if (ALL_URIs.length === 0) {
+    //   console.warn("API keys must be set in the .env, reverting to fallbacks");
+    //   ALL_URIs = EnvHelper.getFallbackURIs(networkId);
+    // }
+    // return ALL_URIs;
+    return EnvHelper.getFallbackURIs(networkId);
   }
 
   static getFallbackURIs(networkId: NetworkId) {
