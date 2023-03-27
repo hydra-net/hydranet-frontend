@@ -5,6 +5,7 @@ import { t, Trans } from "@lingui/macro";
 import { Link, Paper, Slide, SvgIcon, TableCell, TableRow, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { TertiaryButton, TokenStack } from "@olympusdao/component-library";
+import arbIcon from "../../assets/tokens/arb.svg";
 import hdxIcon from "../../assets/icons/hdx.svg";
 import ethIcon from "../../assets/icons/eth.svg";
 import { NavLink } from "react-router-dom";
@@ -118,6 +119,20 @@ export function BondTableData({ bond, networkId }: { bond: IBondV2; networkId: N
               }}
             />
             <img src={ethIcon} style={{ width: "35px", height: "35px", position: "absolute", left: "30px" }} />
+          </div>
+        ) : bond.displayName === "ARB" ? (
+          <div
+            style={{
+              position: "relative",
+            }}
+          >
+            <img
+              src={arbIcon}
+              style={{
+                width: "35px",
+                height: "35px",
+              }}
+            />
           </div>
         ) : (
           <TokenStack tokens={bond.bondIconSvg} />
