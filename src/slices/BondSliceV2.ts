@@ -152,7 +152,7 @@ export const purchaseBond = createAsyncThunk(
     const signer = provider.getSigner();
     const depositoryContract = BondDepository__factory.connect(addresses[networkID].BOND_DEPOSITORY, signer);
 
-    console.log("HERE - 1", addresses[networkID].BOND_DEPOSITORY);
+    // console.log("HERE - 1", addresses[networkID].BOND_DEPOSITORY);
 
     let depositTx: ethers.ContractTransaction | undefined;
     try {
@@ -166,13 +166,13 @@ export const purchaseBond = createAsyncThunk(
       const text = `Purchase ${bond.displayName} Bond`;
       const pendingTxnType = `bond_${bond.displayName}`;
       if (depositTx) {
-        console.log("HERE - 2", depositTx);
+        // console.log("HERE - 2", depositTx);
         dispatch(fetchPendingTxns({ txnHash: depositTx.hash, text, type: pendingTxnType }));
         await depositTx.wait();
         dispatch(clearPendingTxn(depositTx.hash));
       }
     } catch (e: unknown) {
-      console.log("HERE - 3", e);
+      // console.log("HERE - 3", e);
       dispatch(error((e as IJsonRPCError).message));
       return;
     } finally {
@@ -422,9 +422,9 @@ export const claimAllNotes = createAsyncThunk(
 
     let claimTx: ethers.ContractTransaction | undefined;
     try {
-      console.log("HERE - 21");
+      // console.log("HERE - 21");
       claimTx = await depositoryContract.redeemAll(address, gOHM);
-      console.log("HERE - 22");
+      // console.log("HERE - 22");
       const text = `Claim All Bonds`;
       const pendingTxnType = `redeem_all_notes`;
       if (claimTx) {
@@ -434,7 +434,7 @@ export const claimAllNotes = createAsyncThunk(
         dispatch(clearPendingTxn(claimTx.hash));
       }
     } catch (e: unknown) {
-      console.log("HERE - 20", e);
+      // console.log("HERE - 20", e);
       dispatch(error((e as IJsonRPCError).message));
       return;
     } finally {
