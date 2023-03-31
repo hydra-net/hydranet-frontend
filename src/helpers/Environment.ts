@@ -30,7 +30,7 @@ export class EnvHelper {
   }
 
   static getCovalentKey() {
-    let CKEYS: string[] = ["ckey_024a8f4f1fee42a9b098f79360f", "ckey_bec1297a70734279b8d239565c2"];
+    let CKEYS: string[] = ["ckey_c073560f1fc346afa5acda20e38"];
     if (EnvHelper.env.REACT_APP_COVALENT && EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_COVALENT)) {
       CKEYS = EnvHelper.env.REACT_APP_COVALENT.split(EnvHelper.whitespaceRegex);
     }
