@@ -217,6 +217,8 @@ export class EnvHelper {
         return ["https://mainnet.infura.io/v3/be0719cb3b2645159bf43f036d7eb216"];
       case NetworkId.ARBITRUM:
         return ["https://arbitrum-mainnet.infura.io/v3/be0719cb3b2645159bf43f036d7eb216"];
+      case NetworkId.ARBITRUM_TESTNET:
+        return ["https://arbitrum-goerli.infura.io/v3/be0719cb3b2645159bf43f036d7eb216"];
       default:
         return [""];
     }

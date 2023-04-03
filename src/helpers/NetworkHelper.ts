@@ -1,7 +1,6 @@
 import { JsonRpcProvider, StaticJsonRpcProvider } from "@ethersproject/providers";
 
 import { NETWORKS } from "../constants";
-import { EnvHelper } from "../helpers/Environment";
 import { NodeHelper } from "../helpers/NodeHelper";
 
 interface IGetCurrentNetwork {
@@ -19,26 +18,26 @@ export const initNetworkFunc = async ({ provider }: IGetCurrentNetwork) => {
         networkName = "Ethereum";
         uri = NodeHelper.getMainnetURI(id);
         break;
-      case 4:
-        networkName = "Rinkeby Testnet";
-        uri = NodeHelper.getMainnetURI(id);
-        break;
+      // case 4:
+      //   networkName = "Rinkeby Testnet";
+      //   uri = NodeHelper.getMainnetURI(id);
+      //   break;
       case 42161:
         networkName = "Arbitrum";
         uri = NodeHelper.getMainnetURI(id);
         break;
-      case 421611:
+      case 421613:
         networkName = "Arbitrum Testnet";
-        uri = EnvHelper.alchemyArbitrumTestnetURI;
-        break;
-      case 43113:
-        networkName = "Avalanche Fuji Testnet";
-        uri = EnvHelper.alchemyAvalancheTestnetURI;
-        break;
-      case 43114:
-        networkName = "Avalanche";
         uri = NodeHelper.getMainnetURI(id);
         break;
+      // case 43113:
+      //   networkName = "Avalanche Fuji Testnet";
+      //   uri = EnvHelper.alchemyAvalancheTestnetURI;
+      //   break;
+      // case 43114:
+      //   networkName = "Avalanche";
+      //   uri = NodeHelper.getMainnetURI(id);
+      //   break;
       default:
         supported = false;
         networkName = "Unsupported Network";
