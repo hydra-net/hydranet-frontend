@@ -84,6 +84,26 @@ const ArbDetails: V2BondDetails = {
   lpUrl: {},
 };
 
+const UsdcDetails: V2BondDetails = {
+  name: "USDC",
+  bondIconSvg: ["USDC"],
+  pricingFunction: async () => {
+    return getTokenPrice("arbitrum");
+  },
+  isLP: false,
+  lpUrl: {},
+};
+
+const UsdtDetails: V2BondDetails = {
+  name: "USDT",
+  bondIconSvg: ["USDT"],
+  pricingFunction: async () => {
+    return getTokenPrice("arbitrum");
+  },
+  isLP: false,
+  lpUrl: {},
+};
+
 const CvxDetails: V2BondDetails = {
   name: "CVX",
   bondIconSvg: ["CVX"],
@@ -179,6 +199,8 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
     ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"]: EthDetails,
     ["0x260e9733ba45017cc57ce94747d2aa941ef4e6a7"]: HdxEthDetails,
     ["0x912ce59144191c1204e64559fe8253a0e49e6548"]: ArbDetails,
+    ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"]: UsdcDetails,
+    ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"]: UsdtDetails,
   },
   [NetworkId.ARBITRUM_TESTNET]: {
     ["0x0eef05a0ca8847bdb762f687f8fdfa1f24cff43a"]: DaiDetails,

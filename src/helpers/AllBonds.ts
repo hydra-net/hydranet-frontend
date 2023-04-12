@@ -9,6 +9,8 @@ import { abi as BondOhmDaiContract } from "src/abi/bonds/OhmDaiContract.json";
 import { abi as BondOhmEthContract } from "src/abi/bonds/OhmEthContract.json";
 import { abi as FraxOhmBondContract } from "src/abi/bonds/OhmFraxContract.json";
 import { abi as BondOhmLusdContract } from "src/abi/bonds/OhmLusdContract.json";
+import { abi as UsdcBondContract } from "src/abi/bonds/UsdcContract.json";
+import { abi as UsdtBondContract } from "src/abi/bonds/UsdtContract.json";
 import { abi as ierc20Abi } from "src/abi/IERC20.json";
 import { abi as ReserveOhmDaiContract } from "src/abi/reserves/OhmDai.json";
 import { abi as ReserveOhmEthContract } from "src/abi/reserves/OhmEth.json";
@@ -210,6 +212,112 @@ export const lusd = new StableBond({
     [NetworkId.Localhost]: {
       bondAddress: "0x3aD02C4E4D1234590E87A1f9a73B8E0fd8CF8CCa",
       reserveAddress: "0x45754dF05AA6305114004358eCf8D04FF3B84e26",
+    },
+  },
+});
+
+export const usdt = new StableBond({
+  name: "usdt",
+  displayName: "USDT",
+  bondToken: "USDT",
+  payoutToken: "OHM",
+  v2Bond: false,
+  bondIconSvg: ["USDT"],
+  bondContractABI: UsdtBondContract,
+  isBondable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  isLOLable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  LOLmessage: "",
+  isClaimable: {
+    [NetworkId.MAINNET]: true,
+    [NetworkId.TESTNET_RINKEBY]: true,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  networkAddrs: {
+    [NetworkId.MAINNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkId.ARBITRUM]: {
+      bondAddress: "",
+      reserveAddress: "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+    },
+    [NetworkId.ARBITRUM_TESTNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkId.Localhost]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+  },
+});
+
+export const usdc = new StableBond({
+  name: "usdc",
+  displayName: "USDC",
+  bondToken: "USDC",
+  payoutToken: "OHM",
+  v2Bond: false,
+  bondIconSvg: ["USDC"],
+  bondContractABI: UsdcBondContract,
+  isBondable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  isLOLable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  LOLmessage: "",
+  isClaimable: {
+    [NetworkId.MAINNET]: true,
+    [NetworkId.TESTNET_RINKEBY]: true,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  networkAddrs: {
+    [NetworkId.MAINNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkId.ARBITRUM]: {
+      bondAddress: "",
+      reserveAddress: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+    },
+    [NetworkId.ARBITRUM_TESTNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkId.Localhost]: {
+      bondAddress: "",
+      reserveAddress: "",
     },
   },
 });
