@@ -98,6 +98,22 @@ export const getBalances = createAsyncThunk(
       handleContractError(e);
     }
     try {
+      const usdtProvider = NodeHelper.getAnynetStaticProvider(NetworkId.ARBITRUM);
+      const gOhmUsdtContract = GOHM__factory.connect(addresses[NetworkId.ARBITRUM].GOHM_ADDRESS, usdtProvider);
+      gOhmOnArbitrum = await gOhmUsdtContract.balanceOf(address);
+      gOhmOnArbAsSohm = await gOhmContract.balanceFrom(gOhmOnArbitrum.toString());
+    } catch (e) {
+      handleContractError(e);
+    }
+    try {
+      const usdcProvider = NodeHelper.getAnynetStaticProvider(NetworkId.ARBITRUM);
+      const gOhmUsdcContract = GOHM__factory.connect(addresses[NetworkId.ARBITRUM].GOHM_ADDRESS, usdcProvider);
+      gOhmOnArbitrum = await gOhmUsdcContract.balanceOf(address);
+      gOhmOnArbAsSohm = await gOhmContract.balanceFrom(gOhmOnArbitrum.toString());
+    } catch (e) {
+      handleContractError(e);
+    }
+    try {
       const arbProvider = NodeHelper.getAnynetStaticProvider(NetworkId.ARBITRUM);
       const gOhmArbContract = GOHM__factory.connect(addresses[NetworkId.ARBITRUM].GOHM_ADDRESS, arbProvider);
       gOhmOnArbitrum = await gOhmArbContract.balanceOf(address);
