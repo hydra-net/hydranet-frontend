@@ -88,7 +88,7 @@ const UsdcDetails: V2BondDetails = {
   name: "USDC",
   bondIconSvg: ["USDC"],
   pricingFunction: async () => {
-    return getTokenPrice("arbitrum");
+    return getTokenPrice("usdc");
   },
   isLP: false,
   lpUrl: {},
@@ -98,7 +98,7 @@ const UsdtDetails: V2BondDetails = {
   name: "USDT",
   bondIconSvg: ["USDT"],
   pricingFunction: async () => {
-    return getTokenPrice("arbitrum");
+    return getTokenPrice("usdt");
   },
   isLP: false,
   lpUrl: {},
