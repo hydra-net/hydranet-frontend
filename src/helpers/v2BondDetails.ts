@@ -88,7 +88,7 @@ const UsdcDetails: V2BondDetails = {
   name: "USDC",
   bondIconSvg: ["wETH"],
   pricingFunction: async () => {
-    return getTokenPrice("usdc");
+    return getTokenPrice("usd-coin");
   },
   isLP: false,
   lpUrl: {},
@@ -98,7 +98,7 @@ const UsdtDetails: V2BondDetails = {
   name: "USDT",
   bondIconSvg: ["wETH"],
   pricingFunction: async () => {
-    return getTokenPrice("usdt");
+    return getTokenPrice("tether");
   },
   isLP: false,
   lpUrl: {},
