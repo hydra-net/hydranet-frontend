@@ -398,7 +398,7 @@ export const usdc = new CustomBond({
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
-    const usdcPrice: number = await getTokenPrice("usdc");
+    const usdcPrice: number = await getTokenPrice("usd-coin");
     const token = this.getContractForReserve(NetworkId, provider);
     let usdcAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
     usdcAmount = Number(usdcAmount.toString()) / Math.pow(10, 18);
@@ -462,7 +462,7 @@ export const usdt = new CustomBond({
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
-    const usdtPrice: number = await getTokenPrice("usdt");
+    const usdtPrice: number = await getTokenPrice("tether");
     const token = this.getContractForReserve(NetworkId, provider);
     let usdtAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
     usdtAmount = Number(usdtAmount.toString()) / Math.pow(10, 18);
