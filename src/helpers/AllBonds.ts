@@ -216,112 +216,6 @@ export const lusd = new StableBond({
   },
 });
 
-export const usdt = new StableBond({
-  name: "usdt",
-  displayName: "USDT",
-  bondToken: "USDT",
-  payoutToken: "OHM",
-  v2Bond: false,
-  bondIconSvg: ["USDT"],
-  bondContractABI: UsdtBondContract,
-  isBondable: {
-    [NetworkId.MAINNET]: false,
-    [NetworkId.TESTNET_RINKEBY]: false,
-    [NetworkId.ARBITRUM]: false,
-    [NetworkId.ARBITRUM_TESTNET]: false,
-    [NetworkId.AVALANCHE]: false,
-    [NetworkId.AVALANCHE_TESTNET]: false,
-  },
-  isLOLable: {
-    [NetworkId.MAINNET]: false,
-    [NetworkId.TESTNET_RINKEBY]: false,
-    [NetworkId.ARBITRUM]: false,
-    [NetworkId.ARBITRUM_TESTNET]: false,
-    [NetworkId.AVALANCHE]: false,
-    [NetworkId.AVALANCHE_TESTNET]: false,
-  },
-  LOLmessage: "",
-  isClaimable: {
-    [NetworkId.MAINNET]: true,
-    [NetworkId.TESTNET_RINKEBY]: true,
-    [NetworkId.ARBITRUM]: false,
-    [NetworkId.ARBITRUM_TESTNET]: false,
-    [NetworkId.AVALANCHE]: false,
-    [NetworkId.AVALANCHE_TESTNET]: false,
-  },
-  networkAddrs: {
-    [NetworkId.MAINNET]: {
-      bondAddress: "",
-      reserveAddress: "",
-    },
-    [NetworkId.ARBITRUM]: {
-      bondAddress: "",
-      reserveAddress: "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
-    },
-    [NetworkId.ARBITRUM_TESTNET]: {
-      bondAddress: "",
-      reserveAddress: "",
-    },
-    [NetworkId.Localhost]: {
-      bondAddress: "",
-      reserveAddress: "",
-    },
-  },
-});
-
-export const usdc = new StableBond({
-  name: "usdc",
-  displayName: "USDC",
-  bondToken: "USDC",
-  payoutToken: "OHM",
-  v2Bond: false,
-  bondIconSvg: ["USDC"],
-  bondContractABI: UsdcBondContract,
-  isBondable: {
-    [NetworkId.MAINNET]: false,
-    [NetworkId.TESTNET_RINKEBY]: false,
-    [NetworkId.ARBITRUM]: false,
-    [NetworkId.ARBITRUM_TESTNET]: false,
-    [NetworkId.AVALANCHE]: false,
-    [NetworkId.AVALANCHE_TESTNET]: false,
-  },
-  isLOLable: {
-    [NetworkId.MAINNET]: false,
-    [NetworkId.TESTNET_RINKEBY]: false,
-    [NetworkId.ARBITRUM]: false,
-    [NetworkId.ARBITRUM_TESTNET]: false,
-    [NetworkId.AVALANCHE]: false,
-    [NetworkId.AVALANCHE_TESTNET]: false,
-  },
-  LOLmessage: "",
-  isClaimable: {
-    [NetworkId.MAINNET]: true,
-    [NetworkId.TESTNET_RINKEBY]: true,
-    [NetworkId.ARBITRUM]: false,
-    [NetworkId.ARBITRUM_TESTNET]: false,
-    [NetworkId.AVALANCHE]: false,
-    [NetworkId.AVALANCHE_TESTNET]: false,
-  },
-  networkAddrs: {
-    [NetworkId.MAINNET]: {
-      bondAddress: "",
-      reserveAddress: "",
-    },
-    [NetworkId.ARBITRUM]: {
-      bondAddress: "",
-      reserveAddress: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
-    },
-    [NetworkId.ARBITRUM_TESTNET]: {
-      bondAddress: "",
-      reserveAddress: "",
-    },
-    [NetworkId.Localhost]: {
-      bondAddress: "",
-      reserveAddress: "",
-    },
-  },
-});
-
 export const eth = new CustomBond({
   name: "eth",
   displayName: "wETH",
@@ -445,6 +339,134 @@ export const arb = new CustomBond({
     let arbAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
     arbAmount = Number(arbAmount.toString()) / Math.pow(10, 18);
     return arbAmount * arbPrice;
+  },
+});
+
+export const usdc = new CustomBond({
+  name: "usdc",
+  displayName: "USDC",
+  lpUrl: "",
+  bondType: BondType.StableAsset,
+  bondToken: "USDC",
+  payoutToken: "OHM",
+  v2Bond: false,
+  bondIconSvg: ["wETH"],
+  bondContractABI: UsdcBondContract,
+  reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
+  isBondable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  isLOLable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  LOLmessage: "Taking a Spa Day",
+  isClaimable: {
+    [NetworkId.MAINNET]: true,
+    [NetworkId.TESTNET_RINKEBY]: true,
+    [NetworkId.ARBITRUM]: true,
+    [NetworkId.ARBITRUM_TESTNET]: true,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  networkAddrs: {
+    [NetworkId.MAINNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkId.ARBITRUM]: {
+      bondAddress: "",
+      reserveAddress: "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+    },
+    [NetworkId.ARBITRUM_TESTNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    // FIXME
+    [NetworkId.Localhost]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+  },
+  customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
+    const usdcPrice: number = await getTokenPrice("usdc");
+    const token = this.getContractForReserve(NetworkId, provider);
+    let usdcAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
+    usdcAmount = Number(usdcAmount.toString()) / Math.pow(10, 18);
+    return usdcAmount * usdcPrice;
+  },
+});
+
+export const usdt = new CustomBond({
+  name: "usdt",
+  displayName: "USDT",
+  lpUrl: "",
+  bondType: BondType.StableAsset,
+  bondToken: "USDC",
+  payoutToken: "OHM",
+  v2Bond: false,
+  bondIconSvg: ["wETH"],
+  bondContractABI: UsdtBondContract,
+  reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
+  isBondable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  isLOLable: {
+    [NetworkId.MAINNET]: false,
+    [NetworkId.TESTNET_RINKEBY]: false,
+    [NetworkId.ARBITRUM]: false,
+    [NetworkId.ARBITRUM_TESTNET]: false,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  LOLmessage: "Taking a Spa Day",
+  isClaimable: {
+    [NetworkId.MAINNET]: true,
+    [NetworkId.TESTNET_RINKEBY]: true,
+    [NetworkId.ARBITRUM]: true,
+    [NetworkId.ARBITRUM_TESTNET]: true,
+    [NetworkId.AVALANCHE]: false,
+    [NetworkId.AVALANCHE_TESTNET]: false,
+  },
+  networkAddrs: {
+    [NetworkId.MAINNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkId.ARBITRUM]: {
+      bondAddress: "",
+      reserveAddress: "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+    },
+    [NetworkId.ARBITRUM_TESTNET]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    // FIXME
+    [NetworkId.Localhost]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+  },
+  customTreasuryBalanceFunc: async function (this: CustomBond, NetworkId, provider) {
+    const usdtPrice: number = await getTokenPrice("usdt");
+    const token = this.getContractForReserve(NetworkId, provider);
+    let usdtAmount: BigNumberish = await token.balanceOf(addresses[NetworkId].TREASURY_ADDRESS);
+    usdtAmount = Number(usdtAmount.toString()) / Math.pow(10, 18);
+    return usdtAmount * usdtPrice;
   },
 });
 

@@ -8,6 +8,8 @@ import { TertiaryButton, TokenStack } from "@olympusdao/component-library";
 import arbIcon from "../../assets/tokens/arb.svg";
 import hdxIcon from "../../assets/icons/hdx.svg";
 import ethIcon from "../../assets/icons/eth.svg";
+import usdcIcon from "../../assets/tokens/usdc.svg";
+import usdtIcon from "../../assets/tokens/usdt.svg";
 import { NavLink } from "react-router-dom";
 import { getArbitrumscanUrl } from "src/helpers";
 import { useAppSelector } from "src/hooks";
@@ -128,6 +130,34 @@ export function BondTableData({ bond, networkId }: { bond: IBondV2; networkId: N
           >
             <img
               src={arbIcon}
+              style={{
+                width: "35px",
+                height: "35px",
+              }}
+            />
+          </div>
+        ) : bond.displayName === "USDC" ? (
+          <div
+            style={{
+              position: "relative",
+            }}
+          >
+            <img
+              src={usdcIcon}
+              style={{
+                width: "35px",
+                height: "35px",
+              }}
+            />
+          </div>
+        ) : bond.displayName === "USDT" ? (
+          <div
+            style={{
+              position: "relative",
+            }}
+          >
+            <img
+              src={usdtIcon}
               style={{
                 width: "35px",
                 height: "35px",

@@ -86,7 +86,7 @@ const ArbDetails: V2BondDetails = {
 
 const UsdcDetails: V2BondDetails = {
   name: "USDC",
-  bondIconSvg: ["USDC"],
+  bondIconSvg: ["wETH"],
   pricingFunction: async () => {
     return getTokenPrice("usdc");
   },
@@ -96,7 +96,7 @@ const UsdcDetails: V2BondDetails = {
 
 const UsdtDetails: V2BondDetails = {
   name: "USDT",
-  bondIconSvg: ["USDT"],
+  bondIconSvg: ["wETH"],
   pricingFunction: async () => {
     return getTokenPrice("usdt");
   },
